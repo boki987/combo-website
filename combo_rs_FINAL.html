@@ -475,6 +475,21 @@ footer { background: #fff; border-top: 1px solid #eaeae8; padding: 52px 56px 28p
 
 
   <!-- PANEL 0: do 10 -->
+  <div class="seg-tabs">
+    <button class="seg-tab active" onclick="showSeg(0)">
+      <span class="seg-tab-num">≤10</span>
+      <span class="seg-tab-lbl">zaposlenih</span>
+    </button>
+    <button class="seg-tab" onclick="showSeg(1)">
+      <span class="seg-tab-num">≤50</span>
+      <span class="seg-tab-lbl">zaposlenih</span>
+    </button>
+    <button class="seg-tab" onclick="showSeg(2)">
+      <span class="seg-tab-num">100+</span>
+      <span class="seg-tab-lbl">zaposlenih</span>
+    </button>
+  </div>
+
   <div class="seg-panel active" id="seg-0">
     <div class="seg-banner" style="background:linear-gradient(135deg,#0d1a2e 0%,#0f2447 100%)">
       <div class="seg-banner-grid"></div>
