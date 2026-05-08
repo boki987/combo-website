@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Studies — Combo IT</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif; background: #f7f7f5; color: #1a1a1a; }
+
+/* ── NAV ── */
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 0 56px; height: 68px; background: #fff; border-bottom: 1px solid #eaeae8; position: sticky; top: 0; z-index: 100; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-box { width: 34px; height: 34px; background: #1a5fd4; border-radius: 7px; display: flex; align-items: center; justify-content: center; }
+.logo-text { font-size: 17px; font-weight: 600; color: #1a1a1a; letter-spacing: -0.3px; }
+.logo-text span { color: #1a5fd4; }
+.nav-menu { display: flex; gap: 36px; }
+.nav-menu a { font-size: 14px; color: #666; text-decoration: none; transition: color .15s; }
+.nav-menu a.active { color: #1a5fd4; font-weight: 500; }
+.nav-menu a:hover { color: #1a1a1a; }
+.nav-btn { font-size: 13px; font-weight: 500; padding: 9px 20px; background: #1a5fd4; color: #fff; border-radius: 7px; text-decoration: none; }
+
+/* ── HEADER ── */
+.page-header { background: #0d1a2e; padding: 52px 56px; position: relative; overflow: hidden; }
+.ph-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(55,138,221,0.06) 1px,transparent 1px), linear-gradient(90deg,rgba(55,138,221,0.06) 1px,transparent 1px); background-size: 52px 52px; pointer-events: none; }
+.ph-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; }
+.ph-eyebrow { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.7px; color: #85b7eb; margin-bottom: 10px; }
+.ph-title { font-size: 32px; font-weight: 600; color: #fff; letter-spacing: -0.5px; margin-bottom: 10px; }
+.ph-sub { font-size: 15px; color: rgba(255,255,255,0.55); max-width: 520px; line-height: 1.65; }
+.ph-stats { display: flex; flex-direction: column; gap: 10px; flex-shrink: 0; }
+.ph-stat { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 16px 20px; text-align: right; min-width: 150px; }
+.ph-stat-num { font-size: 24px; font-weight: 600; color: #fff; letter-spacing: -0.5px; }
+.ph-stat-lbl { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+
+/* ── FILTER BAR ── */
+.filter-bar { background: #fff; border-bottom: 1px solid #eaeae8; padding: 0 56px; display: flex; align-items: center; gap: 8px; height: 56px; }
+.filter-btn { font-size: 13px; padding: 6px 14px; border-radius: 20px; border: 1px solid #eaeae8; background: #fff; color: #666; cursor: pointer; transition: all .15s; white-space: nowrap; }
+.filter-btn:hover { border-color: #1a5fd4; color: #1a5fd4; }
+.filter-btn.active { background: #1a5fd4; color: #fff; border-color: #1a5fd4; }
+.filter-sep { width: 1px; height: 20px; background: #eaeae8; margin: 0 4px; }
+
+/* ── GRID ── */
+.cs-body { padding: 36px 56px; }
+.cs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+/* ── CARD ── */
+.cs-card { background: #fff; border: 1px solid #eaeae8; border-radius: 12px; overflow: hidden; cursor: pointer; transition: transform .2s, box-shadow .2s; display: flex; flex-direction: column; }
+.cs-card:hover { transform: translateY(-3px); box-shadow: 0 6px 24px rgba(0,0,0,0.07); }
+.cs-card-top { padding: 24px; flex: 1; }
+.cs-card-bottom { padding: 18px 24px; border-top: 1px solid #f0f0ee; display: flex; align-items: center; justify-content: space-between; }
+.cs-accent { height: 4px; }
+.cs-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+.cs-tag { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 20px; }
+.cs-industry { font-size: 11px; padding: 3px 9px; border-radius: 20px; border: 1px solid #eaeae8; color: #888; }
+.cs-title { font-size: 16px; font-weight: 600; line-height: 1.35; letter-spacing: -0.2px; margin-bottom: 12px; }
+.cs-excerpt { font-size: 13px; color: #666; line-height: 1.6; margin-bottom: 18px; }
+.cs-metrics { display: flex; gap: 0; }
+.cs-metric { flex: 1; border-right: 1px solid #f0f0ee; padding-right: 14px; margin-right: 14px; }
+.cs-metric:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+.cs-metric-num { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; line-height: 1; }
+.cs-metric-lbl { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.3; }
+.cs-client { font-size: 12px; color: #aaa; }
+.cs-read-btn { font-size: 13px; font-weight: 500; color: #1a5fd4; }
+
+/* ── MODAL ── */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 200; display: none; align-items: flex-start; justify-content: center; padding: 40px 20px; overflow-y: auto; }
+.modal-overlay.open { display: flex; }
+.modal { background: #fff; border-radius: 16px; max-width: 820px; width: 100%; position: relative; animation: modalIn .25s ease; margin: auto; }
+@keyframes modalIn { from { transform: translateY(16px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.modal-accent { height: 6px; border-radius: 16px 16px 0 0; }
+.modal-close { position: absolute; top: 16px; right: 16px; width: 32px; height: 32px; border-radius: 50%; background: #fff; border: 1px solid #eaeae8; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 15px; color: #666; z-index: 10; }
+.modal-close:hover { color: #1a1a1a; }
+
+.modal-hero { padding: 32px 40px 28px; border-bottom: 1px solid #eaeae8; }
+.modal-hero-tags { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 14px; }
+.modal-hero-tag { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+.modal-title { font-size: 24px; font-weight: 700; letter-spacing: -0.4px; line-height: 1.2; margin-bottom: 8px; }
+.modal-client-row { display: flex; align-items: center; gap: 16px; font-size: 13px; color: #aaa; }
+
+.modal-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-bottom: 1px solid #eaeae8; }
+.mm { padding: 20px 24px; border-right: 1px solid #eaeae8; }
+.mm:last-child { border-right: none; }
+.mm-num { font-size: 28px; font-weight: 700; letter-spacing: -0.6px; line-height: 1; }
+.mm-lbl { font-size: 11px; color: #aaa; margin-top: 4px; line-height: 1.3; }
+
+.modal-body { padding: 32px 40px 36px; }
+.modal-body h2 { font-size: 17px; font-weight: 600; margin: 28px 0 10px; color: #1a1a1a; letter-spacing: -0.2px; }
+.modal-body h2:first-child { margin-top: 0; }
+.modal-body p { font-size: 15px; color: #444; line-height: 1.75; margin-bottom: 12px; }
+.modal-body ul, .modal-body ol { margin: 8px 0 14px 20px; }
+.modal-body li { font-size: 15px; color: #444; line-height: 1.7; margin-bottom: 4px; }
+.modal-body strong { color: #1a1a1a; font-weight: 600; }
+.challenge-box { background: #fff9ed; border: 1px solid #fde68a; border-radius: 10px; padding: 16px 18px; margin: 16px 0; }
+.challenge-box p { color: #78350f; margin: 0; font-size: 14px; }
+.result-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 16px 18px; margin: 16px 0; }
+.result-box p { color: #14532d; margin: 0; font-size: 14px; }
+.quote-box { background: #f8f8f6; border-left: 3px solid #1a5fd4; padding: 16px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+.quote-box p { font-size: 15px; font-style: italic; color: #444; margin: 0 0 8px; line-height: 1.65; }
+.quote-box cite { font-size: 12px; color: #aaa; font-style: normal; }
+
+.modal-footer { border-top: 1px solid #eaeae8; padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; }
+.modal-footer-left { font-size: 13px; color: #888; }
+.modal-footer-right { display: flex; gap: 10px; }
+.btn-outline { font-size: 13px; padding: 9px 18px; border: 1px solid #eaeae8; border-radius: 7px; color: #555; text-decoration: none; cursor: pointer; background: #fff; }
+.btn-primary { font-size: 13px; font-weight: 500; padding: 9px 20px; background: #1a5fd4; color: #fff; border-radius: 7px; text-decoration: none; border: none; cursor: pointer; }
+
+/* ── CTA STRIP ── */
+.cta-strip { background: #0d1a2e; padding: 48px 56px; display: flex; align-items: center; justify-content: space-between; gap: 32px; margin-top: 0; }
+.cta-strip h2 { font-size: 24px; font-weight: 600; color: #fff; margin-bottom: 8px; letter-spacing: -0.3px; }
+.cta-strip p { font-size: 14px; color: rgba(255,255,255,0.5); max-width: 420px; line-height: 1.65; }
+.cta-btns { display: flex; gap: 10px; flex-shrink: 0; }
+.btn-white { padding: 12px 26px; font-size: 14px; font-weight: 600; background: #fff; color: #0d1a2e; border-radius: 8px; text-decoration: none; }
+.btn-ghost-w { padding: 12px 26px; font-size: 14px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: rgba(255,255,255,0.7); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="logo" href="combo_rs_FINAL.html">
+    <div class="logo-box">
+      <svg viewBox="0 0 20 20" fill="none" width="20" height="20">
+        <rect x="2" y="2" width="7" height="7" rx="2" fill="white"/>
+        <rect x="11" y="2" width="7" height="7" rx="2" fill="rgba(255,255,255,0.45)"/>
+        <rect x="2" y="11" width="7" height="7" rx="2" fill="rgba(255,255,255,0.45)"/>
+        <rect x="11" y="11" width="7" height="7" rx="2" fill="white"/>
+      </svg>
+    </div>
+    <span class="logo-text">Combo<span>.</span></span>
+  </a>
+  <div class="nav-menu">
+    <a href="#">Usluge</a>
+    <a href="combo_tim.html">O nama</a>
+    <a href="combo_casestudies.html" class="active">Case studies</a>
+    <a href="combo_blog.html">Blog</a>
+    <a href="#">Kontakt</a>
+  </div>
+  <a class="nav-btn" href="#">Zakažite poziv</a>
+</nav>
+
+<!-- HEADER -->
+<div class="page-header">
+  <div class="ph-grid"></div>
+  <div class="ph-inner">
+    <div>
+      <div class="ph-eyebrow">Case studies</div>
+      <div class="ph-title">Projekti koje smo realizovali</div>
+      <div class="ph-sub">Konkretni izazovi, konkretna rešenja, merljivi rezultati. Saznajte kako smo pomogli kompanijama iz različitih industrija da reše IT probleme.</div>
+    </div>
+    <div class="ph-stats">
+      <div class="ph-stat"><div class="ph-stat-num">50+</div><div class="ph-stat-lbl">realizovanih projekata</div></div>
+      <div class="ph-stat"><div class="ph-stat-num">9+</div><div class="ph-stat-lbl">industrija</div></div>
+      <div class="ph-stat"><div class="ph-stat-num">0h</div><div class="ph-stat-lbl">prosečan downtime</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterCS('sve', this)">Svi projekti</button>
+  <div class="filter-sep"></div>
+  <button class="filter-btn" onclick="filterCS('m365', this)">Microsoft 365</button>
+  <button class="filter-btn" onclick="filterCS('azure', this)">Azure</button>
+  <button class="filter-btn" onclick="filterCS('mreze', this)">Mreže</button>
+  <button class="filter-btn" onclick="filterCS('security', this)">Security</button>
+  <button class="filter-btn" onclick="filterCS('migracija', this)">Migracija</button>
+  <button class="filter-btn" onclick="filterCS('infrastruktura', this)">Infrastruktura</button>
+</div>
+
+<!-- GRID -->
+<div class="cs-body">
+  <div class="cs-grid" id="csGrid">
+
+    <!-- CASE 1 -->
+    <div class="cs-card" data-cats="m365 migracija" onclick="openCS(0)">
+      <div class="cs-accent" style="background:#1a5fd4"></div>
+      <div class="cs-card-top">
+        <div class="cs-tags">
+          <span class="cs-tag" style="color:#0c447c;background:#e6f1fb">Microsoft 365</span>
+          <span class="cs-tag" style="color:#085041;background:#e1f5ee">Migracija</span>
+          <span class="cs-industry">Manufacturing</span>
+        </div>
+        <div class="cs-title">Migracija 65 korisnika sa on-premise Exchange na Microsoft 365</div>
+        <div class="cs-excerpt">Klijent je koristio stari Exchange server 10+ godina. Bez downtime-a smo prebacili 65 korisnika, 8 godina mailova i sve shared mailboxe na Microsoft 365 za vikend.</div>
+        <div class="cs-metrics">
+          <div class="cs-metric"><div class="cs-metric-num" style="color:#1a5fd4">0h</div><div class="cs-metric-lbl">downtime tokom migracije</div></div>
+          <div class="cs-metric"><div class="cs-metric-num" style="color:#1a5fd4">65</div><div class="cs-metric-lbl">korisnika migriranih</div></div>
+          <div class="cs-metric"><div class="cs-metric-num" style="color:#1a5fd4">2 dana</div><div class="cs-metric-lbl">trajanje projekta</div></div>
+        </div>
+      </div>
+      <div class="cs-card-bottom">
+        <span class="cs-client">Manufacturing firma · Beograd · 2024</span>
+        <span class="cs-read-btn">Čitajte →</span>
+      </div>
+    </div>
+
+    <!-- CASE 2 -->
+    <div class="cs-card" data-cats="azure infrastruktura migracija" onclick="openCS(1)">
+      <div class="cs-accent" style="background:#7c3aed"></div>
+      <div class="cs-card-top">
+        <div class="cs-tags">
+          <span class="cs-tag" style="color:#4c1d95;background:#ede9fe">Azure</span>
+          <span class="cs-tag" style="color:#412402;background:#faeeda">Infrastruktura</span>
+          <span class="cs-industry">Tech / SaaS</span>
+        </div>
+        <div class="cs-title">Azure cloud migracija — sa on-premise servera na skalabilnu cloud arhitekturu</div>
+        <div class="cs-excerpt">Tech kompanija sa brzim rastom imala je on-premise servere koji nisu pratili rast korisnika. Migrirali smo kompletnu infrastrukturu na Azure i smanjili troškove za 38%.</div>
+        <div class="cs-metrics">
+          <div class="cs-metric"><div class="cs-metric-num" style="color:#7c3aed">38%</div><div class="cs-metric-lbl">niži mesečni troškovi</div></div>
+          <div class="cs-metric"><div class="cs-metric-num" style="color:#7c3aed">12</div><div class="cs-metric-lbl">VM migriranih na Azure</div></div>
+          <div class="cs-metric"><div class="cs-metric-num" style="color:#7c3aed">99.95%</div><div class="cs-metric-lbl">uptime SLA</div></div>
+        </div>
+      </div>
+      <div class="cs-card-bottom">
+        <span class="cs-client">Tech kompanija · Beograd · 2024</span>
+        <span class="cs-read-btn">Čitajte →</span>
+      </div>
+    </div>
+
+    <!-- CASE 3 -->
+    <div class="cs-card" data-cats="mreze infrastruktura" onclick="openCS(2)">
+      <div class="cs-accent" style="background:#0891b2"></div>
+      <div class="cs-card-top">
+        <div class="cs-tags">
+          <span class="cs-tag" style="color:#164e63;background:#e0f2fe">Mreže</span>
+          <span class="cs-tag" style="color:#412402;background:#faeeda">Multi-site</span>
+          <span class="cs-industry">Distribucija</span>
+        </div>
+        <div class="cs-title">Redesign mrežne infrastrukture za 3 kancelarije i 120 korisnika</div>
+        <div class="cs-excerpt">Distributivna kompanija sa 3 kancelarije imala je nestabilnu mrežu i česte ispade. Projektovali i implementirali smo kompletnu novu mrežnu infrastrukturu sa centralnim upravljanjem.</div>
+        <div class="cs-metrics">
+          <div class="cs-metric"><div class="cs-metric-num" style="color:#0891b2">99.9%</div><div class="cs-metric-lbl">uptime posle implementacije</div></div>
+          <div class="cs-metric"><div class="cs-metric-num" style="color:#0891b2">3</div><div class="cs-metric-lbl">lokacije pokrivene</div></div>
+          <div class="cs-metric"><div class="cs-metric-num" style="color:#0891b2">120</div><div class="cs-metric-lbl">korisnika na mreži</div></div>
+        </div>
+      </div>
+      <div class="cs-card-bottom">
+        <span class="cs-client">Distributivna firma · Srbija · 2023</span>
+        <span class="cs-read-btn">Čitajte →</span>
+      </div>
+    </div>
+
+    <!-- CASE 4 -->
+    <div class="cs-card" data-cats="security infrastruktura" onclick="openCS(3)">
+      <div class="cs-accent" style="background:#dc2626"></div>
+      <div class="cs-card-top">
+        <div class="cs-tags">
+          <span class="cs-tag" style="color:#7f1d1d;background:#fee2e2">Security</span>
+          <span class="cs-tag" style="color:#085041;background:#e1f5ee">Endpoint</span>
+          <span class="cs-industry">Farmacija</span>
+        </div>
+        <div class="cs-title">Implementacija Sophos endpoint zaštite za farmaceutsku kompaniju</div>
+        <div class="cs-excerpt">Farmaceutska kompanija imala je ransomware incident koji je paralizovao rad 3 dana. Implementirali smo Sophos Intercept X sa centralnim upravljanjem i incident response procedurama.</div>
+        <div class="cs-metrics">
+          <div class="cs-metric"><div class="cs-metric-num" style="color:#dc2626">0</div><div class="cs-metric-lbl">incidenata od implementacije</div></div>
+          <div class="cs-metric"><div class="cs-metric-num" style="color:#dc2626">45</div><div class="cs-metric-lbl">uređaja zaštićeno</div></div>
+          <div class="cs-metric"><div class="cs-metric-num" style="color:#dc2626">&lt;1h</div><div class="cs-metric-lbl">response time na alert</div></div>
+        </div>
+      </div>
+      <div class="cs-card-bottom">
+        <span class="cs-client">Farmaceutska firma · Srbija · 2023</span>
+        <span class="cs-read-btn">Čitajte →</span>
+      </div>
+    </div>
+
+    <!-- CASE 5 -->
+    <div class="cs-card" data-cats="m365 infrastruktura" onclick="openCS(4)">
+      <div class="cs-accent" style="background:#16a34a"></div>
+      <div class="cs-card-top">
+        <div class="cs-tags">
+          <span class="cs-tag" style="color:#085041;background:#e1f5ee">Microsoft 365</span>
+          <span class="cs-tag" style="color:#164e63;background:#e0f2fe">Intune MDM</span>
+          <span class="cs-industry">Marketing agencija</span>
+        </div>
+        <div class="cs-title">Intune MDM implementacija za marketing agenciju sa hibridnim radom</div>
+        <div class="cs-excerpt">Agencija sa 40 zaposlenih koji rade remote i iz kancelarije nije imala kontrolu nad uređajima. Implementirali smo Microsoft Intune koji omogućava upravljanje svim uređajima iz jedne konzole.</div>
+        <div class="cs-metrics">
+          <div class="cs-metric"><div class="cs-metric-num" style="color:#16a34a">40</div><div class="cs-metric-lbl">uređaja pod upravljanjem</div></div>
+          <div class="cs-metric"><div class="cs-metric-num" style="color:#16a34a">100%</div><div class="cs-metric-lbl">compliance policy</div></div>
+          <div class="cs-metric"><div class="cs-metric-num" style="color:#16a34a">0</div><div class="cs-metric-lbl">kompromitovanih uređaja</div></div>
+        </div>
+      </div>
+      <div class="cs-card-bottom">
+        <span class="cs-client">Marketing agencija · Beograd · 2024</span>
+        <span class="cs-read-btn">Čitajte →</span>
+      </div>
+    </div>
+
+    <!-- CASE 6 -->
+    <div class="cs-card" data-cats="infrastruktura migracija" onclick="openCS(5)">
+      <div class="cs-accent" style="background:#d97706"></div>
+      <div class="cs-card-top">
+        <div class="cs-tags">
+          <span class="cs-tag" style="color:#78350f;background:#fef3c7">IT infrastruktura</span>
+          <span class="cs-tag" style="color:#412402;background:#faeeda">Onboarding</span>
+          <span class="cs-industry">Call centar</span>
+        </div>
+        <div class="cs-title">IT setup za call centar od 0 — 80 radnih stanica za 3 nedelje</div>
+        <div class="cs-excerpt">Novi call centar trebalo je opremiti od nule — mreža, 80 računara, telefoni, CRM sistem i Microsoft 365 za ceo tim. Od potpisivanja ugovora do prvog radnog dana prošle su 3 nedelje.</div>
+        <div class="cs-metrics">
+          <div class="cs-metric"><div class="cs-metric-num" style="color:#d97706">80</div><div class="cs-metric-lbl">radnih stanica setup</div></div>
+          <div class="cs-metric"><div class="cs-metric-num" style="color:#d97706">3 ned.</div><div class="cs-metric-lbl">od ugovora do prvog dana</div></div>
+          <div class="cs-metric"><div class="cs-metric-num" style="color:#d97706">0</div><div class="cs-metric-lbl">kašnjenja u startu</div></div>
+        </div>
+      </div>
+      <div class="cs-card-bottom">
+        <span class="cs-client">Call centar · Beograd · 2023</span>
+        <span class="cs-read-btn">Čitajte →</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <div>
+    <h2>Prepoznajete vaš izazov?</h2>
+    <p>Zakažite besplatnu konsultaciju od 30 minuta — analiziramo vašu situaciju i predložimo rešenje bez obaveza.</p>
+  </div>
+  <div class="cta-btns">
+    <a class="btn-white" href="#">Zakažite razgovor</a>
+    <a class="btn-ghost-w" href="combo_blog.html">Čitajte blog</a>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeOnBg(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeCS()">✕</button>
+    <div class="modal-accent" id="mAccent"></div>
+    <div class="modal-hero">
+      <div class="modal-hero-tags" id="mTags"></div>
+      <div class="modal-title" id="mTitle"></div>
+      <div class="modal-client-row" id="mClient"></div>
+    </div>
+    <div class="modal-metrics" id="mMetrics"></div>
+    <div class="modal-body" id="mBody"></div>
+    <div class="modal-footer">
+      <span class="modal-footer-left" id="mFooterLeft"></span>
+      <div class="modal-footer-right">
+        <button class="btn-outline" onclick="closeCS()">← Nazad</button>
+        <a class="btn-primary" href="#">Zakažite konsultaciju</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const cases = [
+  {
+    color: '#1a5fd4',
+    tags: [{l:'Microsoft 365',s:'color:#0c447c;background:#e6f1fb'},{l:'Migracija',s:'color:#085041;background:#e1f5ee'},{l:'Manufacturing',s:'border:1px solid #eaeae8;color:#888'}],
+    title: 'Migracija 65 korisnika sa on-premise Exchange na Microsoft 365',
+    client: 'Manufacturing firma · Beograd · 2024 · ~200 zaposlenih',
+    metrics: [
+      {num:'0h', lbl:'downtime tokom migracije', color:'#1a5fd4'},
+      {num:'65', lbl:'korisnika migriranih', color:'#1a5fd4'},
+      {num:'2 dana', lbl:'trajanje projekta', color:'#1a5fd4'},
+      {num:'8 god.', lbl:'mailova sačuvano i prebačeno', color:'#1a5fd4'},
+    ],
+    body: `
+      <h2>Situacija i izazov</h2>
+      <p>Klijent je koristio on-premise Microsoft Exchange Server 2010 — verziju bez bezbednosnih zakrpa i van Microsoft supporta. Server je bio na fizičkom hardveru starosti 9 godina, sa istorijatom od 8 godina email komunikacije i 65 aktivnih korisnika.</p>
+      <div class="challenge-box"><p>⚠️ Izazov: Klijent nije mogao da priušti downtime tokom radne nedelje. Svi mailovi i shared mailboxovi morali su biti sačuvani. Rok: vikend — petak uveče do ponedeljka ujutru.</p></div>
+
+      <h2>Naš pristup</h2>
+      <p>Koristili smo <strong>IMAP migraciju sa batch pristupom</strong> — startovali smo nekoliko dana pre vikenda da presinkronizujemo starije mailove u pozadini, tako da finalni cutover traje minimalno.</p>
+      <ul>
+        <li>Sreda–četvrtak: presinkronizacija mailova starijih od 30 dana u pozadini</li>
+        <li>Petak 18h: kreiranje svih 65 naloga na Microsoft 365 i konfiguracija licenci</li>
+        <li>Petak 20h: finalna sinkronizacija i MX record swap</li>
+        <li>Subota: migracija shared mailboxova, distribution grupe, room mailboxovi</li>
+        <li>Nedelja: verifikacija sa 5 key usera, Outlook konfiguracija na svim računarima</li>
+        <li>Ponedeljak 7h: tim startuje rad na novom sistemu</li>
+      </ul>
+
+      <h2>Tehnički detalji</h2>
+      <p>Koristili smo <strong>Microsoft 365 Admin Center IMAP migraciju</strong> za mailove i <strong>Exchange Admin Center</strong> za shared mailboxove. Outlook profili su rekonfigurisani putem Autodiscover-a — korisnici su dobili nove login procedure u petak uveče, a u ponedeljak su otvorili Outlook i sve je radilo.</p>
+      <p>Poseban izazov bila je migracija <strong>shared mailboxova</strong> koje je koristilo više departmana — prodaja, nabavka, reklamacije. Svaki je zahtevao mapiranje pristupa i verifikaciju sa department managerima.</p>
+
+      <h2>Rezultati</h2>
+      <div class="result-box"><p>✅ Ponedeljak ujutru — svih 65 korisnika rade na Microsoft 365 bez ijednog sata downtime-a. 8 godina email istorijata dostupno u Outlooku. IT troškovi za Exchange server (hardver + licenca + održavanje) eliminisani.</p></div>
+
+      <div class="quote-box">
+        <p>Bojali smo se da ćemo provesti ponedeljak bez mailova. Umesto toga, kafa je bila jedini problem tog jutra.</p>
+        <cite>— IT koordinator klijenta</cite>
+      </div>
+
+      <h2>Šta je klijent dobio dugoročno</h2>
+      <ul>
+        <li>Microsoft 365 Business Standard za 65 korisnika — Word, Excel, Teams, OneDrive uključeni</li>
+        <li>Automatski backup mailova (Exchange Online Protection)</li>
+        <li>Mogućnost remote rada bez VPN-a</li>
+        <li>Eliminacija troškova fizičkog servera (~800€/god. ušteda na hardveru i licencama)</li>
+      </ul>
+    `
+  },
+  {
+    color: '#7c3aed',
+    tags: [{l:'Azure',s:'color:#4c1d95;background:#ede9fe'},{l:'Infrastruktura',s:'color:#412402;background:#faeeda'},{l:'Tech / SaaS',s:'border:1px solid #eaeae8;color:#888'}],
+    title: 'Azure cloud migracija — sa on-premise servera na skalabilnu cloud arhitekturu',
+    client: 'Tech kompanija · Beograd · 2024 · ~60 zaposlenih',
+    metrics: [
+      {num:'38%', lbl:'niži mesečni troškovi infrastrukture', color:'#7c3aed'},
+      {num:'12', lbl:'virtualnih mašina migriranih', color:'#7c3aed'},
+      {num:'99.95%', lbl:'Azure SLA uptime', color:'#7c3aed'},
+      {num:'4 ned.', lbl:'trajanje migracije', color:'#7c3aed'},
+    ],
+    body: `
+      <h2>Situacija i izazov</h2>
+      <p>Tech kompanija koja razvija SaaS proizvod imala je 12 fizičkih servera u iznajmljenom rack prostoru. Sa rastom broja klijenata, serveri nisu pratili kapacitete — svako skaliranje zahtevalo je nabavku novog hardvera i čekanje od 3-4 nedelje.</p>
+      <div class="challenge-box"><p>⚠️ Izazov: Migracija produkcijskog okruženja bez uticaja na krajnje korisnike SaaS platforme. Procena troškova pokazala da je on-premise infrastruktura skupa — ali klijent nije verovao da će cloud biti jeftiniji.</p></div>
+
+      <h2>Naša analiza troškova</h2>
+      <p>Pre nego što smo počeli sa migracijom, uradili smo <strong>TCO (Total Cost of Ownership) analizu</strong>:</p>
+      <ul>
+        <li>On-premise: rack najam + struja + internet + hardver amortizacija + IT vreme = ~3.200€/mes</li>
+        <li>Azure (right-sized VMs + Reserved Instances): ~1.980€/mes</li>
+        <li>Ušteda: <strong>38% mesečno ili ~14.600€ godišnje</strong></li>
+      </ul>
+      <p>Klijent je bio iznenađen — pretpostavljao je da će cloud biti skuplji. Ključ je bio u <strong>Azure Reserved Instances</strong> (1-godišnja rezervacija) i pravilnom "right-sizingu" VM-ova.</p>
+
+      <h2>Arhitektura rešenja</h2>
+      <p>Dizajnirali smo Azure arhitekturu sa sledećim komponentama:</p>
+      <ul>
+        <li><strong>Azure Virtual Machines</strong> (D-series) za aplikacione servere</li>
+        <li><strong>Azure SQL Database</strong> (Managed Instance) umesto on-premise SQL Servera</li>
+        <li><strong>Azure Blob Storage</strong> za statične fajlove i backup</li>
+        <li><strong>Azure Load Balancer</strong> za distribuciju saobraćaja</li>
+        <li><strong>Azure Backup</strong> za sve VM-ove, daily retention 30 dana</li>
+        <li><strong>Azure Monitor + Log Analytics</strong> za monitoring i alerting</li>
+      </ul>
+
+      <h2>Migracija</h2>
+      <p>Koristili smo <strong>Azure Migrate</strong> za assessment i <strong>Azure Site Recovery</strong> za replikaciju VM-ova. Migacija je rađena serverima redom, počevši od test i staging okruženja.</p>
+      <div class="result-box"><p>✅ Produkcijski cutover obavljen u 4 sata tokom vikenda. Korisnici SaaS platforme nisu primetili ništa. Od tada, tim može da skalira kapacitete za 15 minuta umesto 3-4 nedelje.</p></div>
+    `
+  },
+  {
+    color: '#0891b2',
+    tags: [{l:'Mreže',s:'color:#164e63;background:#e0f2fe'},{l:'Multi-site',s:'color:#412402;background:#faeeda'},{l:'Distribucija',s:'border:1px solid #eaeae8;color:#888'}],
+    title: 'Redesign mrežne infrastrukture za 3 kancelarije i 120 korisnika',
+    client: 'Distributivna kompanija · Srbija · 2023 · ~120 zaposlenih',
+    metrics: [
+      {num:'99.9%', lbl:'uptime posle implementacije', color:'#0891b2'},
+      {num:'3', lbl:'lokacije — Beograd, Novi Sad, Niš', color:'#0891b2'},
+      {num:'120', lbl:'korisnika na jedinstvenoj mreži', color:'#0891b2'},
+      {num:'4×', lbl:'brži transfer fajlova između lokacija', color:'#0891b2'},
+    ],
+    body: `
+      <h2>Situacija i izazov</h2>
+      <p>Distributivna kompanija sa kancelarijama u Beogradu, Novom Sadu i Nišu imala je mrežnu infrastrukturu koja je rasla organički 10 godina — bez plana i dokumentacije. Rezultat: česti ispadi, spora konekcija između lokacija i bezbedonosni propusti.</p>
+      <div class="challenge-box"><p>⚠️ Konkretni problemi: Wi-Fi pada na 20+ korisnika, VPN između lokacija pada više puta dnevno, prenos fajlova između Beograda i Novog Sada traje 10× duže nego što bi trebalo. Niko u firmi ne zna topologiju mreže.</p></div>
+
+      <h2>Audit i dokumentacija</h2>
+      <p>Počeli smo sa <strong>kompletnim mrežnim auditom</strong> svih 3 lokacije — fizička topologija, IP adresni plan, switch konfiguracije, Wi-Fi pokrivenost. Ispostavilo se da je centralni svič u Beogradu radio sa pogrešno konfigurisanim VLAN-ovima i da je VPN između lokacija bio konfigurisan na potrošačkom ruteru.</p>
+
+      <h2>Nova arhitektura</h2>
+      <p>Projektovali smo novu mrežnu arhitekturu zasnovanu na <strong>MikroTik</strong> opremi:</p>
+      <ul>
+        <li><strong>MikroTik CCR2004</strong> kao centralni router u Beogradu (hub lokacija)</li>
+        <li><strong>MikroTik RB4011</strong> u Novom Sadu i Nišu (spoke lokacije)</li>
+        <li><strong>IPSec VPN tuneli</strong> između svih 3 lokacije sa automatskim failover-om</li>
+        <li><strong>VLAN segmentacija</strong>: zaposleni, gosti, IoT uređaji, IP telefoni — odvojene mreže</li>
+        <li><strong>Ubiquiti UniFi</strong> access pointi za Wi-Fi — centralno upravljanje iz jedne konzole</li>
+        <li><strong>Redundantna internet konekcija</strong> u Beogradu (2 ISP-a, automatski failover)</li>
+      </ul>
+
+      <div class="result-box"><p>✅ Posle implementacije: nula ispada u prvih 12 meseci, prenos fajlova između lokacija 4× brži, Wi-Fi stabilan i do 50 istovremenih korisnika. Kompletna mrežna dokumentacija na papiru i u Netbox-u.</p></div>
+
+      <div class="quote-box">
+        <p>Imali smo problem sa mrežom svaki drugi dan. Posle Combo-ovog redesigna, prestali smo da razmišljamo o mreži — jednostavno radi.</p>
+        <cite>— Operations Manager klijenta</cite>
+      </div>
+    `
+  },
+  {
+    color: '#dc2626',
+    tags: [{l:'Security',s:'color:#7f1d1d;background:#fee2e2'},{l:'Sophos EDR',s:'color:#085041;background:#e1f5ee'},{l:'Farmacija',s:'border:1px solid #eaeae8;color:#888'}],
+    title: 'Implementacija Sophos endpoint zaštite posle ransomware incidenta',
+    client: 'Farmaceutska kompanija · Srbija · 2023 · ~45 zaposlenih',
+    metrics: [
+      {num:'0', lbl:'bezbednosnih incidenata od implementacije', color:'#dc2626'},
+      {num:'45', lbl:'uređaja zaštićeno (laptopi + serveri)', color:'#dc2626'},
+      {num:'<1h', lbl:'response time na security alert', color:'#dc2626'},
+      {num:'3 dana', lbl:'bio je downtime pri originalnom incidentu', color:'#dc2626'},
+    ],
+    body: `
+      <h2>Incident koji je promenio prioritete</h2>
+      <p>Farmaceutska kompanija kontaktirala nas je 3 dana posle <strong>ransomware napada</strong> koji je šifrovao 60% fajlova na file serveru. Antivirusno rešenje koje su koristili (besplatna verzija popularnog antivirusa) nije prepoznalo napad na vreme.</p>
+      <div class="challenge-box"><p>⚠️ Šteta: 3 dana kompletnog zastoja, delimično oporavljeni podaci iz 4-dana-starog backup-a (deo podataka izgubljen zauvek), ~15.000€ procenjena direktna šteta + nematerijalna šteta od zastoja.</p></div>
+
+      <h2>Oporavak i forenzika</h2>
+      <p>Najpre smo pomogli u oporavku — analizirali smo šifrovane fajlove, identifikovali ransomware varijantu (LockBit 3.0) i maksimizirali oporavak iz dostupnih backup-a. Paralelno smo uradili <strong>forenzičku analizu</strong> kako je napad ušao u sistem: phishing mail, kompromitovani RDP port otvoren prema internetu.</p>
+
+      <h2>Novo bezbednosno rešenje</h2>
+      <p>Implementirali smo <strong>Sophos Intercept X Advanced sa EDR</strong> (Endpoint Detection and Response):</p>
+      <ul>
+        <li><strong>CryptoGuard</strong> — zaustavlja ransomware šifrovanje u realnom vremenu i automatski reversuje promene</li>
+        <li><strong>Deep Learning AI</strong> — detekcija nepoznatih pretnji bez potpisa</li>
+        <li><strong>Exploit Prevention</strong> — blokira tehnike napada pre nego što do napada dođe</li>
+        <li><strong>Sophos Central</strong> — centralna konzola za sve uređaje, real-time alerting</li>
+        <li><strong>Live Response</strong> — remote forenzika bez potrebe za fizičkim prisustvom</li>
+      </ul>
+      <p>Pored Sophos-a, zaštitili smo i perimetar: <strong>zatvoren RDP prema internetu</strong>, implementiran <strong>Azure MFA za sve udaljene pristupe</strong>, backup policy promenjen na 3-2-1 (3 kopije, 2 medija, 1 off-site).</p>
+
+      <div class="result-box"><p>✅ 18 meseci posle implementacije — nula bezbednosnih incidenata. Sophos je u tom periodu blokirao 3 pokušaja phishing napada i 1 pokušaj exploit-a. Firma je prošla godišnji compliance audit bez primedbi.</p></div>
+    `
+  },
+  {
+    color: '#16a34a',
+    tags: [{l:'Microsoft 365',s:'color:#085041;background:#e1f5ee'},{l:'Intune MDM',s:'color:#164e63;background:#e0f2fe'},{l:'Marketing agencija',s:'border:1px solid #eaeae8;color:#888'}],
+    title: 'Intune MDM implementacija za marketing agenciju sa 40 korisnika na hibridnom radu',
+    client: 'Marketing agencija · Beograd · 2024 · ~40 zaposlenih',
+    metrics: [
+      {num:'40', lbl:'uređaja pod centralnim upravljanjem', color:'#16a34a'},
+      {num:'100%', lbl:'device compliance policy', color:'#16a34a'},
+      {num:'0', lbl:'kompromitovanih uređaja od implementacije', color:'#16a34a'},
+      {num:'2 ned.', lbl:'trajanje implementacije', color:'#16a34a'},
+    ],
+    body: `
+      <h2>Situacija</h2>
+      <p>Marketing agencija sa 40 zaposlenih prešla je na hibridni rad 2021. godine — ali bez ikakve IT politike za uređaje. Zaposleni su koristili privatne laptope i telefone za pristup korporativnim podacima, mailovima i OneDrive-u. Niko nije znao koji uređaji pristupaju kojim podacima.</p>
+      <div class="challenge-box"><p>⚠️ Bezbednosni rizici: korporativni podaci na privatnim, nezaštićenim uređajima; nema kontrole lozinki i enkripcije diska; nemoguće ukloniti podatke sa uređaja odlaznog zaposlenog; nijedan uređaj nema antivirusnu zaštitu.</p></div>
+
+      <h2>Rešenje: Microsoft Intune</h2>
+      <p>Klijent je već imao <strong>Microsoft 365 Business Premium</strong> licence koje uključuju Intune — ali ga niko nije konfigurišao. Implementirali smo:</p>
+      <ul>
+        <li><strong>Device enrollment</strong> — svi laptopi i telefoni registrovani u Intune-u (Windows, macOS, iOS, Android)</li>
+        <li><strong>Compliance policies</strong> — uređaj mora imati PIN/lozinku, BitLocker enkripciju, ažurirani OS i antivirusnu zaštitu da bi pristupio korporativnim podacima</li>
+        <li><strong>Conditional Access</strong> — korporativni mail i SharePoint dostupni samo sa compliant uređaja</li>
+        <li><strong>App protection policies</strong> — Microsoft 365 aplikacije na privatnim telefonima zaštićene, korporativni podaci se ne mogu copy/paste u privatne aplikacije</li>
+        <li><strong>Autopilot</strong> — novi laptopi se automatski konfigurišu bez IT intervencije</li>
+      </ul>
+
+      <h2>Onboarding/offboarding transformacija</h2>
+      <p>Posebno vredna promena: <strong>offboarding zaposlenih</strong>. Pre Intune-a, odlazak zaposlenog sa privatnim laptopom znači da korporativni podaci ostaju na privatnom uređaju. Sa Intune-om, IT administrator može pritisnuti "Selective Wipe" i ukloniti samo korporativne podatke sa privatnog uređaja — bez brisanja ličnih foto ili aplikacija.</p>
+
+      <div class="result-box"><p>✅ 2 nedelje implementacije, 40 uređaja pod kontrolom. Od tada, svaki novi zaposleni dobija enkriptovan laptop spreman za rad za 45 minuta. Svaki odlazak zaposlenog — korporativni podaci uklonjeni za 5 minuta.</p></div>
+    `
+  },
+  {
+    color: '#d97706',
+    tags: [{l:'IT infrastruktura',s:'color:#78350f;background:#fef3c7'},{l:'Onboarding',s:'color:#412402;background:#faeeda'},{l:'Call centar',s:'border:1px solid #eaeae8;color:#888'}],
+    title: 'IT setup za call centar od nule — 80 radnih stanica za 3 nedelje',
+    client: 'Call centar · Beograd · 2023 · 80 zaposlenih pri otvaranju',
+    metrics: [
+      {num:'80', lbl:'radnih stanica kompletno setup-ovano', color:'#d97706'},
+      {num:'3 ned.', lbl:'od potpisivanja ugovora do prvog radnog dana', color:'#d97706'},
+      {num:'0', lbl:'kašnjenja u planiranom startu', color:'#d97706'},
+      {num:'1 dan', lbl:'trajalo je setup po radnoj stanici', color:'#d97706'},
+    ],
+    body: `
+      <h2>Izazov: 3 nedelje za sve</h2>
+      <p>Novi call centar trebao je biti operativan za tačno 3 nedelje od potpisivanja ugovora sa Combo IT. To je uključivalo kompletnu mrežnu infrastrukturu, 80 računara, IP telefone, headset-ove, Microsoft 365 za sve zaposlene i konfiguraciju CRM sistema.</p>
+      <div class="challenge-box"><p>⚠️ Rok nije bio fleksibilan — klijent je imao ugovor sa outsourcing firmom koja počinje od prvog dana. Svaki dan kašnjenja direktno koštao.</p></div>
+
+      <h2>Projektni plan</h2>
+      <p>Projekat smo podelili u 3 paralelne faze:</p>
+      <ul>
+        <li><strong>Nedelja 1: Infrastruktura</strong> — mrežna kablažа, svičevi, Wi-Fi, internet konekcija, server rack. Paralelno: naručivanje i prijem 80 računara i periferija.</li>
+        <li><strong>Nedelja 2: Software setup</strong> — Windows imaging za 80 računara (batch deployment sa MDT serverom — svi računari konfigurisani odjednom, ne jedan po jedan), Microsoft 365 tenant setup, 80 korisničkih naloga, VoIP konfiguracija.</li>
+        <li><strong>Nedelja 3: Integracija i testiranje</strong> — CRM integracija sa telefonskim sistemom, testiranje svih radnih stanica, obuka IT koordinatora, dokumentacija.</li>
+      </ul>
+
+      <h2>Ključ brzine: MDT batch deployment</h2>
+      <p>Umesto konfiguracije računara jedan po jedan (što bi trajalo 3-4 dana za 80 računara), koristili smo <strong>Microsoft Deployment Toolkit (MDT)</strong> — server koji automatski instalira Windows, sve drajvere, Office i potreban softver na sve računare istovremeno putem mreže. 80 računara konfigurisano za 8 sati.</p>
+
+      <div class="result-box"><p>✅ Ponedeljak, 7h ujutru — 80 agentа seda za računare, loguju se, otvaraju CRM i počinju sa radom. Niti jedan računar nije imao problem prvog dana. Klijent je nazvao u utorak da kaže da je bio siguran da ćemo zakasniti.</p></div>
+
+      <div class="quote-box">
+        <p>Nismo verovali da je moguće. Ali jeste. I sve je radilo od prvog minuta.</p>
+        <cite>— Direktor operacija, call centar</cite>
+      </div>
+    `
+  }
+];
+
+function openCS(i) {
+  const c = cases[i];
+  document.getElementById('mAccent').style.background = c.color;
+  document.getElementById('mTags').innerHTML = c.tags.map(t => `<span class="modal-hero-tag" style="${t.s}">${t.l}</span>`).join('');
+  document.getElementById('mTitle').textContent = c.title;
+  document.getElementById('mClient').innerHTML = `<span>${c.client}</span>`;
+  document.getElementById('mMetrics').innerHTML = c.metrics.map(m =>
+    `<div class="mm"><div class="mm-num" style="color:${m.color}">${m.num}</div><div class="mm-lbl">${m.lbl}</div></div>`
+  ).join('');
+  document.getElementById('mBody').innerHTML = c.body;
+  document.getElementById('mFooterLeft').textContent = c.client;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('modal').scrollTop = 0;
+}
+
+function closeCS() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeOnBg(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeCS();
+}
+
+function filterCS(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.cs-card').forEach(card => {
+    if (cat === 'sve') { card.style.display = ''; return; }
+    const cats = card.dataset.cats || '';
+    card.style.display = cats.includes(cat) ? '' : 'none';
+  });
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCS(); });
+</script>
+</body>
+</html>

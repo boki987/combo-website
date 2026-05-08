@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Combo IT — Elementor Video Hero Brief</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif; background: #f5f5f3; color: #1a1a1a; padding: 32px; }
+  
+  .top-banner { background: #1a5fd4; color: #fff; text-align: center; padding: 12px; font-size: 13px; border-radius: 8px; margin-bottom: 28px; }
+  .top-banner strong { font-weight: 600; }
+
+  h1 { font-size: 22px; font-weight: 600; letter-spacing: -0.3px; margin-bottom: 6px; }
+  .subtitle { font-size: 14px; color: #777; margin-bottom: 32px; }
+
+  .grid { display: grid; grid-template-columns: 1fr 280px; gap: 20px; align-items: start; }
+  .grid-left {}
+  .grid-right {}
+
+  /* PREVIEW */
+  .preview-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #aaa; margin-bottom: 8px; }
+  .hero-preview {
+    background: #0d1a2e; border-radius: 12px; height: 280px; position: relative;
+    display: flex; align-items: center; padding: 0 36px; overflow: hidden;
+    border: 1px solid #1e2d45;
+  }
+  .grid-bg {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image: linear-gradient(rgba(55,138,221,0.07) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(55,138,221,0.07) 1px, transparent 1px);
+    background-size: 52px 52px;
+  }
+  .overlay { position: absolute; inset: 0; background: rgba(13,26,46,0.72); }
+  .hero-text { position: relative; z-index: 2; max-width: 400px; }
+  .htag {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 600;
+    letter-spacing: 0.7px; text-transform: uppercase; color: #85b7eb;
+    background: rgba(55,138,221,0.15); padding: 4px 11px; border-radius: 20px;
+    margin-bottom: 14px; border: 1px solid rgba(55,138,221,0.25);
+  }
+  .hdot { width: 5px; height: 5px; border-radius: 50%; background: #378ADD; }
+  .hero-text h2 { font-size: 24px; font-weight: 600; color: #fff; line-height: 1.2; letter-spacing: -0.4px; margin-bottom: 10px; }
+  .hero-text h2 em { font-style: normal; color: #378ADD; }
+  .hero-text p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.65; margin-bottom: 18px; }
+  .hbtns { display: flex; gap: 8px; }
+  .hbtn1 { padding: 9px 18px; font-size: 12px; font-weight: 500; background: #1a5fd4; color: #fff; border-radius: 7px; text-decoration: none; }
+  .hbtn2 { padding: 9px 18px; font-size: 12px; border: 1px solid rgba(255,255,255,0.2); border-radius: 7px; color: rgba(255,255,255,0.7); text-decoration: none; }
+  .video-info-badge {
+    position: absolute; bottom: 12px; right: 12px; z-index: 3;
+    background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 7px; padding: 6px 10px; display: flex; align-items: center; gap: 7px;
+  }
+  .play-btn {
+    width: 18px; height: 18px; border-radius: 50%; background: rgba(255,255,255,0.15);
+    display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.25);
+  }
+  .play-btn svg { width: 8px; height: 8px; }
+  .video-info-badge span { font-size: 10px; color: rgba(255,255,255,0.55); }
+
+  /* LAYERS */
+  .card { background: #fff; border: 1px solid #e8e8e6; border-radius: 12px; overflow: hidden; margin-top: 16px; }
+  .card-header { padding: 12px 18px; border-bottom: 1px solid #e8e8e6; display: flex; align-items: center; gap: 8px; }
+  .card-header h3 { font-size: 13px; font-weight: 600; }
+  .card-header .badge { font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 10px; }
+
+  .layer-row { display: flex; align-items: center; padding: 10px 18px; border-bottom: 1px solid #f0f0ee; gap: 12px; }
+  .layer-row:last-child { border-bottom: none; }
+  .layer-num {
+    width: 24px; height: 24px; border-radius: 6px; display: flex; align-items: center;
+    justify-content: center; font-size: 11px; font-weight: 600; flex-shrink: 0;
+  }
+  .layer-info { flex: 1; }
+  .layer-name { font-size: 13px; font-weight: 500; }
+  .layer-desc { font-size: 11px; color: #999; margin-top: 2px; }
+  .layer-tag { font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 10px; flex-shrink: 0; }
+
+  /* STEPS */
+  .steps { padding: 16px 18px; display: flex; flex-direction: column; gap: 0; }
+  .step { display: flex; gap: 14px; align-items: flex-start; padding-bottom: 14px; position: relative; }
+  .step:last-child { padding-bottom: 0; }
+  .step-line { position: absolute; left: 13px; top: 26px; bottom: 0; width: 1px; background: #e8e8e6; }
+  .step:last-child .step-line { display: none; }
+  .step-circle {
+    width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; font-size: 11px; font-weight: 600; flex-shrink: 0; z-index: 1;
+  }
+  .step-body { padding-top: 3px; }
+  .step-title { font-size: 13px; font-weight: 500; }
+  .step-detail { font-size: 12px; color: #888; margin-top: 3px; line-height: 1.5; }
+
+  /* ELEMENTOR PANEL */
+  .panel { background: #fff; border: 1px solid #e8e8e6; border-radius: 12px; overflow: hidden; }
+  .panel-header { background: #f0f4ff; padding: 10px 16px; border-bottom: 1px solid #e8e8e6; }
+  .panel-header h3 { font-size: 12px; font-weight: 600; color: #1a5fd4; }
+  .panel-header p { font-size: 11px; color: #888; margin-top: 1px; }
+  .panel-section { padding: 10px 16px; border-bottom: 1px solid #f0f0ee; }
+  .panel-section:last-child { border-bottom: none; }
+  .panel-section-title { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #bbb; margin-bottom: 8px; }
+  .setting { display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px; }
+  .setting:last-child { margin-bottom: 0; }
+  .setting-label { font-size: 12px; color: #666; }
+  .setting-val {
+    font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 5px;
+    background: #f5f5f3; border: 1px solid #e8e8e6; color: #1a1a1a;
+  }
+  .setting-val.blue { color: #0c447c; background: #e6f1fb; border-color: #85b7eb; }
+  .setting-val.green { color: #085041; background: #e1f5ee; border-color: #5dcaa5; }
+  .setting-val.orange { color: #412402; background: #faeeda; border-color: #fac775; }
+
+  /* VIDEO SUGGESTIONS */
+  .video-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; padding: 14px 18px; }
+  .vcard { border: 1px solid #e8e8e6; border-radius: 8px; overflow: hidden; }
+  .vcard-thumb { height: 60px; display: flex; align-items: center; justify-content: center; position: relative; }
+  .vplay {
+    width: 22px; height: 22px; border-radius: 50%; background: rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(255,255,255,0.35);
+  }
+  .vcard-label { padding: 6px 8px; font-size: 10px; color: #888; background: #f8f8f6; line-height: 1.4; }
+
+  .queries { padding: 0 18px 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .qchip {
+    font-size: 11px; padding: 4px 10px; border: 1px solid #e0e0de;
+    border-radius: 20px; color: #666; background: #fff;
+  }
+
+  /* NOTE BOX */
+  .note { background: #fff9ed; border: 1px solid #fac775; border-radius: 10px; padding: 14px 16px; margin-top: 16px; }
+  .note-title { font-size: 12px; font-weight: 600; color: #633806; margin-bottom: 6px; }
+  .note p { font-size: 12px; color: #854f0b; line-height: 1.6; }
+
+  .tools-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+  .tool-chip {
+    font-size: 12px; padding: 6px 14px; border: 1px solid #e0e0de;
+    border-radius: 7px; color: #444; background: #fff; display: flex; align-items: center; gap: 6px;
+  }
+  .tool-dot { width: 6px; height: 6px; border-radius: 50%; }
+</style>
+</head>
+<body>
+
+<div class="top-banner">
+  <strong>Combo IT — Elementor Video Hero Brief</strong> · Za Cicmila · 2026
+</div>
+
+<h1>Video hero sekcija — kako se pravi</h1>
+<p class="subtitle">Tehnički brief za implementaciju video pozadine u Elementor hero sekciji</p>
+
+<div class="grid">
+  <div class="grid-left">
+
+    <!-- PREVIEW -->
+    <div class="preview-label">Kako izgleda gotova sekcija</div>
+    <div class="hero-preview">
+      <div class="grid-bg"></div>
+      <div class="overlay"></div>
+      <div class="hero-text">
+        <div class="htag"><span class="hdot"></span>Microsoft Partner · Beograd</div>
+        <h2>IT infrastruktura koja radi —<br><em>dok vi radite</em></h2>
+        <p>Upravljamo Microsoft 365, Azure i mrežama za SMB kompanije u Srbiji.</p>
+        <div class="hbtns">
+          <a class="hbtn1" href="#">Zakažite konsultaciju</a>
+          <a class="hbtn2" href="#">Case studies</a>
+        </div>
+      </div>
+      <div class="video-info-badge">
+        <div class="play-btn">
+          <svg viewBox="0 0 8 8" fill="none"><path d="M2 1.5l4 2.5-4 2.5V1.5z" fill="rgba(255,255,255,0.85)"/></svg>
+        </div>
+        <span>server_room_blue.mp4 · loop · muted · cover</span>
+      </div>
+    </div>
+
+    <!-- LAYERS -->
+    <div class="card">
+      <div class="card-header">
+        <h3>Slojevi u Elementor sekciji — redosled odozdo nagore</h3>
+      </div>
+      <div class="layer-row">
+        <div class="layer-num" style="background:#0d1a2e;color:#fff">1</div>
+        <div class="layer-info">
+          <div class="layer-name">Video pozadina (MP4)</div>
+          <div class="layer-desc">server_room_blue.mp4 · autoplay · loop · muted · object-fit: cover</div>
+        </div>
+        <span class="layer-tag" style="color:#0c447c;background:#e6f1fb">Section → Background</span>
+      </div>
+      <div class="layer-row">
+        <div class="layer-num" style="background:#1a2d4a;color:#85b7eb">2</div>
+        <div class="layer-info">
+          <div class="layer-name">Dark color overlay</div>
+          <div class="layer-desc">Background Overlay · boja: #0d1a2e · opacity: 75%</div>
+        </div>
+        <span class="layer-tag" style="color:#444;background:#f1efe8">Section → Overlay</span>
+      </div>
+      <div class="layer-row">
+        <div class="layer-num" style="background:#1a5fd4;color:#fff">3</div>
+        <div class="layer-info">
+          <div class="layer-name">Grid pattern (opciono, hi-tech efekat)</div>
+          <div class="layer-desc">Custom CSS na section: background-image SVG grid, opacity 6%</div>
+        </div>
+        <span class="layer-tag" style="color:#444;background:#f1efe8">Custom CSS</span>
+      </div>
+      <div class="layer-row">
+        <div class="layer-num" style="background:#378ADD;color:#fff">4</div>
+        <div class="layer-info">
+          <div class="layer-name">Sadržaj — tekst i dugmad</div>
+          <div class="layer-desc">Elementor widgets: Heading, Text Editor, Button · z-index iznad svega</div>
+        </div>
+        <span class="layer-tag" style="color:#085041;background:#e1f5ee">Content widgets</span>
+      </div>
+    </div>
+
+    <!-- VIDEO SUGGESTIONS -->
+    <div class="card" style="margin-top:16px">
+      <div class="card-header">
+        <h3>Preporučeni videi — Pexels (besplatno, CC0)</h3>
+        <span class="badge" style="color:#085041;background:#e1f5ee">pexels.com</span>
+      </div>
+      <div class="video-grid">
+        <div class="vcard">
+          <div class="vcard-thumb" style="background:#081525">
+            <div class="vplay"><svg viewBox="0 0 8 8" fill="none" width="9" height="9"><path d="M2 1.5l4 2.5-4 2.5V1.5z" fill="rgba(255,255,255,0.8)"/></svg></div>
+          </div>
+          <div class="vcard-label">server room<br>blue light</div>
+        </div>
+        <div class="vcard">
+          <div class="vcard-thumb" style="background:#0a1a0a">
+            <div class="vplay"><svg viewBox="0 0 8 8" fill="none" width="9" height="9"><path d="M2 1.5l4 2.5-4 2.5V1.5z" fill="rgba(255,255,255,0.8)"/></svg></div>
+          </div>
+          <div class="vcard-label">network cables<br>data center</div>
+        </div>
+        <div class="vcard">
+          <div class="vcard-thumb" style="background:#14102a">
+            <div class="vplay"><svg viewBox="0 0 8 8" fill="none" width="9" height="9"><path d="M2 1.5l4 2.5-4 2.5V1.5z" fill="rgba(255,255,255,0.8)"/></svg></div>
+          </div>
+          <div class="vcard-label">technology<br>abstract dark</div>
+        </div>
+      </div>
+      <div style="padding: 0 18px 6px; font-size: 11px; color: #aaa;">Pretraži na pexels.com sa ovim pojmovima:</div>
+      <div class="queries">
+        <span class="qchip">server room</span>
+        <span class="qchip">network cables</span>
+        <span class="qchip">data center blue</span>
+        <span class="qchip">IT office team</span>
+        <span class="qchip">technology dark</span>
+        <span class="qchip">fiber optic light</span>
+      </div>
+    </div>
+
+    <!-- NOTE -->
+    <div class="note">
+      <div class="note-title">Važno za mobilne uređaje</div>
+      <p>Video autoplay je blokiran na iOS i Android browserima. U Elementoru isključi "Play on mobile" i postavi Fallback Image — screenshot iz videa koji izgleda isto. Na mobilnom se prikazuje slika, na desktopu video.</p>
+    </div>
+
+    <div style="margin-top:16px">
+      <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:#aaa;margin-bottom:8px">Alati za kompresiju videa (besplatno)</div>
+      <div class="tools-row">
+        <span class="tool-chip"><span class="tool-dot" style="background:#1a5fd4"></span>HandBrake (desktop)</span>
+        <span class="tool-chip"><span class="tool-dot" style="background:#1D9E75"></span>Clideo.com (online)</span>
+        <span class="tool-chip"><span class="tool-dot" style="background:#854F0B"></span>FFmpeg (CLI)</span>
+      </div>
+      <div style="font-size:12px;color:#aaa;margin-top:8px;">Cilj: MP4, H.264, 1080p, ispod 5MB. U HandBrake: Web Optimized ON, RF 26–28.</div>
+    </div>
+
+  </div>
+
+  <div class="grid-right">
+
+    <!-- ELEMENTOR PANEL -->
+    <div class="panel">
+      <div class="panel-header">
+        <h3>Elementor · Section Settings</h3>
+        <p>Tačna podešavanja po tabu</p>
+      </div>
+      <div class="panel-section">
+        <div class="panel-section-title">Layout</div>
+        <div class="setting"><span class="setting-label">Min. Height</span><span class="setting-val blue">500px</span></div>
+        <div class="setting"><span class="setting-label">Content Width</span><span class="setting-val">Boxed · 1200px</span></div>
+        <div class="setting"><span class="setting-label">Vertical Align</span><span class="setting-val">Middle</span></div>
+        <div class="setting"><span class="setting-label">Overflow</span><span class="setting-val">Hidden</span></div>
+      </div>
+      <div class="panel-section">
+        <div class="panel-section-title">Background → Type: Video</div>
+        <div class="setting"><span class="setting-label">Video URL</span><span class="setting-val blue">MP4 (Media Lib.)</span></div>
+        <div class="setting"><span class="setting-label">Start Time</span><span class="setting-val">0</span></div>
+        <div class="setting"><span class="setting-label">End Time</span><span class="setting-val">0 (loop)</span></div>
+        <div class="setting"><span class="setting-label">Loop</span><span class="setting-val green">ON</span></div>
+        <div class="setting"><span class="setting-label">Mute</span><span class="setting-val green">ON</span></div>
+        <div class="setting"><span class="setting-label">Play on Mobile</span><span class="setting-val orange">OFF</span></div>
+        <div class="setting"><span class="setting-label">Fallback Image</span><span class="setting-val blue">screenshot.jpg</span></div>
+      </div>
+      <div class="panel-section">
+        <div class="panel-section-title">Background Overlay</div>
+        <div class="setting"><span class="setting-label">Color</span><span class="setting-val">#0d1a2e</span></div>
+        <div class="setting"><span class="setting-label">Opacity</span><span class="setting-val">0.75</span></div>
+        <div class="setting"><span class="setting-label">Blend Mode</span><span class="setting-val">Normal</span></div>
+      </div>
+      <div class="panel-section">
+        <div class="panel-section-title">Motion Effects</div>
+        <div class="setting"><span class="setting-label">Scrolling Effects</span><span class="setting-val orange">OFF</span></div>
+        <div class="setting"><span class="setting-label">Entrance Anim.</span><span class="setting-val orange">None</span></div>
+      </div>
+      <div class="panel-section">
+        <div class="panel-section-title">Typography (Inner widgeti)</div>
+        <div class="setting"><span class="setting-label">Font</span><span class="setting-val">Inter / System UI</span></div>
+        <div class="setting"><span class="setting-label">H1 size</span><span class="setting-val">46px desktop</span></div>
+        <div class="setting"><span class="setting-label">H1 weight</span><span class="setting-val">600</span></div>
+        <div class="setting"><span class="setting-label">H1 color</span><span class="setting-val">#ffffff</span></div>
+        <div class="setting"><span class="setting-label">Accent color</span><span class="setting-val blue">#378ADD</span></div>
+        <div class="setting"><span class="setting-label">Body color</span><span class="setting-val">rgba 255,255,255,55%</span></div>
+      </div>
+      <div class="panel-section">
+        <div class="panel-section-title">Button (Primary)</div>
+        <div class="setting"><span class="setting-label">Background</span><span class="setting-val blue">#1a5fd4</span></div>
+        <div class="setting"><span class="setting-label">Hover bg</span><span class="setting-val blue">#1550b8</span></div>
+        <div class="setting"><span class="setting-label">Border radius</span><span class="setting-val">8px</span></div>
+        <div class="setting"><span class="setting-label">Padding</span><span class="setting-val">12px 26px</span></div>
+      </div>
+    </div>
+
+    <!-- STEPS -->
+    <div class="card" style="margin-top:16px">
+      <div class="card-header"><h3>Koraci implementacije</h3></div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-line"></div>
+          <div class="step-circle" style="background:#e6f1fb;color:#0c447c">1</div>
+          <div class="step-body">
+            <div class="step-title">Preuzmi video sa Pexels</div>
+            <div class="step-detail">pexels.com → "server room blue" → Download 1080p MP4 (~50MB originalno)</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-line"></div>
+          <div class="step-circle" style="background:#e1f5ee;color:#085041">2</div>
+          <div class="step-body">
+            <div class="step-title">Kompresuj sa HandBrake</div>
+            <div class="step-detail">H.264 · RF 27 · Web Optimized ON → cilj &lt;5MB · snimi MP4</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-line"></div>
+          <div class="step-circle" style="background:#faeeda;color:#633806">3</div>
+          <div class="step-body">
+            <div class="step-title">Napravi fallback sliku</div>
+            <div class="step-detail">Screenshot prvog frame-a videa → snimi kao screenshot.jpg</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-line"></div>
+          <div class="step-circle" style="background:#eeedfe;color:#3c3489">4</div>
+          <div class="step-body">
+            <div class="step-title">Upload u WordPress Media Library</div>
+            <div class="step-detail">Upload i MP4 i JPG → kopiraj URL oba fajla</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-line"></div>
+          <div class="step-circle" style="background:#e6f1fb;color:#0c447c">5</div>
+          <div class="step-body">
+            <div class="step-title">Elementor → Section bg: Video</div>
+            <div class="step-detail">Paste MP4 URL · Loop ON · Mute ON · Play on Mobile OFF · Fallback = screenshot.jpg</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-circle" style="background:#e1f5ee;color:#085041">6</div>
+          <div class="step-body">
+            <div class="step-title">Background Overlay + sadržaj</div>
+            <div class="step-detail">Overlay: #0d1a2e, 75% → dodaj Heading + Text + Button widgete iznad</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CUSTOM CSS za grid pattern -->
+    <div class="card" style="margin-top:16px">
+      <div class="card-header"><h3>Custom CSS — grid pattern efekat</h3></div>
+      <div style="padding:14px 18px">
+        <div style="font-size:11px;color:#aaa;margin-bottom:8px">Elementor → Section → Advanced → Custom CSS:</div>
+        <pre style="background:#0d1a2e;color:#85b7eb;font-size:11px;padding:12px;border-radius:8px;white-space:pre-wrap;line-height:1.6;">selector {
+  background-image:
+    linear-gradient(
+      rgba(55,138,221,0.07) 1px,
+      transparent 1px),
+    linear-gradient(90deg,
+      rgba(55,138,221,0.07) 1px,
+      transparent 1px);
+  background-size: 52px 52px;
+}</pre>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div style="text-align:center;font-size:12px;color:#ccc;margin-top:32px;padding-top:20px;border-top:1px solid #e8e8e6;">
+  Combo IT · Interni brief · 2026 · combo.rs
+</div>
+
+</body>
+</html>

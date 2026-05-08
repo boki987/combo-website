@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISO 27001 Sertifikat — Combo IT</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif; background: #f7f7f5; color: #1a1a1a; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 0 56px; height: 68px; background: #fff; border-bottom: 1px solid #eaeae8; position: sticky; top: 0; z-index: 100; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-box { width: 34px; height: 34px; background: #1a5fd4; border-radius: 7px; display: flex; align-items: center; justify-content: center; }
+.logo-text { font-size: 17px; font-weight: 600; color: #1a1a1a; letter-spacing: -0.3px; }
+.logo-text span { color: #1a5fd4; }
+.nav-menu { display: flex; gap: 36px; }
+.nav-menu a { font-size: 14px; color: #666; text-decoration: none; }
+.nav-menu a:hover { color: #1a1a1a; }
+.nav-btn { font-size: 13px; font-weight: 500; padding: 9px 20px; background: #1a5fd4; color: #fff; border-radius: 7px; text-decoration: none; }
+
+/* HERO */
+.hero { background: #0a1628; padding: 64px 56px; position: relative; overflow: hidden; }
+.hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(55,138,221,0.06) 1px,transparent 1px), linear-gradient(90deg,rgba(55,138,221,0.06) 1px,transparent 1px); background-size: 52px 52px; pointer-events: none; }
+.hero-glow { position: absolute; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(16,185,129,0.12) 0%, transparent 70%); top: -100px; right: -50px; pointer-events: none; }
+.hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; letter-spacing: 0.7px; text-transform: uppercase; color: #6ee7b7; background: rgba(16,185,129,0.12); padding: 5px 13px; border-radius: 20px; margin-bottom: 20px; border: 1px solid rgba(16,185,129,0.25); }
+.hero-dot { width: 6px; height: 6px; border-radius: 50%; background: #10b981; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+.hero h1 { font-size: 38px; font-weight: 700; color: #fff; letter-spacing: -0.6px; line-height: 1.15; margin-bottom: 16px; }
+.hero h1 em { font-style: normal; color: #6ee7b7; }
+.hero-sub { font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.7; max-width: 520px; margin-bottom: 28px; }
+.hero-btns { display: flex; gap: 12px; }
+.btn-green { padding: 12px 26px; font-size: 14px; font-weight: 600; background: #10b981; color: #fff; border-radius: 8px; text-decoration: none; }
+.btn-ghost { padding: 12px 26px; font-size: 14px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: rgba(255,255,255,0.7); text-decoration: none; }
+.iso-badge-big { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 28px 32px; text-align: center; min-width: 200px; flex-shrink: 0; }
+.iso-badge-logo { font-size: 13px; font-weight: 700; letter-spacing: 2px; color: #6ee7b7; margin-bottom: 6px; }
+.iso-badge-num { font-size: 42px; font-weight: 800; color: #fff; letter-spacing: -2px; line-height: 1; }
+.iso-badge-sub { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 8px; letter-spacing: 0.5px; }
+.iso-badge-status { display: inline-block; font-size: 11px; font-weight: 600; padding: 4px 10px; background: rgba(16,185,129,0.2); color: #6ee7b7; border-radius: 20px; margin-top: 12px; border: 1px solid rgba(16,185,129,0.3); }
+
+/* SECTIONS */
+.section { padding: 56px; }
+.section.bg { background: #f7f7f5; border-top: 1px solid #eaeae8; border-bottom: 1px solid #eaeae8; }
+.section.white { background: #fff; border-top: 1px solid #eaeae8; }
+.section.dark { background: #0a1628; border-top: none; }
+.eyebrow { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.7px; color: #10b981; margin-bottom: 7px; }
+.sec-title { font-size: 28px; font-weight: 700; letter-spacing: -0.4px; margin-bottom: 10px; }
+.sec-sub { font-size: 15px; color: #777; margin-bottom: 40px; max-width: 560px; line-height: 1.65; }
+
+/* ŠTA JE ISO */
+.what-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.what-text p { font-size: 15px; color: #444; line-height: 1.8; margin-bottom: 14px; }
+.what-text strong { color: #1a1a1a; font-weight: 600; }
+.what-stats { display: flex; flex-direction: column; gap: 12px; }
+.what-stat { background: #f7f7f5; border: 1px solid #eaeae8; border-radius: 10px; padding: 16px 20px; display: flex; align-items: center; gap: 14px; }
+.what-stat-icon { width: 36px; height: 36px; border-radius: 8px; background: #e1f5ee; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.what-stat-num { font-size: 20px; font-weight: 700; color: #1a1a1a; letter-spacing: -0.4px; }
+.what-stat-lbl { font-size: 12px; color: #888; margin-top: 1px; }
+
+/* ŠTA KLIJENTI DOBIJAJU */
+.benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.benefit { background: #fff; border: 1px solid #eaeae8; border-radius: 12px; padding: 22px; border-top: 3px solid #10b981; }
+.benefit-icon { width: 38px; height: 38px; border-radius: 9px; background: #e1f5ee; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+.benefit h3 { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+.benefit p { font-size: 13px; color: #666; line-height: 1.65; }
+.benefit-tag { display: inline-block; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; padding: 3px 8px; background: #e1f5ee; color: #085041; border-radius: 4px; margin-bottom: 10px; }
+
+/* OBLASTI POKRIVENOSTI */
+.domains-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.domain { background: #fff; border: 1px solid #eaeae8; border-radius: 10px; padding: 18px 20px; display: flex; gap: 14px; align-items: flex-start; }
+.domain-num { font-size: 11px; font-weight: 700; color: #10b981; background: #e1f5ee; padding: 3px 7px; border-radius: 4px; flex-shrink: 0; margin-top: 2px; }
+.domain h3 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.domain p { font-size: 12px; color: #777; line-height: 1.55; }
+
+/* PROCES */
+.process-steps { display: flex; gap: 0; position: relative; }
+.process-steps::before { content: ''; position: absolute; top: 22px; left: 0; right: 0; height: 1px; background: #eaeae8; z-index: 0; }
+.process-step { flex: 1; text-align: center; position: relative; z-index: 1; padding: 0 12px; }
+.step-circle { width: 44px; height: 44px; border-radius: 50%; background: #fff; border: 2px solid #10b981; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; font-size: 14px; font-weight: 700; color: #10b981; }
+.step-circle.done { background: #10b981; color: #fff; }
+.process-step h3 { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+.process-step p { font-size: 12px; color: #888; line-height: 1.5; }
+.step-badge { display: inline-block; font-size: 10px; padding: 2px 7px; border-radius: 10px; margin-top: 6px; }
+
+/* FAQ */
+.faq { display: flex; flex-direction: column; gap: 10px; }
+.faq-item { background: #fff; border: 1px solid #eaeae8; border-radius: 10px; overflow: hidden; }
+.faq-q { padding: 16px 20px; font-size: 14px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.faq-q:hover { background: #f7f7f5; }
+.faq-a { padding: 0 20px 16px; font-size: 14px; color: #555; line-height: 1.7; border-top: 1px solid #f0f0ee; margin-top: 0; display: none; }
+.faq-item.open .faq-a { display: block; }
+.faq-item.open .faq-q { background: #f0fdf4; }
+.faq-arrow { font-size: 12px; color: #aaa; transition: transform .2s; }
+.faq-item.open .faq-arrow { transform: rotate(180deg); }
+
+/* CTA */
+.cta { background: #0a1628; padding: 56px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+.cta-left h2 { font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 10px; letter-spacing: -0.3px; }
+.cta-left p { font-size: 15px; color: rgba(255,255,255,0.55); max-width: 440px; line-height: 1.65; }
+.cta-btns { display: flex; gap: 10px; flex-shrink: 0; }
+.btn-white { padding: 12px 26px; font-size: 14px; font-weight: 600; background: #fff; color: #0a1628; border-radius: 8px; text-decoration: none; }
+.btn-ghost-w { padding: 12px 26px; font-size: 14px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: rgba(255,255,255,0.7); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="logo" href="combo_rs_FINAL.html">
+    <div class="logo-box">
+      <svg viewBox="0 0 20 20" fill="none" width="20" height="20"><rect x="2" y="2" width="7" height="7" rx="2" fill="white"/><rect x="11" y="2" width="7" height="7" rx="2" fill="rgba(255,255,255,0.45)"/><rect x="2" y="11" width="7" height="7" rx="2" fill="rgba(255,255,255,0.45)"/><rect x="11" y="11" width="7" height="7" rx="2" fill="white"/></svg>
+    </div>
+    <span class="logo-text">Combo<span>.</span></span>
+  </a>
+  <div class="nav-menu">
+    <a href="#">Usluge</a>
+    <a href="combo_tim.html">O nama</a>
+    <a href="combo_casestudies.html">Case studies</a>
+    <a href="combo_blog.html">Blog</a>
+    <a href="#">Kontakt</a>
+  </div>
+  <a class="nav-btn" href="#">Zakažite poziv</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow"><span class="hero-dot"></span>Bezbednost informacija · Međunarodni standard</div>
+      <h1>ISO 27001 —<br>vaši podaci su u <em>sigurnim rukama</em></h1>
+      <p class="hero-sub">Combo IT je u procesu dobijanja ISO 27001 sertifikata — međunarodnog standarda za upravljanje bezbednošću informacija. To znači da svaki podatak koji nam poverite tretiramo po strogo definisanim procedurama, ne po nahođenju.</p>
+      <div class="hero-btns">
+        <a class="btn-green" href="#">Zakažite 30 minuta — besplatno</a>
+        <a class="btn-ghost" href="combo_rs_FINAL.html">← Nazad na homepage</a>
+      </div>
+    </div>
+    <div class="iso-badge-big">
+      <div class="iso-badge-logo">ISO/IEC</div>
+      <div class="iso-badge-num">27001</div>
+      <div class="iso-badge-sub">INFORMATION SECURITY<br>MANAGEMENT</div>
+      <div class="iso-badge-status">⏳ Sertifikacija u toku</div>
+    </div>
+  </div>
+</div>
+
+<!-- ŠTA JE ISO 27001 -->
+<div class="section white">
+  <div class="eyebrow">Šta je ISO 27001</div>
+  <div class="sec-title">Međunarodni standard koji štiti vaše podatke</div>
+  <div class="what-grid">
+    <div class="what-text">
+      <p><strong>ISO/IEC 27001</strong> je najpoznatiji međunarodni standard za upravljanje bezbednošću informacija (ISMS — Information Security Management System). Definiše kako organizacija treba da upravlja bezbednošću podataka — od poverljivosti i integriteta do dostupnosti.</p>
+      <p>Za razliku od tehničkih alata poput antivirusa ili firewall-a, ISO 27001 pokriva <strong>celokupan sistem</strong> — ljude, procese i tehnologiju. To uključuje kako zaposleni rukuju podacima, kako se reaguje na incident, kako se kontrolišu pristupi i kako se vrši kontinuirana procena rizika.</p>
+      <p>Sertifikat izdaje akreditovano telo nakon stroge eksterne revizije. <strong>Nije samo papir</strong> — to je dokaz da firma živi po ovim standardima svaki dan.</p>
+    </div>
+    <div class="what-stats">
+      <div class="what-stat">
+        <div class="what-stat-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#10b981" stroke-width="1.5" fill="none"/><path d="M5 8l2 2 4-4" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg></div>
+        <div><div class="what-stat-num">114</div><div class="what-stat-lbl">kontrola bezbednosti pokriveno standardom</div></div>
+      </div>
+      <div class="what-stat">
+        <div class="what-stat-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="9" rx="1.5" stroke="#10b981" stroke-width="1.5" fill="none"/><path d="M5 4V3a3 3 0 016 0v1" stroke="#10b981" stroke-width="1.5" fill="none"/></svg></div>
+        <div><div class="what-stat-num">160+</div><div class="what-stat-lbl">zemalja gde je standard priznat</div></div>
+      </div>
+      <div class="what-stat">
+        <div class="what-stat-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.5 3.5 3.5.5-2.5 2.4.6 3.6L8 10.5l-3 1.5.6-3.6L3 5.9l3.5-.5z" stroke="#10b981" stroke-width="1.3" fill="none" stroke-linejoin="round"/></svg></div>
+        <div><div class="what-stat-num">70.000+</div><div class="what-stat-lbl">kompanija sertifikovano globalno</div></div>
+      </div>
+      <div class="what-stat">
+        <div class="what-stat-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#10b981" stroke-width="1.5" fill="none"/><path d="M8 5v3l2 1.5" stroke="#10b981" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg></div>
+        <div><div class="what-stat-num">Godišnja</div><div class="what-stat-lbl">eksterna revizija za održavanje sertifikata</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ŠTA KLIJENTI DOBIJAJU -->
+<div class="section bg">
+  <div class="eyebrow">Zašto je to važno za vas</div>
+  <div class="sec-title">Šta konkretno dobijate kao klijent</div>
+  <div class="sec-sub">ISO 27001 nije samo naša interna stvar — direktno se odražava na bezbednost vaših podataka, vaš compliance i vaš poslovni ugled.</div>
+  <div class="benefits-grid">
+
+    <div class="benefit">
+      <div class="benefit-tag">Bezbednost podataka</div>
+      <div class="benefit-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2L3 4v4c0 3 2.5 5.5 5 6 2.5-.5 5-3 5-6V4L8 2z" stroke="#10b981" stroke-width="1.5" fill="none" stroke-linejoin="round"/></svg></div>
+      <h3>Vaši podaci su zaštićeni procedurama, ne obećanjima</h3>
+      <p>Svaki pristup vašim podacima, sistemima i infrastrukturi je dokumentovan i kontrolisan. Znamo ko je, kada i zašto pristupio čemu — i to možemo dokazati.</p>
+    </div>
+
+    <div class="benefit">
+      <div class="benefit-tag">Incident response</div>
+      <div class="benefit-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#10b981" stroke-width="1.5" fill="none"/><path d="M8 5v3l2 1.5" stroke="#10b981" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg></div>
+      <h3>Definisan plan reakcije na bezbednosne incidente</h3>
+      <p>Ako dođe do sigurnosnog incidenta, ne improvizujemo. Imamo dokumentovan incident response plan sa jasnim koracima, rokovima i odgovornostima.</p>
+    </div>
+
+    <div class="benefit">
+      <div class="benefit-tag">Kontinuitet poslovanja</div>
+      <div class="benefit-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="#10b981" stroke-width="1.5" fill="none"/><path d="M5 8h6M8 5v6" stroke="#10b981" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+      <h3>Business continuity plan — vaše poslovanje ne staje</h3>
+      <p>Imamo procedure za oporavak od katastrofe (disaster recovery). Vaši sistemi i podaci su zaštićeni čak i u najgoriem scenariju — ransomware, fizička šteta, ljudska greška.</p>
+    </div>
+
+    <div class="benefit">
+      <div class="benefit-tag">Compliance</div>
+      <div class="benefit-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="#10b981" stroke-width="1.5" fill="none"/><path d="M5 8l2 2 4-4" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg></div>
+      <h3>Lakši compliance za vaše regulatorne zahteve</h3>
+      <p>Ako vaša firma podleže GDPR-u, NIS2 direktivi ili industrijskim regulativama — angažovanje ISO 27001 sertifikovanog IT partnera direktno pomaže vašem compliance procesu.</p>
+    </div>
+
+    <div class="benefit">
+      <div class="benefit-tag">Poverenje klijenata</div>
+      <div class="benefit-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5.5" r="2.5" stroke="#10b981" stroke-width="1.5" fill="none"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#10b981" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+      <h3>Dokaz vašim klijentima da ozbiljno shvatate bezbednost</h3>
+      <p>Sve više B2B klijenata zahteva od svojih dobavljača dokaz o bezbednoj obradi podataka. "Naš IT partner je ISO 27001 sertifikovan" je snažan argument u vašem poslovnom razvoju.</p>
+    </div>
+
+    <div class="benefit">
+      <div class="benefit-tag">Procena rizika</div>
+      <div class="benefit-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2C4.7 2 2 4.7 2 8s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6z" stroke="#10b981" stroke-width="1.5" fill="none"/><path d="M8 5v4M8 10.5v1" stroke="#10b981" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      <h3>Kontinualna procena i upravljanje IT rizicima</h3>
+      <p>ISO 27001 zahteva redovnu procenu rizika — znamo gde su slabe tačke vaše infrastrukture pre nego što napadači to otkriju. Proaktivno, ne reaktivno.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- OBLASTI POKRIVENOSTI -->
+<div class="section white">
+  <div class="eyebrow">Šta standard pokriva</div>
+  <div class="sec-title">14 oblasti bezbednosti informacija</div>
+  <div class="sec-sub">ISO 27001 Annex A definiše 14 kategorija kontrola koje pokrivaju kompletnu bezbednost organizacije.</div>
+  <div class="domains-grid">
+    <div class="domain"><span class="domain-num">A.5</span><div><h3>Politike bezbednosti informacija</h3><p>Dokumentovane politike odobrene od menadžmenta, redovno pregledane.</p></div></div>
+    <div class="domain"><span class="domain-num">A.6</span><div><h3>Organizacija bezbednosti informacija</h3><p>Jasne uloge, odgovornosti i razdvajanje dužnosti unutar tima.</p></div></div>
+    <div class="domain"><span class="domain-num">A.7</span><div><h3>Bezbednost ljudskih resursa</h3><p>Provera zaposlenih, obuke, procedure pri odlasku iz organizacije.</p></div></div>
+    <div class="domain"><span class="domain-num">A.8</span><div><h3>Upravljanje imovinom</h3><p>Inventar svih IT resursa, vlasništvo i prihvatljiva upotreba podataka.</p></div></div>
+    <div class="domain"><span class="domain-num">A.9</span><div><h3>Kontrola pristupa</h3><p>Ko ima pristup čemu — least privilege princip, MFA, revizija pristupa.</p></div></div>
+    <div class="domain"><span class="domain-num">A.10</span><div><h3>Kriptografija</h3><p>Politike šifrovanja podataka u prenosu i u mirovanju.</p></div></div>
+    <div class="domain"><span class="domain-num">A.11</span><div><h3>Fizička i okružujuća bezbednost</h3><p>Zaštita prostorija, opreme i zaštita od fizičkih pretnji.</p></div></div>
+    <div class="domain"><span class="domain-num">A.12</span><div><h3>Bezbednost operacija</h3><p>Upravljanje promenama, backup procedure, malware zaštita, logovanje.</p></div></div>
+    <div class="domain"><span class="domain-num">A.13</span><div><h3>Bezbednost komunikacija</h3><p>Zaštita mreže, segregacija mreža, politike prenosa informacija.</p></div></div>
+    <div class="domain"><span class="domain-num">A.14</span><div><h3>Razvoj i održavanje sistema</h3><p>Bezbednost u razvoju softvera i upravljanje ranjivostima.</p></div></div>
+    <div class="domain"><span class="domain-num">A.15</span><div><h3>Odnosi sa dobavljačima</h3><p>Bezbednosni zahtevi prema trećim stranama i praćenje usluga.</p></div></div>
+    <div class="domain"><span class="domain-num">A.16</span><div><h3>Upravljanje incidentima</h3><p>Prijavljivanje, procena i odgovor na bezbednosne incidente.</p></div></div>
+    <div class="domain"><span class="domain-num">A.17</span><div><h3>Kontinuitet poslovanja</h3><p>Business continuity i disaster recovery planovi i testiranje.</p></div></div>
+    <div class="domain"><span class="domain-num">A.18</span><div><h3>Usklađenost sa propisima</h3><p>Zakonski, regulatorni i ugovorni zahtevi — GDPR, NIS2 i ostalo.</p></div></div>
+  </div>
+</div>
+
+<!-- PROCES SERTIFIKACIJE -->
+<div class="section bg">
+  <div class="eyebrow">Gde se nalazimo</div>
+  <div class="sec-title">Proces sertifikacije</div>
+  <div class="sec-sub">ISO 27001 sertifikacija je višemesečni proces. Evo gde se Combo IT trenutno nalazi.</div>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-circle done">✓</div>
+      <h3>Gap analiza</h3>
+      <p>Procena trenutnog stanja i identifikacija razlika u odnosu na standard</p>
+      <span class="step-badge" style="background:#e1f5ee;color:#085041">Završeno</span>
+    </div>
+    <div class="process-step">
+      <div class="step-circle done">✓</div>
+      <h3>ISMS implementacija</h3>
+      <p>Uspostavljanje sistema upravljanja bezbednošću — politike, procedure, kontrole</p>
+      <span class="step-badge" style="background:#e1f5ee;color:#085041">Završeno</span>
+    </div>
+    <div class="process-step">
+      <div class="step-circle done">✓</div>
+      <h3>Interna revizija</h3>
+      <p>Provera usklađenosti svih procesa sa zahtevima standarda</p>
+      <span class="step-badge" style="background:#e1f5ee;color:#085041">Završeno</span>
+    </div>
+    <div class="process-step">
+      <div class="step-circle" style="border-color:#f59e0b;color:#f59e0b">4</div>
+      <h3>Eksterna revizija</h3>
+      <p>Nezavisna revizija akreditovanog tela — Stage 1 i Stage 2</p>
+      <span class="step-badge" style="background:#fef3c7;color:#92400e">U toku</span>
+    </div>
+    <div class="process-step">
+      <div class="step-circle" style="border-color:#ddd;color:#bbb">5</div>
+      <h3>Sertifikat</h3>
+      <p>Izdavanje ISO 27001 sertifikata i javna objava</p>
+      <span class="step-badge" style="background:#f0f0ee;color:#888">Uskoro</span>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="section white">
+  <div class="eyebrow">Česta pitanja</div>
+  <div class="sec-title">Šta klijenti najčešće pitaju</div>
+  <div style="max-width:720px;margin-top:32px">
+    <div class="faq">
+      <div class="faq-item open" onclick="toggleFaq(this)">
+        <div class="faq-q">Zašto je ISO 27001 važniji od antivirusa ili firewall-a? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Antivirus i firewall su alati — ISO 27001 je sistem. Možete imati najbolji antivirus na svetu, ali ako zaposleni otvori phishing mail ili neko ima nepotreban pristup kritičnim podacima, alati ne pomažu. ISO 27001 definiše procese koji sprečavaju greške pre nego što do njih dođe.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Da li moram ja (klijent) da imam ISO 27001? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Ne morate. Ali angažovanjem ISO 27001 sertifikovanog IT partnera, vi demonstrirate due diligence u zaštiti podataka — što je posebno važno ako i sami imate klijente koji vam postavljaju compliance zahteve, ili ako poslujete u regulisanim industrijama (farmacija, finansije, zdravstvo).</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Kako ISO 27001 pomaže sa GDPR usklađenošću? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">ISO 27001 i GDPR se značajno preklapaju — oba zahtevaju procenu rizika, kontrole pristupa, upravljanje incidentima i dokumentovane procedure. ISO 27001 sertifikat ne garantuje GDPR compliance automatski, ali pokriva veliki deo zahteva i dokazuje da organizacija ozbiljno pristupa zaštiti podataka.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Kada se očekuje finalni sertifikat? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Trenutno smo u fazi eksterne revizije. Sertifikat očekujemo pre završetka 2025. godine. Sve klijente ćemo obavistiti čim sertifikat bude izdat, a dokument će biti dostupan na ovoj stranici.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Menja li se nešto u radu sa nama nakon sertifikacije? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Za vas kao klijenta — ništa u svakodnevnom radu se ne menja. Iza kulisa, naši interni procesi postaju još strožiji i dokumentovaniji. Ono što se menja je vaša mogućnost da klijentima i partnerima demonstrirate da vaš IT partner posluje po međunarodnim standardima bezbednosti.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="cta-left">
+    <h2>Pričajmo o bezbednosti vaših podataka</h2>
+    <p>Zakažite 30 minuta — procenimo zajedno gde su rizici u vašoj IT infrastrukturi i šta možemo da uradimo.</p>
+  </div>
+  <div class="cta-btns">
+    <a class="btn-white" href="#">Zakažite poziv</a>
+    <a class="btn-ghost-w" href="combo_rs_FINAL.html">← Homepage</a>
+  </div>
+</div>
+
+<script>
+function toggleFaq(el) {
+  el.classList.toggle('open');
+}
+</script>
+</body>
+</html>

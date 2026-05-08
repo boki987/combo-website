@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Combo IT</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif; background: #f7f7f5; color: #1a1a1a; }
+
+/* ── NAV ── */
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 0 56px; height: 68px; background: #fff; border-bottom: 1px solid #eaeae8; position: sticky; top: 0; z-index: 100; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-box { width: 34px; height: 34px; background: #1a5fd4; border-radius: 7px; display: flex; align-items: center; justify-content: center; }
+.logo-text { font-size: 17px; font-weight: 600; color: #1a1a1a; letter-spacing: -0.3px; }
+.logo-text span { color: #1a5fd4; }
+.nav-menu { display: flex; gap: 36px; }
+.nav-menu a { font-size: 14px; color: #666; text-decoration: none; transition: color .15s; }
+.nav-menu a.active { color: #1a5fd4; font-weight: 500; }
+.nav-menu a:hover { color: #1a1a1a; }
+.nav-btn { font-size: 13px; font-weight: 500; padding: 9px 20px; background: #1a5fd4; color: #fff; border-radius: 7px; text-decoration: none; }
+
+/* ── BLOG HEADER ── */
+.blog-header { background: #0d1a2e; padding: 52px 56px; position: relative; overflow: hidden; }
+.bh-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(55,138,221,0.06) 1px,transparent 1px), linear-gradient(90deg,rgba(55,138,221,0.06) 1px,transparent 1px); background-size: 52px 52px; pointer-events: none; }
+.bh-inner { position: relative; z-index: 1; }
+.bh-eyebrow { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.7px; color: #85b7eb; margin-bottom: 10px; }
+.bh-title { font-size: 32px; font-weight: 600; color: #fff; letter-spacing: -0.5px; margin-bottom: 10px; }
+.bh-sub { font-size: 15px; color: rgba(255,255,255,0.55); max-width: 520px; line-height: 1.65; }
+.bh-tags { display: flex; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
+.bh-tag { font-size: 12px; padding: 5px 12px; border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; color: rgba(255,255,255,0.6); cursor: pointer; transition: all .15s; }
+.bh-tag:hover, .bh-tag.active { background: rgba(255,255,255,0.12); color: #fff; border-color: rgba(255,255,255,0.3); }
+
+/* ── LAYOUT ── */
+.blog-body { display: grid; grid-template-columns: 1fr 300px; gap: 24px; padding: 40px 56px; max-width: 1200px; margin: 0 auto; }
+
+/* ── ARTICLE CARDS ── */
+.articles { display: flex; flex-direction: column; gap: 16px; }
+.article-card { background: #fff; border: 1px solid #eaeae8; border-radius: 12px; overflow: hidden; cursor: pointer; transition: transform .2s, box-shadow .2s; }
+.article-card:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+.ac-thumb { height: 5px; }
+.ac-body { padding: 24px 26px; }
+.ac-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.ac-cat { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; padding: 3px 9px; border-radius: 20px; }
+.ac-date { font-size: 12px; color: #bbb; }
+.ac-read { font-size: 12px; color: #bbb; }
+.ac-dot { width: 3px; height: 3px; border-radius: 50%; background: #ddd; }
+.ac-title { font-size: 18px; font-weight: 600; letter-spacing: -0.3px; line-height: 1.3; margin-bottom: 10px; }
+.ac-excerpt { font-size: 14px; color: #666; line-height: 1.65; margin-bottom: 16px; }
+.ac-footer { display: flex; align-items: center; justify-content: space-between; }
+.ac-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.ac-tag { font-size: 11px; padding: 2px 8px; border: 1px solid #eaeae8; border-radius: 4px; color: #999; }
+.ac-btn { font-size: 13px; font-weight: 500; color: #1a5fd4; text-decoration: none; white-space: nowrap; }
+
+/* ── SIDEBAR ── */
+.sidebar {}
+.sidebar-widget { background: #fff; border: 1px solid #eaeae8; border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+.sw-title { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; color: #aaa; margin-bottom: 14px; }
+.sw-cats { display: flex; flex-direction: column; gap: 2px; }
+.sw-cat { display: flex; align-items: center; justify-content: space-between; padding: 7px 10px; border-radius: 7px; cursor: pointer; transition: background .15s; text-decoration: none; }
+.sw-cat:hover { background: #f7f7f5; }
+.sw-cat-name { font-size: 13px; color: #444; display: flex; align-items: center; gap: 8px; }
+.sw-cat-dot { width: 8px; height: 8px; border-radius: 50%; }
+.sw-cat-count { font-size: 12px; color: #bbb; }
+.sw-popular { display: flex; flex-direction: column; gap: 12px; }
+.swp-item { display: flex; gap: 12px; align-items: flex-start; cursor: pointer; }
+.swp-num { font-size: 18px; font-weight: 700; color: #eaeae8; letter-spacing: -1px; flex-shrink: 0; width: 28px; }
+.swp-title { font-size: 13px; color: #444; line-height: 1.45; }
+.swp-title:hover { color: #1a5fd4; }
+.sw-cta { background: #0d1a2e; border-radius: 10px; padding: 18px; text-align: center; }
+.sw-cta-title { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+.sw-cta-sub { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.55; margin-bottom: 14px; }
+.sw-cta-btn { display: block; padding: 9px; font-size: 13px; font-weight: 500; background: #1a5fd4; color: #fff; border-radius: 7px; text-decoration: none; }
+.sw-keywords { display: flex; flex-wrap: wrap; gap: 7px; }
+.sw-kw { font-size: 12px; padding: 4px 10px; border: 1px solid #eaeae8; border-radius: 5px; color: #666; cursor: pointer; }
+.sw-kw:hover { border-color: #1a5fd4; color: #1a5fd4; }
+
+/* ── FULL ARTICLE MODAL ── */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; display: none; align-items: flex-start; justify-content: center; padding: 40px 20px; overflow-y: auto; }
+.modal-overlay.open { display: flex; }
+.modal { background: #fff; border-radius: 16px; max-width: 780px; width: 100%; position: relative; animation: modalIn .25s ease; }
+@keyframes modalIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.modal-header { padding: 0; border-radius: 16px 16px 0 0; overflow: hidden; }
+.modal-thumb { height: 8px; }
+.modal-header-body { padding: 32px 40px 24px; border-bottom: 1px solid #eaeae8; }
+.modal-close { position: absolute; top: 16px; right: 16px; width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.9); border: 1px solid #eaeae8; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; color: #666; z-index: 10; }
+.modal-close:hover { background: #fff; color: #1a1a1a; }
+.modal-cat { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; padding: 3px 9px; border-radius: 20px; display: inline-block; margin-bottom: 12px; }
+.modal-title { font-size: 26px; font-weight: 700; letter-spacing: -0.4px; line-height: 1.2; margin-bottom: 10px; }
+.modal-meta { font-size: 13px; color: #aaa; display: flex; gap: 12px; align-items: center; }
+.modal-body { padding: 32px 40px 40px; }
+.modal-body h2 { font-size: 18px; font-weight: 600; margin: 28px 0 10px; letter-spacing: -0.2px; color: #1a1a1a; }
+.modal-body h3 { font-size: 15px; font-weight: 600; margin: 20px 0 8px; color: #1a1a1a; }
+.modal-body p { font-size: 15px; color: #444; line-height: 1.75; margin-bottom: 14px; }
+.modal-body ul, .modal-body ol { margin: 8px 0 14px 20px; }
+.modal-body li { font-size: 15px; color: #444; line-height: 1.7; margin-bottom: 4px; }
+.modal-body strong { color: #1a1a1a; font-weight: 600; }
+.modal-body .highlight-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 16px 18px; margin: 16px 0; }
+.modal-body .highlight-box p { color: #1e40af; margin: 0; font-size: 14px; }
+.modal-body .seo-note { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 12px 16px; margin-top: 28px; font-size: 13px; color: #15803d; }
+.modal-footer { border-top: 1px solid #eaeae8; padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; }
+.modal-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.modal-tag { font-size: 11px; padding: 3px 9px; border: 1px solid #eaeae8; border-radius: 4px; color: #999; }
+.modal-cta { font-size: 13px; font-weight: 500; padding: 9px 20px; background: #1a5fd4; color: #fff; border-radius: 7px; text-decoration: none; white-space: nowrap; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="logo" href="combo_rs_FINAL.html">
+    <div class="logo-box">
+      <svg viewBox="0 0 20 20" fill="none" width="20" height="20">
+        <rect x="2" y="2" width="7" height="7" rx="2" fill="white"/>
+        <rect x="11" y="2" width="7" height="7" rx="2" fill="rgba(255,255,255,0.45)"/>
+        <rect x="2" y="11" width="7" height="7" rx="2" fill="rgba(255,255,255,0.45)"/>
+        <rect x="11" y="11" width="7" height="7" rx="2" fill="white"/>
+      </svg>
+    </div>
+    <span class="logo-text">Combo<span>.</span></span>
+  </a>
+  <div class="nav-menu">
+    <a href="#">Usluge</a>
+    <a href="combo_tim.html">O nama</a>
+    <a href="combo_casestudies.html">Case studies</a>
+    <a href="combo_blog.html" class="active">Blog</a>
+    <a href="#">Kontakt</a>
+  </div>
+  <a class="nav-btn" href="#">Zakažite poziv</a>
+</nav>
+
+<!-- BLOG HEADER -->
+<div class="blog-header">
+  <div class="bh-grid"></div>
+  <div class="bh-inner">
+    <div class="bh-eyebrow">Blog</div>
+    <div class="bh-title">Korisni tekstovi iz IT prakse</div>
+    <div class="bh-sub">Iskustva sa projekata, saveti za IT administratore i vodiči za SMB kompanije u Srbiji.</div>
+    <div class="bh-tags">
+      <span class="bh-tag active">Svi članci</span>
+      <span class="bh-tag">Microsoft 365</span>
+      <span class="bh-tag">Azure</span>
+      <span class="bh-tag">Security</span>
+      <span class="bh-tag">IT administracija</span>
+      <span class="bh-tag">Mreže</span>
+    </div>
+  </div>
+</div>
+
+<!-- BLOG BODY -->
+<div class="blog-body">
+
+  <div class="articles">
+
+    <!-- ČLANAK 1 -->
+    <div class="article-card" onclick="openArticle(0)">
+      <div class="ac-thumb" style="background:#1a5fd4"></div>
+      <div class="ac-body">
+        <div class="ac-meta">
+          <span class="ac-cat" style="color:#0c447c;background:#e6f1fb">IT administracija</span>
+          <span class="ac-dot"></span>
+          <span class="ac-date">15. april 2026.</span>
+          <span class="ac-dot"></span>
+          <span class="ac-read">8 min čitanja</span>
+        </div>
+        <div class="ac-title">Šta radi IT administrator u maloj firmi — i zašto svaka firma to treba?</div>
+        <div class="ac-excerpt">IT administracija nije samo "popravljanje kompjutera". Sistem administrator brine o celoj IT infrastrukturi firme — od bezbednosti i backupa do onboardinga novih zaposlenih. Objašnjavamo šta tačno dobijate kada angažujete IT administratora.</div>
+        <div class="ac-footer">
+          <div class="ac-tags">
+            <span class="ac-tag">IT administracija</span>
+            <span class="ac-tag">sistem administrator</span>
+            <span class="ac-tag">IT podrška</span>
+          </div>
+          <span class="ac-btn">Čitajte →</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ČLANAK 2 -->
+    <div class="article-card" onclick="openArticle(1)">
+      <div class="ac-thumb" style="background:#16a34a"></div>
+      <div class="ac-body">
+        <div class="ac-meta">
+          <span class="ac-cat" style="color:#085041;background:#e1f5ee">IT outsourcing</span>
+          <span class="ac-dot"></span>
+          <span class="ac-date">28. mart 2026.</span>
+          <span class="ac-dot"></span>
+          <span class="ac-read">6 min čitanja</span>
+        </div>
+        <div class="ac-title">IT outsourcing vs. zapošljavanje IT administratora — šta je isplativije za firmu do 50 zaposlenih?</div>
+        <div class="ac-excerpt">Mnoge firme u nekom trenutku dođu do pitanja: da li da zaposlimo IT čoveka ili da angažujemo spoljnu IT firmu? Uradili smo realnu kalkulaciju troškova i benefita za oba modela — odgovor može da vas iznenadi.</div>
+        <div class="ac-footer">
+          <div class="ac-tags">
+            <span class="ac-tag">IT outsourcing</span>
+            <span class="ac-tag">IT administracija</span>
+            <span class="ac-tag">troškovi</span>
+          </div>
+          <span class="ac-btn">Čitajte →</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ČLANAK 3 -->
+    <div class="article-card" onclick="openArticle(2)">
+      <div class="ac-thumb" style="background:#7c3aed"></div>
+      <div class="ac-body">
+        <div class="ac-meta">
+          <span class="ac-cat" style="color:#4c1d95;background:#ede9fe">Onboarding / Offboarding</span>
+          <span class="ac-dot"></span>
+          <span class="ac-date">10. mart 2026.</span>
+          <span class="ac-dot"></span>
+          <span class="ac-read">5 min čitanja</span>
+        </div>
+        <div class="ac-title">Onboarding novog zaposlenog — kompletna IT checklista za firme</div>
+        <div class="ac-excerpt">Novi zaposleni dolazi u ponedeljak. Da li su mu mail, laptop, pristup fajlovima i Teams nalog spremni? Bez standardizovanog IT onboarding procesa, prve nedelje budu haotične. Donosimo kompletnu cheklistu.</div>
+        <div class="ac-footer">
+          <div class="ac-tags">
+            <span class="ac-tag">onboarding</span>
+            <span class="ac-tag">Microsoft 365</span>
+            <span class="ac-tag">IT procesi</span>
+          </div>
+          <span class="ac-btn">Čitajte →</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ČLANAK 4 -->
+    <div class="article-card" onclick="openArticle(3)">
+      <div class="ac-thumb" style="background:#0891b2"></div>
+      <div class="ac-body">
+        <div class="ac-meta">
+          <span class="ac-cat" style="color:#164e63;background:#e0f2fe">Mreže</span>
+          <span class="ac-dot"></span>
+          <span class="ac-date">20. februar 2026.</span>
+          <span class="ac-dot"></span>
+          <span class="ac-read">7 min čitanja</span>
+        </div>
+        <div class="ac-title">Šta radi mrežni administrator i kada vaša firma zaista treba jednog?</div>
+        <div class="ac-excerpt">Spora mreža, Wi-Fi koji pada, VPN koji ne radi iz kafića — sve su ovo simptomi loše mrežne infrastrukture. Mrežni administrator nije luksuz već neophodnost čim firma pređe 10-15 zaposlenih. Objašnjavamo zašto.</div>
+        <div class="ac-footer">
+          <div class="ac-tags">
+            <span class="ac-tag">mrežni administrator</span>
+            <span class="ac-tag">mreže</span>
+            <span class="ac-tag">VPN</span>
+          </div>
+          <span class="ac-btn">Čitajte →</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ČLANAK 5 -->
+    <div class="article-card" onclick="openArticle(4)">
+      <div class="ac-thumb" style="background:#dc2626"></div>
+      <div class="ac-body">
+        <div class="ac-meta">
+          <span class="ac-cat" style="color:#7f1d1d;background:#fee2e2">Security</span>
+          <span class="ac-dot"></span>
+          <span class="ac-date">5. februar 2026.</span>
+          <span class="ac-dot"></span>
+          <span class="ac-read">6 min čitanja</span>
+        </div>
+        <div class="ac-title">Sophos vs. Panda — šta smo naučili posle 3 godine korišćenja oba rešenja</div>
+        <div class="ac-excerpt">Koristimo i Sophos i Panda Security kod naših klijenata već godinama. Svaki ima prednosti i mane zavisno od veličine firme i IT okruženja. Evo iskrenog poređenja iz prakse — bez marketinških floskula.</div>
+        <div class="ac-footer">
+          <div class="ac-tags">
+            <span class="ac-tag">Sophos</span>
+            <span class="ac-tag">Panda</span>
+            <span class="ac-tag">antivirusna zaštita</span>
+          </div>
+          <span class="ac-btn">Čitajte →</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ČLANAK 6 -->
+    <div class="article-card" onclick="openArticle(5)">
+      <div class="ac-thumb" style="background:#d97706"></div>
+      <div class="ac-body">
+        <div class="ac-meta">
+          <span class="ac-cat" style="color:#78350f;background:#fef3c7">Microsoft 365</span>
+          <span class="ac-dot"></span>
+          <span class="ac-date">20. januar 2026.</span>
+          <span class="ac-dot"></span>
+          <span class="ac-read">9 min čitanja</span>
+        </div>
+        <div class="ac-title">Microsoft 365 za mala preduzeća — kompletan vodič za 2026.</div>
+        <div class="ac-excerpt">Microsoft 365 je daleko više od maila i Worda. SharePoint, Teams, Intune, Defender — za firme do 50 zaposlenih ovo može zameniti 3-4 zasebne softverske pretplate. Objašnjavamo koji plan da izaberete i kako da maksimalno iskoristite licencu.</div>
+        <div class="ac-footer">
+          <div class="ac-tags">
+            <span class="ac-tag">Microsoft 365</span>
+            <span class="ac-tag">Teams</span>
+            <span class="ac-tag">SharePoint</span>
+            <span class="ac-tag">licenciranje</span>
+          </div>
+          <span class="ac-btn">Čitajte →</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /articles -->
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-widget">
+      <div class="sw-title">Kategorije</div>
+      <div class="sw-cats">
+        <a class="sw-cat" href="#">
+          <span class="sw-cat-name"><span class="sw-cat-dot" style="background:#1a5fd4"></span>IT administracija</span>
+          <span class="sw-cat-count">4</span>
+        </a>
+        <a class="sw-cat" href="#">
+          <span class="sw-cat-name"><span class="sw-cat-dot" style="background:#16a34a"></span>Microsoft 365</span>
+          <span class="sw-cat-count">5</span>
+        </a>
+        <a class="sw-cat" href="#">
+          <span class="sw-cat-name"><span class="sw-cat-dot" style="background:#7c3aed"></span>Azure &amp; Cloud</span>
+          <span class="sw-cat-count">3</span>
+        </a>
+        <a class="sw-cat" href="#">
+          <span class="sw-cat-name"><span class="sw-cat-dot" style="background:#0891b2"></span>Mreže</span>
+          <span class="sw-cat-count">3</span>
+        </a>
+        <a class="sw-cat" href="#">
+          <span class="sw-cat-name"><span class="sw-cat-dot" style="background:#dc2626"></span>Security</span>
+          <span class="sw-cat-count">2</span>
+        </a>
+        <a class="sw-cat" href="#">
+          <span class="sw-cat-name"><span class="sw-cat-dot" style="background:#d97706"></span>IT outsourcing</span>
+          <span class="sw-cat-count">2</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="sidebar-widget">
+      <div class="sw-title">Popularni članci</div>
+      <div class="sw-popular">
+        <div class="swp-item" onclick="openArticle(1)">
+          <span class="swp-num">01</span>
+          <span class="swp-title">IT outsourcing vs. zapošljavanje IT administratora</span>
+        </div>
+        <div class="swp-item" onclick="openArticle(5)">
+          <span class="swp-num">02</span>
+          <span class="swp-title">Microsoft 365 za mala preduzeća — kompletan vodič</span>
+        </div>
+        <div class="swp-item" onclick="openArticle(0)">
+          <span class="swp-num">03</span>
+          <span class="swp-title">Šta radi IT administrator u maloj firmi?</span>
+        </div>
+        <div class="swp-item" onclick="openArticle(2)">
+          <span class="swp-num">04</span>
+          <span class="swp-title">Onboarding novog zaposlenog — IT checklista</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-widget sw-cta">
+      <div class="sw-cta-title">Trebate IT podršku?</div>
+      <div class="sw-cta-sub">Zakažite besplatan razgovor od 30 minuta — procenimo vaše potrebe zajedno.</div>
+      <a class="sw-cta-btn" href="#">Kontaktirajte nas</a>
+    </div>
+
+    <div class="sidebar-widget">
+      <div class="sw-title">Ključne reči</div>
+      <div class="sw-keywords">
+        <span class="sw-kw">IT administracija</span>
+        <span class="sw-kw">IT administriranje</span>
+        <span class="sw-kw">sistem administrator</span>
+        <span class="sw-kw">mrežni administrator</span>
+        <span class="sw-kw">IT outsourcing</span>
+        <span class="sw-kw">IT podrška Beograd</span>
+        <span class="sw-kw">Microsoft 365</span>
+        <span class="sw-kw">Azure Srbija</span>
+        <span class="sw-kw">managed IT</span>
+      </div>
+    </div>
+
+  </aside>
+</div><!-- /blog-body -->
+
+<!-- MODAL OVERLAY -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeOnBg(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeArticle()">✕</button>
+    <div class="modal-header">
+      <div class="modal-thumb" id="modalThumb"></div>
+      <div class="modal-header-body">
+        <div class="modal-cat" id="modalCat"></div>
+        <div class="modal-title" id="modalTitle"></div>
+        <div class="modal-meta" id="modalMeta"></div>
+      </div>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-footer">
+      <div class="modal-tags" id="modalTags"></div>
+      <a class="modal-cta" href="#">Zakažite IT konsultaciju</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const articles = [
+  {
+    color: '#1a5fd4',
+    cat: 'IT administracija',
+    catStyle: 'color:#0c447c;background:#e6f1fb',
+    date: '15. april 2026.',
+    read: '8 min čitanja',
+    title: 'Šta radi IT administrator u maloj firmi — i zašto svaka firma to treba?',
+    tags: ['IT administracija', 'sistem administrator', 'IT podrška', 'IT administriranje'],
+    body: `
+      <p>Kada čujemo "IT administrator", mnogi pomisle na nekoga ko dolazi da popravi štampač ili reinstalira Windows. Realnost je potpuno drugačija. <strong>Sistem administrator je osoba (ili tim) koji drži celu IT infrastrukturu vaše firme — od bezbednosti i backupa do naloga zaposlenih i mrežne infrastrukture.</strong></p>
+
+      <div class="highlight-box"><p>💡 Kratka definicija: IT administracija obuhvata sve aktivnosti upravljanja računarskim sistemima, mrežama, softverom i korisničkim nalozima u firmi. Sistem administrator je odgovoran za to da sve funkcioniše — preventivno, ne samo kada se pokvari.</p></div>
+
+      <h2>Šta konkretno radi sistem administrator?</h2>
+      <p>IT administracija pokriva daleko širi spektar posla nego što većina vlasnika firmi pretpostavlja:</p>
+      <ul>
+        <li><strong>Upravljanje korisničkim nalozima</strong> — kreiranje, izmena i gašenje naloga za zaposlene (Active Directory, Microsoft 365)</li>
+        <li><strong>Backup i oporavak podataka</strong> — automatski backup, testiranje restore procedure, zaštita od ransomware napada</li>
+        <li><strong>Mrežna infrastruktura</strong> — rutери, svičevi, Wi-Fi, VPN za remote rad</li>
+        <li><strong>Bezbednost sistema</strong> — antivirusna zaštita, firewall, patch management</li>
+        <li><strong>Onboarding i offboarding zaposlenih</strong> — priprema opreme i pristupa za novog čoveka, gašenje svih pristupa pri odlasku</li>
+        <li><strong>Upravljanje licencama</strong> — praćenje Microsoft 365, softverskih licenci, optimizacija troškova</li>
+        <li><strong>Monitoring sistema</strong> — praćenje performansi servera, storage-a, mreže</li>
+      </ul>
+
+      <h2>Kada firma od 5 zaposlenih treba IT administratora?</h2>
+      <p>Odgovor je: odmah. Čak i firma od 3-5 zaposlenih ima IT infrastrukturu koja zahteva upravljanje. Mailovi, fajlovi, laptopi, backup — svi ti sistemi zahtevaju nekoga ko je za njih odgovoran.</p>
+      <p>Razlika je u tome <strong>da li to mora biti zaposleni</strong>. Za manje firme, daleko isplativije je angažovati <strong>IT outsourcing partnera</strong> koji obavlja IT administraciju kao servis — umesto da zapošljavate full-time sistem administratora.</p>
+
+      <h2>IT administriranje vs. IT podrška — razlika</h2>
+      <p>Ovo je česta zabuna. IT podrška je reaktivna — nešto se pokvari, zovete nekog da popravi. <strong>IT administracija i IT administriranje su proaktivne</strong> — sistem administrator brine da do kvara uopšte ne dođe.</p>
+      <p>Firma koja ima samo reaktivnu IT podršku trpi gubitke od downtime-a, bezbednosnih propusta i izgubljenih podataka. Firma koja ima IT administratora te probleme rešava preventivno.</p>
+
+      <h2>Šta Combo IT radi kao vaš IT administrator?</h2>
+      <p>Combo IT preuzima ulogu kompletnog IT administratora za vaše preduzeće — bez potrebe da zapošljavate sopstveni IT tim. Naš tim od 8 IT administratora brine o:</p>
+      <ul>
+        <li>Celokupnoj Microsoft 365 administraciji (mailovi, Teams, OneDrive, SharePoint)</li>
+        <li>Upravljanju serverima i mrežnom infrastrukturom</li>
+        <li>Backup sistemima i disaster recovery planovima</li>
+        <li>Onboarding/offboarding procesima za zaposlene</li>
+        <li>Bezbednosti — Sophos ili Panda endpoint zaštita, monitoring</li>
+      </ul>
+
+      <div class="seo-note">🔍 <strong>SEO napomena za Cicmila:</strong> Ovaj članak targetuje ključne reči: "IT administracija", "IT administriranje", "sistem administrator", "IT administrator mala firma". Meta title predlog: "Šta radi sistem administrator u firmi | Combo IT Beograd"</div>
+    `
+  },
+  {
+    color: '#16a34a',
+    cat: 'IT outsourcing',
+    catStyle: 'color:#085041;background:#e1f5ee',
+    date: '28. mart 2026.',
+    read: '6 min čitanja',
+    title: 'IT outsourcing vs. zapošljavanje IT administratora — šta je isplativije za firmu do 50 zaposlenih?',
+    tags: ['IT outsourcing', 'IT administracija', 'troškovi', 'sistem administrator'],
+    body: `
+      <p>Firma raste, IT problemi se množaju, i dolazi trenutak kada vlasnik postavlja pitanje: <strong>da li zaposliti sopstvenog IT čoveka ili angažovati spoljnu IT firmu?</strong> Odgovor nije isti za sve — zavisi od veličine firme, kompleksnosti infrastrukture i budžeta.</p>
+
+      <h2>Realni troškovi zapošljavanja IT administratora</h2>
+      <p>Kada razmišljate o zapošljavanju sistem administratora, uzmite u obzir sve troškove:</p>
+      <ul>
+        <li><strong>Bruto zarada</strong> — za iskusnog IT administratora u Beogradu: 100.000–150.000 RSD mesečno bruto</li>
+        <li><strong>Doprinosi i benefiti</strong> — dodajte ~65% na neto zaradu</li>
+        <li><strong>Oprema i alati</strong> — laptop, softver, monitoring tools</li>
+        <li><strong>Obuke i sertifikati</strong> — Microsoft, Cisco, security certifikati</li>
+        <li><strong>Godišnji odmor, bolovanje</strong> — ko pokriva kada nije tu?</li>
+      </ul>
+      <p><strong>Ukupno: 150.000–200.000 RSD mesečno</strong> za jednog IT administratora — i to bez garancije da pokriva sva znanja koja vam trebaju.</p>
+
+      <h2>Šta dobijate sa IT outsourcing modelom?</h2>
+      <div class="highlight-box"><p>💡 Sa IT outsourcing partnerom, plaćate mesečnu pretplatu i dobijate pristup timu stručnjaka — umesto jedne osobe koja zna ograničen spektar tehnologija.</p></div>
+      <p>Combo IT tim uključuje stručnjake za Microsoft 365, Azure, mreže, bezbednost i hardver. Nijedan single IT administrator ne može pokriti sve ove oblasti jednako dobro.</p>
+
+      <h2>Kada ima smisla zaposliti sopstveni IT tim?</h2>
+      <p>Postoje situacije kada in-house IT administrator ima smisla:</p>
+      <ul>
+        <li>Firma ima 100+ zaposlenih sa kompleksnom, specifičnom infrastrukturom</li>
+        <li>Postoji potreba za stalnim fizičkim prisustvom (produkcija, medicina, call centar)</li>
+        <li>IT je core business kompanije</li>
+      </ul>
+      <p>Za firme ispod 100 zaposlenih, <strong>IT outsourcing gotovo uvek pobedi u cost-benefit analizi</strong>.</p>
+
+      <div class="seo-note">🔍 <strong>SEO napomena za Cicmila:</strong> Targetuje: "IT outsourcing Beograd", "IT administracija outsourcing", "sistem administrator outsourcing Srbija". Meta title: "IT outsourcing vs. zapošljavanje IT administratora | Combo IT"</div>
+    `
+  },
+  {
+    color: '#7c3aed',
+    cat: 'Onboarding / Offboarding',
+    catStyle: 'color:#4c1d95;background:#ede9fe',
+    date: '10. mart 2026.',
+    read: '5 min čitanja',
+    title: 'Onboarding novog zaposlenog — kompletna IT checklista za firme',
+    tags: ['onboarding', 'offboarding', 'Microsoft 365', 'IT procesi', 'IT administracija'],
+    body: `
+      <p>Novi zaposleni dolazi u ponedeljak. Koliko puta se desilo da mu mail nije spreman, laptop nije konfigurisan, ili niko nije siguran koje foldere treba da vidi? <strong>Bez standardizovanog IT onboarding procesa, prve nedelje su haotične — i skupo koštaju u izgubljenom vremenu.</strong></p>
+
+      <h2>Kompletna IT checklista za onboarding</h2>
+
+      <h3>Dan 0 — pre prvog radnog dana</h3>
+      <ul>
+        <li>Kreiranje Microsoft 365 naloga (mail, Teams, OneDrive)</li>
+        <li>Dodavanje u odgovarajuće grupe i distribution liste</li>
+        <li>Podešavanje pristupa folderima (SharePoint / file server)</li>
+        <li>Instalacija i konfiguracija laptopa / desktop računara</li>
+        <li>VPN pristup ako je potreban za remote rad</li>
+        <li>Antivirus i endpoint zaštita (Sophos / Panda)</li>
+        <li>Instalacija specifičnog softvera za radnu poziciju</li>
+      </ul>
+
+      <h3>Dan 1 — prvi radni dan</h3>
+      <ul>
+        <li>Verifikacija svih pristupa sa novim zaposlenim</li>
+        <li>Uvod u IT pravila firme (password politika, backup, sigurnost)</li>
+        <li>Podešavanje multifaktorske autentifikacije (MFA)</li>
+        <li>Kreiranje tiketa u help desk sistemu (da zna kako da traži podršku)</li>
+      </ul>
+
+      <h2>Offboarding — zašto je jednako važan</h2>
+      <p>Odlazak zaposlenog nosi ozbiljne IT rizike ako nije pravilno odrađen. Svaki odlazni zaposleni mora proći kroz:</p>
+      <ul>
+        <li><strong>Gašenje svih Microsoft 365 pristupa</strong> — mail, Teams, OneDrive</li>
+        <li><strong>Transfer podataka</strong> — mailovi i fajlovi se prebacuju na naslednika ili arhiviraju</li>
+        <li><strong>Povlačenje hardvera</strong> — laptop se vraća, čisti i priprema za sledećeg korisnika</li>
+        <li><strong>Gašenje VPN certifikata</strong> i svih eksternih pristupa</li>
+        <li><strong>Promena shared lozinki</strong> ako ih je zaposleni koristio</li>
+      </ul>
+
+      <div class="highlight-box"><p>⚠️ Propušteno gašenje pristupa odlaznom zaposlenom je jedan od najčešćih uzroka bezbednosnih incidenata u SMB firmama. Ne ostavljajte to slučaju.</p></div>
+
+      <div class="seo-note">🔍 <strong>SEO napomena za Cicmila:</strong> Targetuje: "onboarding zaposlenog IT", "IT checklista novi zaposleni", "offboarding IT Srbija". Meta title: "IT Checklista za Onboarding Novog Zaposlenog | Combo IT"</div>
+    `
+  },
+  {
+    color: '#0891b2',
+    cat: 'Mreže',
+    catStyle: 'color:#164e63;background:#e0f2fe',
+    date: '20. februar 2026.',
+    read: '7 min čitanja',
+    title: 'Šta radi mrežni administrator i kada vaša firma zaista treba jednog?',
+    tags: ['mrežni administrator', 'mreže', 'VPN', 'IT infrastruktura', 'LAN WAN'],
+    body: `
+      <p>Wi-Fi pada na sastancima, VPN ne radi iz kafića, fajlovi se kopiraju sporije nego pre. Sve su ovo simptomi mrežne infrastrukture koja nije pravilno projektovana ni održavana. <strong>Mrežni administrator nije luksuz — to je neophodnost čim firma pređe 10-15 zaposlenih.</strong></p>
+
+      <h2>Šta tačno radi mrežni administrator?</h2>
+      <p>Posao mrežnog administratora obuhvata projektovanje, implementaciju i svakodnevno održavanje kompletne mrežne infrastrukture firme:</p>
+      <ul>
+        <li><strong>LAN infrastruktura</strong> — kablovi, svičevi, access pointovi unutar kancelarije</li>
+        <li><strong>WAN i internet konekcija</strong> — ruteri, backup veze, load balancing</li>
+        <li><strong>Wi-Fi mreža</strong> — pokrivenost, segmentacija (gostujuća vs. interna mreža)</li>
+        <li><strong>VPN</strong> — siguran remote pristup za zaposlene koji rade od kuće</li>
+        <li><strong>Firewall i sigurnost</strong> — zaštita perimetra, filtriranje saobraćaja</li>
+        <li><strong>Monitoring i troubleshooting</strong> — praćenje performansi, brzo rešavanje problema</li>
+        <li><strong>Multi-site konekcija</strong> — spajanje više kancelarija u jednu mrežu</li>
+      </ul>
+
+      <h2>Koji uređaji su u igri?</h2>
+      <p>Combo IT tim radi sa vodećim mrežnim brandovima:</p>
+      <ul>
+        <li><strong>MikroTik</strong> — odličan za SMB, naš tim ima MTCRE sertifikat</li>
+        <li><strong>Cisco</strong> — enterprise standard za kompleksnije setupe</li>
+        <li><strong>Ubiquiti (UniFi)</strong> — centralizovano upravljanje Wi-Fi mrežom</li>
+        <li><strong>Aruba / HP Networking</strong> — managed switching za veće firme</li>
+      </ul>
+
+      <h2>Najčešći mrežni problemi u SMB firmama</h2>
+      <div class="highlight-box"><p>💡 80% mrežnih problema u malim firmama dolazi iz 3 uzroka: loša Wi-Fi pokrivenost, nepostojeća VLAN segmentacija, i neažurirani firmware na mrežnoj opremi.</p></div>
+
+      <div class="seo-note">🔍 <strong>SEO napomena za Cicmila:</strong> Targetuje: "mrežni administrator Beograd", "IT mrežna infrastruktura", "MikroTik konfiguracija Srbija". Meta title: "Mrežni Administrator za Firme | Combo IT Beograd"</div>
+    `
+  },
+  {
+    color: '#dc2626',
+    cat: 'Security',
+    catStyle: 'color:#7f1d1d;background:#fee2e2',
+    date: '5. februar 2026.',
+    read: '6 min čitanja',
+    title: 'Sophos vs. Panda — šta smo naučili posle 3 godine korišćenja oba rešenja',
+    tags: ['Sophos', 'Panda', 'antivirusna zaštita', 'endpoint security', 'IT bezbednost'],
+    body: `
+      <p>Koristimo i Sophos i Panda Security kod naših klijenata već godinama. Svako rešenje ima prednosti i mane — i nijedan vendor neće vam to iskreno reći u svom marketingu. Mi hoćemo.</p>
+
+      <h2>Panda Security (Panda RMM + Panda Antivirus)</h2>
+      <p><strong>Za koga je idealan:</strong> Firme do 50 zaposlenih koje traže jednostavno, centralizovano upravljanje bez velikog IT tima.</p>
+      <ul>
+        <li>✅ Odlično RMM (Remote Monitoring & Management) rešenje</li>
+        <li>✅ Lako upravljanje iz jedne konzole za sve klijente</li>
+        <li>✅ Dobra detekcija pretnji, niska lažna pozitivna stopa</li>
+        <li>✅ Povoljna cena po uređaju</li>
+        <li>⚠️ EDR funkcionalnosti slabije od Sophos Intercept X</li>
+        <li>⚠️ Manji ekosistem integracija</li>
+      </ul>
+
+      <h2>Sophos (Intercept X + Sophos Central)</h2>
+      <p><strong>Za koga je idealan:</strong> Firme sa 50+ zaposlenih, posebno one u regulisanim industrijama (farmacija, finansije) ili firme koje su imale bezbednosne incidente.</p>
+      <ul>
+        <li>✅ Sophos Intercept X EDR — industry-leading detekcija napada</li>
+        <li>✅ Anti-ransomware CryptoGuard — zaustavlja šifrovanje u realnom vremenu</li>
+        <li>✅ Odlična integracija sa Sophos Firewall (XGS)</li>
+        <li>✅ Detailed forensics i threat hunting</li>
+        <li>⚠️ Viša cena od Pande</li>
+        <li>⚠️ Složenija inicijalna konfiguracija</li>
+      </ul>
+
+      <h2>Naša preporuka</h2>
+      <div class="highlight-box"><p>💡 Za firme do 30 zaposlenih bez specifičnih compliance zahteva — Panda je odličan izbor. Za firme od 30+ zaposlenih, posebno one sa osetljivim podacima — Sophos Intercept X je investicija koja se isplati.</p></div>
+
+      <div class="seo-note">🔍 <strong>SEO napomena za Cicmila:</strong> Targetuje: "Sophos vs Panda", "antivirusna zaštita za firme", "endpoint security Srbija". Meta title: "Sophos vs. Panda — Poređenje iz Prakse | Combo IT"</div>
+    `
+  },
+  {
+    color: '#d97706',
+    cat: 'Microsoft 365',
+    catStyle: 'color:#78350f;background:#fef3c7',
+    date: '20. januar 2026.',
+    read: '9 min čitanja',
+    title: 'Microsoft 365 za mala preduzeća — kompletan vodič za 2026.',
+    tags: ['Microsoft 365', 'Teams', 'SharePoint', 'licenciranje', 'IT administracija'],
+    body: `
+      <p>Microsoft 365 je daleko više od maila i Worda. Za firme do 50 zaposlenih, pravilno implementiran M365 može zameniti 3-4 zasebne softverske pretplate i fundamentalno promeniti način na koji tim sarađuje. Problem je što većina firmi koristi 20% kapaciteta koji plaćaju.</p>
+
+      <h2>Koji Microsoft 365 plan da izaberete?</h2>
+      <p>Za SMB firme relevantni su sledeći planovi:</p>
+      <ul>
+        <li><strong>Microsoft 365 Business Basic</strong> (6€/korisnik/mes) — web Office, Teams, Exchange, OneDrive. Za firme koje ne trebaju desktop Office aplikacije.</li>
+        <li><strong>Microsoft 365 Business Standard</strong> (12.50€/korisnik/mes) — + desktop Office (Word, Excel, PowerPoint). Najčešći izbor za SMB.</li>
+        <li><strong>Microsoft 365 Business Premium</strong> (22€/korisnik/mes) — + Intune MDM, Defender, Azure AD P1. Za firme sa ozbiljnim bezbednosnim zahtevima.</li>
+      </ul>
+
+      <div class="highlight-box"><p>💡 Kao Microsoft CSP partner, Combo IT može nabaviti M365 licence po povoljnijim uslovima od direktne kupovine kod Microsofta — i nudimo lokalna plaćanja u dinarima.</p></div>
+
+      <h2>10 M365 funkcija koje vaša firma verovatno ne koristi</h2>
+      <ol>
+        <li><strong>Microsoft Teams Rooms</strong> — transformiše sastanke u hibridnom modelu rada</li>
+        <li><strong>SharePoint kao intranet</strong> — centralizovano mesto za interna dokumenta i procese</li>
+        <li><strong>Microsoft Planner</strong> — task management direktno u Teamsu, besplatno</li>
+        <li><strong>OneDrive Known Folder Move</strong> — automatski backup Desktop/Documents na cloud</li>
+        <li><strong>Microsoft Forms</strong> — ankete, onboarding forme, feedbacksurveys</li>
+        <li><strong>Power Automate</strong> — automatizacija workflow-a bez kodiranja</li>
+        <li><strong>Microsoft Defender</strong> — antivirusna zaštita uključena u Business Premium</li>
+        <li><strong>Exchange Admin Center</strong> — anti-spam, mail flow rules, retention politike</li>
+        <li><strong>Azure AD Conditional Access</strong> — prijava samo sa poznatih uređaja i lokacija</li>
+        <li><strong>Microsoft Copilot</strong> — AI asistent u svim M365 aplikacijama (M365 Business Standard+)</li>
+      </ol>
+
+      <h2>Tipične greške pri implementaciji M365</h2>
+      <p>U praksi vidimo iste greške iznova i iznova:</p>
+      <ul>
+        <li>Niko nije postavio MFA (multifaktorska autentifikacija) — nalog se može hakovati</li>
+        <li>Svi korisnici su Global Admin — katastrofalan bezbednosni rizik</li>
+        <li>OneDrive nije konfigurisan za backup — fajlovi su samo na laptopu</li>
+        <li>Licence se ne revizuju — plaćate za ljude koji više ne rade u firmi</li>
+      </ul>
+
+      <div class="seo-note">🔍 <strong>SEO napomena za Cicmila:</strong> Targetuje: "Microsoft 365 za firme Srbija", "M365 implementacija Beograd", "Microsoft 365 CSP partner". Meta title: "Microsoft 365 za Mala Preduzeća — Vodič 2026 | Combo IT"</div>
+    `
+  }
+];
+
+function openArticle(i) {
+  const a = articles[i];
+  document.getElementById('modalThumb').style.background = a.color;
+  document.getElementById('modalCat').textContent = a.cat;
+  document.getElementById('modalCat').style.cssText += ';' + a.catStyle;
+  document.getElementById('modalTitle').textContent = a.title;
+  document.getElementById('modalMeta').innerHTML = `<span>${a.date}</span><span>·</span><span>${a.read}</span>`;
+  document.getElementById('modalBody').innerHTML = a.body;
+  document.getElementById('modalTags').innerHTML = a.tags.map(t => `<span class="modal-tag">${t}</span>`).join('');
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeArticle() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeOnBg(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeArticle();
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeArticle(); });
+</script>
+</body>
+</html>

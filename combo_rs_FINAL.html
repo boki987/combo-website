@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Combo IT — Homepage Mockup 2026</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif; background: #fff; color: #1a1a1a; font-size: 15px; }
+
+/* ── BANNER ── */
+.banner { background: #1a5fd4; color: #fff; text-align: center; padding: 10px 20px; font-size: 12px; letter-spacing: 0.2px; }
+.banner strong { font-weight: 600; }
+
+/* ── NAV ── */
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 0 56px; height: 68px; background: #fff; border-bottom: 1px solid #eaeae8; position: sticky; top: 0; z-index: 100; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-box { width: 34px; height: 34px; background: #1a5fd4; border-radius: 7px; display: flex; align-items: center; justify-content: center; }
+.logo-text { font-size: 17px; font-weight: 600; color: #1a1a1a; letter-spacing: -0.3px; }
+.logo-text span { color: #1a5fd4; }
+.nav-menu { display: flex; gap: 36px; }
+.nav-menu a { font-size: 14px; color: #666; text-decoration: none; transition: color .15s; }
+.nav-menu a:hover { color: #1a1a1a; }
+.nav-right { display: flex; align-items: center; gap: 16px; }
+.nav-phone { font-size: 12px; color: #aaa; }
+.nav-btn { font-size: 13px; font-weight: 500; padding: 9px 20px; background: #1a5fd4; color: #fff; border-radius: 7px; text-decoration: none; }
+.nav-btn:hover { background: #1550b8; }
+
+/* ── HERO SLIDER ── */
+.hero { position: relative; background: #0d1a2e; min-height: 500px; display: flex; align-items: center; overflow: hidden; }
+.hero-grid { position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(55,138,221,0.06) 1px,transparent 1px), linear-gradient(90deg,rgba(55,138,221,0.06) 1px,transparent 1px); background-size: 56px 56px; }
+.hero-glow { position: absolute; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(26,95,212,0.15) 0%, transparent 70%); top: -150px; right: -100px; pointer-events: none; }
+.hero-slide { position: absolute; inset: 0; display: flex; align-items: center; padding: 0 56px; opacity: 0; transition: opacity .5s ease; }
+.hero-slide.active { opacity: 1; }
+.hero-content { position: relative; z-index: 2; max-width: 580px; }
+.hero-tag { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 600; letter-spacing: 0.7px; text-transform: uppercase; color: #85b7eb; background: rgba(55,138,221,0.13); padding: 5px 13px; border-radius: 20px; margin-bottom: 22px; border: 1px solid rgba(55,138,221,0.25); }
+.hero-dot { width: 6px; height: 6px; border-radius: 50%; background: #378ADD; }
+.hero-content h1 { font-size: 40px; font-weight: 600; line-height: 1.15; letter-spacing: -0.7px; color: #fff; margin-bottom: 18px; }
+.hero-content h1 em { font-style: normal; color: #378ADD; }
+.hero-sub { font-size: 15px; color: rgba(255,255,255,0.58); line-height: 1.7; margin-bottom: 30px; max-width: 480px; }
+.hero-btns { display: flex; gap: 12px; }
+.btn-primary { padding: 12px 26px; font-size: 14px; font-weight: 500; background: #1a5fd4; color: #fff; border-radius: 8px; text-decoration: none; }
+.btn-primary:hover { background: #1550b8; }
+.btn-ghost { padding: 12px 26px; font-size: 14px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: rgba(255,255,255,0.75); text-decoration: none; }
+.slide-visual { position: absolute; right: 56px; top: 50%; transform: translateY(-50%); z-index: 2; display: flex; flex-direction: column; gap: 7px; }
+.svc { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 10px 16px; text-align: right; min-width: 190px; }
+.svc-num { font-size: 20px; font-weight: 600; color: #fff; letter-spacing: -0.5px; line-height: 1; }
+.svc-lbl { font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+.svc { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 16px 20px; text-align: right; min-width: 170px; }
+.svc-num { font-size: 26px; font-weight: 600; color: #fff; letter-spacing: -0.5px; }
+.svc-lbl { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 3px; }
+.slider-dots { position: absolute; bottom: 24px; left: 56px; display: flex; gap: 8px; z-index: 10; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; border: none; transition: all .25s; }
+.dot.active { background: #378ADD; width: 22px; border-radius: 4px; }
+.slider-num { position: absolute; bottom: 24px; right: 56px; font-size: 12px; color: rgba(255,255,255,0.3); z-index: 10; }
+
+/* ── SHARED SECTION ── */
+.section { padding: 64px 56px; }
+.section.bg { background: #f7f7f5; border-top: 1px solid #eaeae8; border-bottom: 1px solid #eaeae8; }
+.section.border-t { border-top: 1px solid #eaeae8; }
+.eyebrow { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.7px; color: #1a5fd4; margin-bottom: 7px; }
+.sec-title { font-size: 28px; font-weight: 600; letter-spacing: -0.4px; margin-bottom: 10px; }
+.sec-sub { font-size: 15px; color: #777; margin-bottom: 40px; max-width: 520px; line-height: 1.65; }
+
+/* ── NUMBERS STRIP ── */
+.numbers-strip { display: grid; grid-template-columns: repeat(6, 1fr); border-top: 1px solid #eaeae8; border-bottom: 1px solid #eaeae8; background: #fff; }
+.num-item { padding: 28px 20px; border-right: 1px solid #eaeae8; text-align: center; }
+.num-item:last-child { border-right: none; }
+.num-big { font-size: 30px; font-weight: 700; color: #1a1a1a; letter-spacing: -0.8px; }
+.num-lbl { font-size: 12px; color: #aaa; margin-top: 4px; line-height: 1.4; }
+
+/* ── PORTFOLIO ── */
+.portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 20px; }
+.p-card { background: #fff; border: 1px solid #eaeae8; border-radius: 12px; padding: 24px; }
+.p-range { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #bbb; margin-bottom: 6px; }
+.p-num { font-size: 38px; font-weight: 700; color: #1a1a1a; letter-spacing: -1px; line-height: 1; }
+.p-unit { font-size: 13px; color: #777; margin: 5px 0 18px; }
+.p-bar { height: 3px; background: #eee; border-radius: 2px; margin-bottom: 10px; overflow: hidden; }
+.p-fill { height: 100%; border-radius: 2px; background: #1a5fd4; }
+.p-note { font-size: 12px; color: #bbb; }
+.mini-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.mini-card { background: #f7f7f5; border-radius: 10px; padding: 16px 18px; }
+.mini-num { font-size: 22px; font-weight: 600; color: #1a1a1a; letter-spacing: -0.4px; }
+.mini-lbl { font-size: 12px; color: #aaa; margin-top: 3px; }
+
+/* ── SERVICES ── */
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.srv { background: #fff; border: 1px solid #eaeae8; border-radius: 12px; padding: 24px; transition: border-color .2s, transform .2s; cursor: default; }
+.srv:hover { border-color: #1a5fd4; transform: translateY(-2px); }
+.srv-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.srv h3 { font-size: 15px; font-weight: 600; margin-bottom: 7px; }
+.srv p { font-size: 13px; color: #777; line-height: 1.6; }
+.srv-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px; }
+.srv-tag { font-size: 10px; padding: 2px 7px; border: 1px solid #eaeae8; border-radius: 4px; color: #999; }
+
+/* ── INDUSTRIES ── */
+.ind-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.ind { background: #fff; border: 1px solid #eaeae8; border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 10px; transition: border-color .2s; }
+.ind:hover { border-color: #1a5fd4; }
+.ind-icon { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+.ind h3 { font-size: 13px; font-weight: 600; }
+.ind p { font-size: 12px; color: #888; line-height: 1.5; }
+.geo-box { margin-top: 16px; background: #fff; border: 1px solid #eaeae8; border-radius: 12px; padding: 18px 20px; }
+.geo-title { font-size: 12px; font-weight: 600; color: #555; margin-bottom: 12px; }
+.geo-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+.geo-chip { font-size: 12px; padding: 4px 11px; border: 1px solid #e0e0de; border-radius: 20px; color: #666; }
+.geo-chip.hl { color: #0c447c; background: #e6f1fb; border-color: #85b7eb; }
+
+/* ── CASE STUDIES ── */
+.cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.case { background: #fff; border: 1px solid #eaeae8; border-radius: 12px; padding: 26px; }
+.case-cat { font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; display: inline-block; margin-bottom: 16px; }
+.m365 { color: #085041; background: #e1f5ee; }
+.azure { color: #0c447c; background: #e6f1fb; }
+.net { color: #412402; background: #faeeda; }
+.case h3 { font-size: 14px; font-weight: 500; line-height: 1.45; margin-bottom: 20px; }
+.case-metric { font-size: 38px; font-weight: 700; color: #1a5fd4; letter-spacing: -1px; line-height: 1; }
+.case-metric-lbl { font-size: 12px; color: #aaa; margin-top: 5px; }
+.case-div { height: 1px; background: #f0f0ee; margin: 16px 0; }
+.case-client { font-size: 12px; color: #aaa; }
+
+/* ── SLA / FRESHDESK ── */
+.fd-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 16px; }
+.fd { background: #f7f7f5; border-radius: 10px; padding: 20px; }
+.fd-num { font-size: 28px; font-weight: 700; color: #1a1a1a; letter-spacing: -0.5px; }
+.fd-lbl { font-size: 12px; color: #777; margin-top: 4px; line-height: 1.4; }
+.fd-badge { display: inline-block; font-size: 11px; font-weight: 500; padding: 3px 8px; border-radius: 10px; margin-top: 8px; }
+.fd-good { color: #085041; background: #e1f5ee; }
+.fd-info { color: #0c447c; background: #e6f1fb; }
+.fd-source { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #bbb; }
+.fd-dot { width: 7px; height: 7px; border-radius: 50%; background: #1D9E75; animation: pulse 2s infinite; flex-shrink: 0; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
+
+/* ── WHY COMBO ── */
+.why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.why { background: #fff; border: 1px solid #eaeae8; border-radius: 12px; padding: 20px; display: flex; gap: 14px; }
+.why-icon { width: 36px; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.why h3 { font-size: 14px; font-weight: 600; margin-bottom: 5px; }
+.why p { font-size: 13px; color: #777; line-height: 1.6; }
+
+/* ── TEAM ── */
+.team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.team-card { background: #fff; border: 1px solid #eaeae8; border-radius: 12px; padding: 22px; display: flex; gap: 16px; }
+.avatar { width: 48px; height: 48px; border-radius: 50%; background: #e6f1fb; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 600; color: #185fa5; flex-shrink: 0; }
+.team-name { font-size: 15px; font-weight: 600; }
+.team-role { font-size: 12px; color: #aaa; margin: 3px 0 10px; }
+.team-certs { display: flex; flex-wrap: wrap; gap: 5px; }
+.cert { font-size: 10px; padding: 2px 8px; border: 1px solid #eaeae8; border-radius: 4px; color: #999; }
+
+/* ── PARTNERS ── */
+.partners-row { display: flex; flex-wrap: wrap; gap: 9px; }
+.pchip { font-size: 13px; padding: 7px 16px; border: 1px solid #e0e0de; border-radius: 7px; color: #555; background: #fff; transition: border-color .15s; }
+.pchip:hover { border-color: #1a5fd4; }
+.pchip.ms { color: #0c447c; border-color: #85b7eb; background: #e6f1fb; }
+
+/* ── CLIENTS ── */
+.clients-wrap { border: 1px solid #eaeae8; border-radius: 12px; overflow: hidden; }
+.clients-row-grid { display: grid; grid-template-columns: repeat(5,1fr); }
+.clients-row-grid + .clients-row-grid { border-top: 1px solid #eaeae8; }
+.cl { padding: 18px; border-right: 1px solid #eaeae8; display: flex; align-items: center; justify-content: center; }
+.cl:last-child { border-right: none; }
+.cl-name { font-size: 13px; color: #bbb; font-weight: 500; }
+
+/* ── SLIDE VISUAL GRID ── */
+.slide-visual-grid { display: grid !important; grid-template-columns: 1fr 1fr; gap: 7px; right: 40px; width: 360px; }
+.slide-visual-grid .svc { min-width: unset; text-align: left; padding: 9px 14px; }
+.slide-visual-grid .svc-num { font-size: 18px; }
+.slide-visual-grid .svc-lbl { font-size: 10px; }
+
+/* ── BRAND CARDS ── */
+.partners-brands { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.brand-card { border: 1px solid #eaeae8; border-radius: 12px; overflow: hidden; transition: transform .2s; }
+.brand-card:hover { transform: translateY(-2px); }
+.brand-header { padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #eaeae8; }
+.brand-logo { font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.brand-badge { font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 10px; }
+.brand-products { padding: 14px 18px; display: flex; flex-wrap: wrap; gap: 7px; background: #fff; }
+.brand-product { font-size: 12px; padding: 4px 10px; border: 1px solid #eaeae8; border-radius: 6px; color: #555; background: #f7f7f5; }
+
+/* ── DUAL PANEL ── */
+.dual { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+.dpanel { border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; border: 1px solid #e0e0de; }
+.dpanel-cs { background: #0d1a2e; }
+.dpanel-blog { background: #fff; }
+.dp-head { padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.dpanel-cs .dp-head { background: rgba(255,255,255,0.04); }
+.dp-head-title { font-size: 13px; font-weight: 600; color: #fff; display: flex; align-items: center; gap: 8px; }
+.dp-head-link { font-size: 12px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color .15s; }
+.dp-head-link:hover { color: #fff; }
+.dp-slide-wrap { flex: 1; position: relative; min-height: 230px; }
+.dp-slide { position: absolute; inset: 0; padding: 20px; display: none; flex-direction: column; justify-content: space-between; }
+.dp-slide.active { display: flex; }
+.dp-cat { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; padding: 3px 9px; border-radius: 20px; display: inline-block; margin-bottom: 11px; }
+.dp-title { font-size: 16px; font-weight: 500; color: #fff; line-height: 1.35; margin-bottom: 14px; letter-spacing: -0.2px; }
+.dp-kpis { display: flex; }
+.dp-kpi { flex: 1; border-right: 1px solid rgba(255,255,255,0.08); padding-right: 12px; margin-right: 12px; }
+.dp-kpi:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+.dp-kpi-num { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; line-height: 1; }
+.dp-kpi-lbl { font-size: 10px; color: rgba(255,255,255,0.38); margin-top: 2px; }
+.dp-footer-cs { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 11px; display: flex; align-items: center; justify-content: space-between; }
+.dp-client { font-size: 11px; color: rgba(255,255,255,0.32); }
+.dp-btn-cs { font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.55); text-decoration: none; transition: color .15s; }
+.dp-btn-cs:hover { color: #fff; }
+.dp-cat-blog { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; padding: 3px 9px; border-radius: 20px; display: inline-block; margin-bottom: 11px; }
+.dp-title-blog { font-size: 16px; font-weight: 500; color: #1a1a1a; line-height: 1.35; margin-bottom: 10px; letter-spacing: -0.2px; }
+.dp-excerpt { font-size: 13px; color: #666; line-height: 1.6; }
+.dp-footer-blog { border-top: 1px solid #eaeae8; padding-top: 11px; display: flex; align-items: center; justify-content: space-between; }
+.dp-bmeta { font-size: 11px; color: #bbb; }
+.dp-btn-blog { font-size: 12px; font-weight: 500; color: #1a5fd4; text-decoration: none; }
+.dp-nav { padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; }
+.dp-nav-cs { background: rgba(255,255,255,0.03); border-top: 1px solid rgba(255,255,255,0.07); }
+.dp-nav-blog { border-top: 1px solid #eaeae8; }
+.dp-dots { display: flex; gap: 5px; align-items: center; }
+.dp-dot { width: 7px; height: 7px; border-radius: 50%; border: none; cursor: pointer; transition: all .2s; }
+.dp-dot-cs { background: rgba(255,255,255,0.18); }
+.dp-dot-cs.on { background: #378ADD; width: 18px; border-radius: 3px; }
+.dp-dot-blog { background: #ddd; }
+.dp-dot-blog.on { background: #1a5fd4; width: 18px; border-radius: 3px; }
+.dp-cnt { font-size: 11px; }
+.dp-cnt-cs { color: rgba(255,255,255,0.28); }
+.dp-cnt-blog { color: #bbb; }
+.dp-arrows { display: flex; gap: 4px; }
+.dp-arr { width: 26px; height: 26px; border-radius: 6px; border: 1px solid; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 11px; background: transparent; transition: all .15s; }
+.dp-arr-cs { border-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.4); }
+.dp-arr-cs:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+.dp-arr-blog { border-color: #e0e0de; color: #aaa; }
+.dp-arr-blog:hover { border-color: #1a5fd4; color: #1a5fd4; }
+
+/* ── TESTIMONIALS ── */
+.test-quote { font-size: 14px; color: #333; line-height: 1.75; font-style: italic; margin-bottom: 14px; }
+.test-stars { font-size: 13px; color: #f59e0b; letter-spacing: 1px; margin-bottom: 12px; }
+.test-author { display: flex; align-items: center; gap: 12px; border-top: 1px solid #eaeae8; padding-top: 12px; }
+.test-avatar { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; flex-shrink: 0; }
+.test-name { font-size: 13px; font-weight: 600; color: #1a1a1a; }
+.test-role { font-size: 11px; color: #888; margin-top: 2px; }
+
+/* ── BLOG ── */
+.blog-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.blog { background: #fff; border: 1px solid #eaeae8; border-radius: 12px; overflow: hidden; transition: transform .2s; }
+.blog:hover { transform: translateY(-2px); }
+.blog-thumb { height: 100px; background: #f7f7f5; border-bottom: 1px solid #eaeae8; display: flex; align-items: center; justify-content: center; }
+.blog-body { padding: 18px; }
+.blog-tag { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #1a5fd4; margin-bottom: 7px; }
+.blog h3 { font-size: 14px; font-weight: 500; line-height: 1.45; margin-bottom: 7px; }
+.blog-meta { font-size: 12px; color: #aaa; }
+
+/* ── CTA ── */
+.cta { background: #0d1a2e; padding: 64px 56px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+.cta h2 { font-size: 28px; font-weight: 600; color: #fff; margin-bottom: 10px; letter-spacing: -0.4px; }
+.cta p { font-size: 15px; color: rgba(255,255,255,0.5); max-width: 440px; line-height: 1.65; }
+.cta-btns { display: flex; gap: 12px; flex-shrink: 0; }
+.btn-white { padding: 13px 28px; font-size: 14px; font-weight: 600; background: #fff; color: #0d1a2e; border-radius: 8px; text-decoration: none; }
+.btn-white:hover { background: #f0f0f0; }
+.btn-outline { padding: 13px 28px; font-size: 14px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: rgba(255,255,255,0.75); text-decoration: none; }
+
+/* ── FOOTER ── */
+footer { background: #fff; border-top: 1px solid #eaeae8; padding: 52px 56px 28px; }
+.footer-top { display: grid; grid-template-columns: 220px 1fr 1fr 1fr; gap: 40px; margin-bottom: 36px; }
+.ft-brand-desc { font-size: 13px; color: #aaa; margin-top: 12px; line-height: 1.7; }
+.ft-contact { font-size: 13px; color: #aaa; margin-top: 10px; line-height: 1.9; }
+.ft-contact a { color: #1a5fd4; text-decoration: none; }
+.ft-col h4 { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 14px; }
+.ft-col a { display: block; font-size: 13px; color: #aaa; text-decoration: none; margin-bottom: 8px; transition: color .15s; }
+.ft-col a:hover { color: #1a1a1a; }
+.footer-bottom { border-top: 1px solid #eaeae8; padding-top: 22px; display: flex; justify-content: space-between; align-items: center; }
+.ft-copy { font-size: 12px; color: #ccc; }
+.ft-certs { display: flex; gap: 7px; flex-wrap: wrap; }
+.ft-cert { font-size: 11px; padding: 3px 9px; border: 1px solid #eaeae8; border-radius: 5px; color: #bbb; }
+
+  /* ── SEGMENT TABS ── */
+  .seg-tabs { display: flex; gap: 0; border: 1px solid #eaeae8; border-radius: 10px; overflow: hidden; margin-bottom: 24px; max-width: 420px; }
+  .seg-tab { flex: 1; padding: 14px 8px; background: #fff; border: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 2px; border-right: 1px solid #eaeae8; transition: background .15s; }
+  .seg-tab:last-child { border-right: none; }
+  .seg-tab.active { background: #1a5fd4; }
+  .seg-tab-num { font-size: 18px; font-weight: 700; color: #aaa; letter-spacing: -0.5px; transition: color .15s; }
+  .seg-tab-lbl { font-size: 11px; color: #bbb; transition: color .15s; }
+  .seg-tab.active .seg-tab-num, .seg-tab.active .seg-tab-lbl { color: #fff; }
+  .seg-tab:hover:not(.active) { background: #f7f7f5; }
+  .seg-panel { display: none; border: 1px solid #eaeae8; border-radius: 12px; overflow: hidden; }
+  .seg-panel.active { display: block; }
+  .seg-banner { position: relative; padding: 36px 40px; overflow: hidden; }
+  .seg-banner-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.05) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,0.05) 1px,transparent 1px); background-size: 48px 48px; pointer-events: none; }
+  .seg-banner-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; }
+  .seg-banner-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.7px; text-transform: uppercase; margin-bottom: 10px; }
+  .seg-banner-title { font-size: 26px; font-weight: 600; color: #fff; line-height: 1.2; letter-spacing: -0.4px; margin-bottom: 10px; }
+  .seg-banner-title em { font-style: normal; }
+  .seg-banner-sub { font-size: 14px; color: rgba(255,255,255,0.58); line-height: 1.65; max-width: 460px; margin-bottom: 18px; }
+  .seg-banner-btn { display: inline-block; padding: 11px 24px; font-size: 13px; font-weight: 500; color: #fff; border-radius: 7px; text-decoration: none; }
+  .seg-banner-stat { display: flex; flex-direction: column; gap: 10px; flex-shrink: 0; }
+  .sbs-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 9px; padding: 14px 18px; text-align: right; min-width: 140px; }
+  .sbs-num { font-size: 22px; font-weight: 600; color: #fff; letter-spacing: -0.5px; }
+  .sbs-lbl { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+  .seg-features-wrap { padding: 28px 32px; background: #fff; }
+  .seg-group-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; color: #1a5fd4; margin-bottom: 14px; }
+  .seg-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+  .seg-features.seg-inherited { grid-template-columns: repeat(3, 1fr); }
+  .seg-feat { display: flex; gap: 11px; align-items: flex-start; padding: 14px; border: 1px solid #eaeae8; border-radius: 10px; background: #fff; }
+  .seg-feat.inherited { background: #f7f7f5; border-style: dashed; }
+  .sf-icon { width: 30px; height: 30px; border-radius: 7px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .sf-title { font-size: 13px; font-weight: 500; margin-bottom: 3px; }
+  .sf-desc { font-size: 12px; color: #888; line-height: 1.5; }
+  .seg-upsell { margin-top: 4px; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 9px; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .seg-upsell span { font-size: 13px; color: #555; line-height: 1.5; }
+  .seg-upsell strong { color: #1a1a1a; font-weight: 500; }
+  .seg-upsell-btn { font-size: 12px; font-weight: 500; padding: 7px 14px; background: #1a5fd4; color: #fff; border: none; border-radius: 6px; cursor: pointer; white-space: nowrap; flex-shrink: 0; }
+
+</style>
+</head>
+<body>
+
+<div class="banner"><strong>Combo IT — Homepage Mockup 2026</strong> · Konceptualni predlog dizajna · Astra + Elementor · Za internu upotrebu</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="logo" href="#">
+    <div class="logo-box">
+      <svg viewBox="0 0 20 20" fill="none" width="20" height="20">
+        <rect x="2" y="2" width="7" height="7" rx="2" fill="white"/>
+        <rect x="11" y="2" width="7" height="7" rx="2" fill="rgba(255,255,255,0.45)"/>
+        <rect x="2" y="11" width="7" height="7" rx="2" fill="rgba(255,255,255,0.45)"/>
+        <rect x="11" y="11" width="7" height="7" rx="2" fill="white"/>
+      </svg>
+    </div>
+    <span class="logo-text">Combo<span>.</span></span>
+  </a>
+  <div class="nav-menu">
+    <a href="#">Usluge</a>
+    <a href="combo_tim.html">O nama</a>
+    <a href="combo_casestudies.html">Case studies</a>
+    <a href="combo_blog.html">Blog</a>
+    <a href="#">Kontakt</a>
+  </div>
+  <div class="nav-right">
+    <span class="nav-phone">+381 11 420 9242</span>
+    <a class="nav-btn" href="#">Zakažite poziv</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="slider">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-slide active">
+    <div class="hero-content">
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:22px;flex-wrap:wrap">
+          <div class="hero-tag" style="margin-bottom:0"><span class="hero-dot"></span>Microsoft Partner · Beograd · od 2016.</div>
+          <a href="combo_iso27001.html" class="hero-tag" style="margin-bottom:0;background:rgba(16,185,129,0.13);border-color:rgba(16,185,129,0.3);color:#6ee7b7;text-decoration:none"><span style="width:6px;height:6px;border-radius:50%;background:#10b981;display:inline-block"></span>ISO 27001 · Sertifikacija u toku</a>
+        </div>
+      <h1>IT infrastruktura koja radi —<br><em>dok vi radite</em></h1>
+      <p class="hero-sub">Upravljamo Microsoft 365, Azure, mrežama i IT administracijom za mala i srednja preduzeća u Srbiji i regionu.</p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#">Zakažite besplatnu konsultaciju</a>
+        <a class="btn-ghost" href="#">Pogledajte case studies</a>
+      </div>
+    </div>
+    <div class="slide-visual slide-visual-grid">
+      <div class="svc"><div class="svc-num">55+</div><div class="svc-lbl">klijenata na održavanju</div></div>
+      <div class="svc"><div class="svc-num">2.000+</div><div class="svc-lbl">radnih stanica</div></div>
+      <div class="svc"><div class="svc-num">70+</div><div class="svc-lbl">servera</div></div>
+      <div class="svc"><div class="svc-num">1.400+</div><div class="svc-lbl">Microsoft licenci</div></div>
+      <div class="svc"><div class="svc-num">&lt;2h</div><div class="svc-lbl">prosečan odgovor</div></div>
+      <div class="svc"><div class="svc-num">94%</div><div class="svc-lbl">u SLA roku</div></div>
+      <div class="svc"><div class="svc-num">87%</div><div class="svc-lbl">first-call resolution</div></div>
+      <div class="svc"><div class="svc-num">8</div><div class="svc-lbl">IT administratora</div></div>
+      <div class="svc"><div class="svc-num">9+</div><div class="svc-lbl">zemalja klijenata</div></div>
+    </div>
+  </div>
+
+  <div class="hero-slide">
+    <div class="hero-content">
+      <div class="hero-tag"><span class="hero-dot"></span>IT podrška · Ticketing · SLA</div>
+      <h1>Brza podrška<br>kada je <em>najvažnija</em></h1>
+      <p class="hero-sub">8 IT administratora, prosečno vreme prvog odgovora ispod 2 sata. Remote i on-site podrška za ceo vaš tim.</p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#">Kontaktirajte podršku</a>
+        <a class="btn-ghost" href="#">SLA uslovi</a>
+      </div>
+    </div>
+    <div class="slide-visual">
+      <div class="svc"><div class="svc-num">&lt;2h</div><div class="svc-lbl">prosečan odgovor</div></div>
+      <div class="svc"><div class="svc-num">94%</div><div class="svc-lbl">rešeno u SLA roku</div></div>
+    </div>
+  </div>
+
+  <div class="hero-slide">
+    <div class="hero-content">
+      <div class="hero-tag"><span class="hero-dot"></span>Microsoft 365 · Azure · CSP Partner</div>
+      <h1>Cloud migracija<br>bez <em>downtime-a</em></h1>
+      <p class="hero-sub">Prebacili smo desetine kompanija na Microsoft 365 i Azure — bez izgubljenih podataka i bez prekida rada.</p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#">Saznajte više</a>
+        <a class="btn-ghost" href="#">Case studies</a>
+      </div>
+    </div>
+    <div class="slide-visual">
+      <div class="svc"><div class="svc-num">0h</div><div class="svc-lbl">downtime pri migraciji</div></div>
+      <div class="svc"><div class="svc-num">1.400+</div><div class="svc-lbl">Microsoft licenci</div></div>
+    </div>
+  </div>
+
+  <div class="slider-dots" id="dots">
+    <button class="dot active" onclick="goSlide(0)"></button>
+    <button class="dot" onclick="goSlide(1)"></button>
+    <button class="dot" onclick="goSlide(2)"></button>
+  </div>
+  <div class="slider-num" id="counter">1 / 3</div>
+</div>
+
+<!-- USLUGE -->
+<div class="section border-t">
+  <div class="eyebrow">Šta radimo</div>
+  <div class="sec-title">Sve IT usluge na jednom mestu</div>
+  <div class="sec-sub">Od prvog laptopa do cloud infrastrukture — brinemo o celokupnom IT ekosistemu vaše firme.</div>
+  <div class="services-grid">
+    <div class="srv">
+      <div class="srv-icon" style="background:#e6f1fb"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="1" y="1" width="7" height="7" rx="1.5" fill="#185FA5"/><rect x="10" y="1" width="7" height="7" rx="1.5" fill="#185FA5"/><rect x="1" y="10" width="7" height="7" rx="1.5" fill="#185FA5"/><rect x="10" y="10" width="7" height="7" rx="1.5" fill="#185FA5"/></svg></div>
+      <h3>IT administracija</h3>
+      <p>Windows serveri, Active Directory, korisničke stanice, servis, perifirije.</p>
+      <div class="srv-tags"><span class="srv-tag">HP</span><span class="srv-tag">Dell</span><span class="srv-tag">Lenovo</span><span class="srv-tag">Apple</span><span class="srv-tag">Windows</span><span class="srv-tag">macOS</span></div>
+    </div>
+    <div class="srv">
+      <div class="srv-icon" style="background:#e1f5ee"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2C5.7 2 3 4.7 3 8c0 2 1 3.7 2.5 4.8L5 16h8l-.5-3.2C14 11.7 15 10 15 8c0-3.3-2.7-6-6-6z" fill="#0F6E56"/></svg></div>
+      <h3>Cloud rešenja</h3>
+      <p>Microsoft 365, Azure, Teams, OneDrive, SharePoint — migracija i podrška.</p>
+      <div class="srv-tags"><span class="srv-tag">M365</span><span class="srv-tag">Azure</span><span class="srv-tag">Teams</span><span class="srv-tag">OneDrive</span><span class="srv-tag">Intune</span></div>
+    </div>
+    <div class="srv">
+      <div class="srv-icon" style="background:#faeeda"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="6" stroke="#854F0B" stroke-width="1.8" fill="none"/><circle cx="9" cy="9" r="2.5" fill="#854F0B"/></svg></div>
+      <h3>Mreže</h3>
+      <p>Projektovanje, instalacija i monitoring LAN/WAN mreža.</p>
+      <div class="srv-tags"><span class="srv-tag">MikroTik</span><span class="srv-tag">Cisco</span><span class="srv-tag">Ubiquiti</span><span class="srv-tag">Aruba</span><span class="srv-tag">TP-Link</span></div>
+    </div>
+    <div class="srv">
+      <div class="srv-icon" style="background:#eeedfe"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="6" width="14" height="9" rx="2" stroke="#534AB7" stroke-width="1.8" fill="none"/><path d="M6 6V4.5a3 3 0 016 0V6" stroke="#534AB7" stroke-width="1.8" fill="none"/></svg></div>
+      <h3>Licenciranje</h3>
+      <p>Microsoft CSP, Sophos, Adobe i ostale licence. Optimizacija resursa i ušteda troškova.</p>
+      <div class="srv-tags"><span class="srv-tag">Microsoft CSP</span><span class="srv-tag">Sophos</span><span class="srv-tag">Adobe</span></div>
+    </div>
+    <div class="srv">
+      <div class="srv-icon" style="background:#f1efe8"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="11" width="3" height="5" rx="0.8" fill="#5F5E5A"/><rect x="7.5" y="8" width="3" height="8" rx="0.8" fill="#5F5E5A"/><rect x="13" y="4" width="3" height="12" rx="0.8" fill="#5F5E5A"/></svg></div>
+      <h3>IT consulting</h3>
+      <p>Strategija, optimizacija infrastrukture i automatizacija IT procesa.</p>
+      <div class="srv-tags"><span class="srv-tag">Strategija</span><span class="srv-tag">Automatizacija</span><span class="srv-tag">Optimizacija</span></div>
+    </div>
+    <div class="srv">
+      <div class="srv-icon" style="background:#f0fdf4"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="1" y="4" width="16" height="3.5" rx="1" stroke="#166534" stroke-width="1.5" fill="none"/><rect x="1" y="9.5" width="16" height="3.5" rx="1" stroke="#166534" stroke-width="1.5" fill="none"/><circle cx="14.5" cy="5.75" r="0.8" fill="#166534"/><circle cx="14.5" cy="11.25" r="0.8" fill="#166534"/><path d="M3.5 5.75h6M3.5 11.25h6" stroke="#166534" stroke-width="1" stroke-linecap="round"/></svg></div>
+      <h3>On-premise & Serveri</h3>
+      <p>Fizička serverska infrastruktura, storage rešenja, rack i hibridna okruženja.</p>
+      <div class="srv-tags"><span class="srv-tag">HP Serveri</span><span class="srv-tag">Dell PowerEdge</span><span class="srv-tag">NAS/SAN</span><span class="srv-tag">Hyper-V</span><span class="srv-tag">VMware</span></div>
+    </div>
+    <div class="srv">
+      <div class="srv-icon" style="background:#faece7"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="9" rx="2" stroke="#993C1D" stroke-width="1.8" fill="none"/><path d="M6 15.5h6M9 13v2.5" stroke="#993C1D" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <h3>Web izrada</h3>
+      <p>Web sajtovi i aplikacije po sistemu ključ u ruke. Izrada, održavanje i hostovanje.</p>
+      <div class="srv-tags"><span class="srv-tag">WordPress</span><span class="srv-tag">Custom</span><span class="srv-tag">Hosting</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SEGMENTIRANA SEKCIJA — PO VELIČINI FIRME
+═══════════════════════════════════════════════════════ -->
+<div class="section border-t" id="segmenti">
+  <div class="eyebrow">Rešenja po veličini tima</div>
+  <div class="sec-title">Pronađite rešenje za vašu firmu</div>
+  <div class="sec-sub">Svaka firma ima drugačije IT potrebe. Kliknite na vaš segment i vidite šta nudimo.</div>
+
+  <div class="seg-tabs">
+    <button class="seg-tab active" onclick="showSeg(0)">
+      <span class="seg-tab-num">≤10</span>
+      <span class="seg-tab-lbl">zaposlenih</span>
+    </button>
+    <button class="seg-tab" onclick="showSeg(1)">
+      <span class="seg-tab-num">≤50</span>
+      <span class="seg-tab-lbl">zaposlenih</span>
+    </button>
+    <button class="seg-tab" onclick="showSeg(2)">
+      <span class="seg-tab-num">100+</span>
+      <span class="seg-tab-lbl">zaposlenih</span>
+    </button>
+  </div>
+
+  <!-- MINI STATS — portfolio + SLA -->
+  <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:0;border:1px solid #eaeae8;border-radius:10px;overflow:hidden;margin-bottom:24px">
+    <div style="padding:16px 12px;text-align:center;border-right:1px solid #eaeae8"><div style="font-size:20px;font-weight:700;color:#1a1a1a;letter-spacing:-0.5px">55+</div><div style="font-size:11px;color:#aaa;margin-top:3px;line-height:1.3">aktivnih klijenata</div></div>
+    <div style="padding:16px 12px;text-align:center;border-right:1px solid #eaeae8"><div style="font-size:20px;font-weight:700;color:#1a1a1a;letter-spacing:-0.5px">2.000+</div><div style="font-size:11px;color:#aaa;margin-top:3px;line-height:1.3">radnih stanica</div></div>
+    <div style="padding:16px 12px;text-align:center;border-right:1px solid #eaeae8"><div style="font-size:20px;font-weight:700;color:#1a1a1a;letter-spacing:-0.5px">70+</div><div style="font-size:11px;color:#aaa;margin-top:3px;line-height:1.3">servera</div></div>
+    <div style="padding:16px 12px;text-align:center;border-right:1px solid #eaeae8"><div style="font-size:20px;font-weight:700;color:#1a5fd4;letter-spacing:-0.5px">&lt;2h</div><div style="font-size:11px;color:#aaa;margin-top:3px;line-height:1.3">prosečan odgovor</div></div>
+    <div style="padding:16px 12px;text-align:center;border-right:1px solid #eaeae8"><div style="font-size:20px;font-weight:700;color:#1a5fd4;letter-spacing:-0.5px">94%</div><div style="font-size:11px;color:#aaa;margin-top:3px;line-height:1.3">u SLA roku</div></div>
+    <div style="padding:16px 12px;text-align:center"><div style="font-size:20px;font-weight:700;color:#1a5fd4;letter-spacing:-0.5px">87%</div><div style="font-size:11px;color:#aaa;margin-top:3px;line-height:1.3">first-call res.</div></div>
+  </div>
+
+
+  <!-- PANEL 0: do 10 -->
+  <div class="seg-panel active" id="seg-0">
+    <div class="seg-banner" style="background:linear-gradient(135deg,#0d1a2e 0%,#0f2447 100%)">
+      <div class="seg-banner-grid"></div>
+      <div class="seg-banner-inner">
+        <div>
+          <div class="seg-banner-eyebrow" style="color:#85b7eb">Za firme do 10 zaposlenih</div>
+          <h2 class="seg-banner-title">Malo preduzeće, <em style="color:#378ADD">veliki IT problemi?</em></h2>
+          <p class="seg-banner-sub">Novi zaposleni — ko mu podešava mail i laptop? Neko otišao — ko gasi pristupe? Rešavamo to jednom i zauvek.</p>
+          <a href="#kontakt" class="seg-banner-btn" style="background:#1a5fd4">Zakažite besplatan razgovor</a>
+        </div>
+        <div class="seg-banner-stat">
+          <div class="sbs-card"><div class="sbs-num">30+</div><div class="sbs-lbl">klijenata ove veličine</div></div>
+          <div class="sbs-card"><div class="sbs-num">&lt;2h</div><div class="sbs-lbl">prosečan odgovor</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="seg-features-wrap">
+      <div class="seg-group-label">Šta je uključeno</div>
+      <div class="seg-features">
+        <div class="seg-feat">
+          <div class="sf-icon" style="background:#e6f1fb"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="4.5" r="2.5" stroke="#185FA5" stroke-width="1.3" fill="none"/><path d="M1 13c0-3 2.7-5 6-5s6 2 6 5" stroke="#185FA5" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg></div>
+          <div><div class="sf-title">Onboarding novog zaposlenog</div><div class="sf-desc">Mail, Teams nalog, laptop setup, pristup folderima — sve za 2 sata</div></div>
+        </div>
+        <div class="seg-feat">
+          <div class="sf-icon" style="background:#faece7"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1.5l1.5 3.5 3.5.5-2.5 2.5.5 3.5L7 10l-3 1.5.5-3.5L2 5.5l3.5-.5z" stroke="#993C1D" stroke-width="1.2" fill="none" stroke-linejoin="round"/></svg></div>
+          <div><div class="sf-title">Offboarding zaposlenog</div><div class="sf-desc">Gašenje svih pristupa, čuvanje podataka, prenos naloga — bez rizika</div></div>
+        </div>
+        <div class="seg-feat">
+          <div class="sf-icon" style="background:#e1f5ee"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="3.5" width="12" height="8" rx="1.5" stroke="#0F6E56" stroke-width="1.3" fill="none"/><path d="M4.5 3.5V3a2.5 2.5 0 015 0v.5" stroke="#0F6E56" stroke-width="1.3" fill="none"/></svg></div>
+          <div><div class="sf-title">Microsoft 365 setup</div><div class="sf-desc">Mailovi, Teams, OneDrive, deljeni kalendari za ceo tim</div></div>
+        </div>
+        <div class="seg-feat">
+          <div class="sf-icon" style="background:#faeeda"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1.5C4.2 1.5 2 3.7 2 6.5c0 1.5.7 2.8 1.8 3.7L3.5 12.5h7l-.3-2.3C11.3 9.3 12 8 12 6.5c0-2.8-2.2-5-5-5z" fill="#854F0B"/></svg></div>
+          <div><div class="sf-title">Backup podataka</div><div class="sf-desc">Automatski backup u cloud — bez USB diskova koji se gube</div></div>
+        </div>
+        <div class="seg-feat">
+          <div class="sf-icon" style="background:#eeedfe"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="5" height="5" rx="1" fill="#534AB7"/><rect x="8" y="1" width="5" height="5" rx="1" fill="#534AB7"/><rect x="1" y="8" width="5" height="5" rx="1" fill="#534AB7"/><rect x="8" y="8" width="5" height="5" rx="1" fill="#534AB7"/></svg></div>
+          <div><div class="sf-title">Antivirus i zaštita</div><div class="sf-desc">Panda/Sophos za laptope i mobilne telefone — centralno upravljanje</div></div>
+        </div>
+        <div class="seg-feat">
+          <div class="sf-icon" style="background:#e6f1fb"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="3" width="12" height="8" rx="1.5" stroke="#185FA5" stroke-width="1.3" fill="none"/><path d="M4 7h2M8 7h2" stroke="#185FA5" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+          <div><div class="sf-title">Deljeni folderi — bez WhatsAppa</div><div class="sf-desc">SharePoint / OneDrive — svi rade na istim fajlovima</div></div>
+        </div>
+      </div>
+      <div class="seg-upsell">
+        <span>Firma raste? <strong>Za timove do 50 zaposlenih</strong> dodajemo Active Directory, VPN i optimizaciju licenci.</span>
+        <button class="seg-upsell-btn" onclick="showSeg(1)">Do 50 zaposlenih →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 1: do 50 — uključuje sve od 10 -->
+  <div class="seg-panel" id="seg-1">
+    <div class="seg-banner" style="background:linear-gradient(135deg,#0a1f14 0%,#0d2b1c 100%)">
+      <div class="seg-banner-grid"></div>
+      <div class="seg-banner-inner">
+        <div>
+          <div class="seg-banner-eyebrow" style="color:#86efac">Za firme do 50 zaposlenih</div>
+          <h2 class="seg-banner-title">Rastete, a IT <em style="color:#4ade80">ne prati tempo?</em></h2>
+          <p class="seg-banner-sub">Ko ima pristup čemu? Zašto je mreža spora? Ko je zadužen za IT kad niko nije? Rešavamo — bez zapošljavanja IT-evca.</p>
+          <a href="#kontakt" class="seg-banner-btn" style="background:#16a34a">Zakažite besplatan razgovor</a>
+        </div>
+        <div class="seg-banner-stat">
+          <div class="sbs-card"><div class="sbs-num">15–20</div><div class="sbs-lbl">klijenata ove veličine</div></div>
+          <div class="sbs-card"><div class="sbs-num">8</div><div class="sbs-lbl">IT admina za podršku</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="seg-features-wrap">
+      <div class="seg-group-label" style="color:#15803d">Sve iz paketa do 10 zaposlenih, plus:</div>
+      <div class="seg-features seg-inherited">
+        <div class="seg-feat inherited">
+          <div class="sf-icon" style="background:#e6f1fb"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="4.5" r="2.5" stroke="#185FA5" stroke-width="1.3" fill="none"/><path d="M1 13c0-3 2.7-5 6-5s6 2 6 5" stroke="#185FA5" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg></div>
+          <div><div class="sf-title">Onboarding / offboarding proces</div><div class="sf-desc">Mail, laptop, pristup, gašenje naloga — standardizovan proces</div></div>
+        </div>
+        <div class="seg-feat inherited">
+          <div class="sf-icon" style="background:#e1f5ee"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="3.5" width="12" height="8" rx="1.5" stroke="#0F6E56" stroke-width="1.3" fill="none"/><path d="M4.5 3.5V3a2.5 2.5 0 015 0v.5" stroke="#0F6E56" stroke-width="1.3" fill="none"/></svg></div>
+          <div><div class="sf-title">Microsoft 365, Teams, OneDrive</div><div class="sf-desc">Kompletno M365 okruženje za ceo tim</div></div>
+        </div>
+        <div class="seg-feat inherited">
+          <div class="sf-icon" style="background:#eeedfe"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="5" height="5" rx="1" fill="#534AB7"/><rect x="8" y="1" width="5" height="5" rx="1" fill="#534AB7"/><rect x="1" y="8" width="5" height="5" rx="1" fill="#534AB7"/><rect x="8" y="8" width="5" height="5" rx="1" fill="#534AB7"/></svg></div>
+          <div><div class="sf-title">Antivirus, backup, zaštita podataka</div><div class="sf-desc">Panda/Sophos, cloud backup za sve uređaje</div></div>
+        </div>
+      </div>
+      <div class="seg-group-label" style="margin-top:16px">Dodatno za timove do 50 zaposlenih:</div>
+      <div class="seg-features">
+        <div class="seg-feat">
+          <div class="sf-icon" style="background:#e6f1fb"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="5" height="5" rx="1" fill="#185FA5"/><rect x="8" y="1" width="5" height="5" rx="1" fill="#185FA5"/><rect x="1" y="8" width="5" height="5" rx="1" fill="#185FA5"/><rect x="8" y="8" width="5" height="5" rx="1" fill="#185FA5"/></svg></div>
+          <div><div class="sf-title">Active Directory</div><div class="sf-desc">Ko ima pristup čemu — pod kontrolom, revizija u svakom trenutku</div></div>
+        </div>
+        <div class="seg-feat">
+          <div class="sf-icon" style="background:#faeeda"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="4.5" stroke="#854F0B" stroke-width="1.3" fill="none"/><circle cx="7" cy="7" r="1.8" fill="#854F0B"/></svg></div>
+          <div><div class="sf-title">VPN i remote pristup</div><div class="sf-desc">Hibridni rad — kod kuće radi kao da je u kancelariji</div></div>
+        </div>
+        <div class="seg-feat">
+          <div class="sf-icon" style="background:#e1f5ee"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="2" stroke="#0F6E56" stroke-width="1.3" fill="none"/><path d="M4 7l2 2 4-4" stroke="#0F6E56" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg></div>
+          <div><div class="sf-title">Server ili cloud storage</div><div class="sf-desc">Centralno mesto za podatke — pouzdano, brzo, bez gubitaka</div></div>
+        </div>
+        <div class="seg-feat">
+          <div class="sf-icon" style="background:#eeedfe"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="4.5" width="12" height="7" rx="1.5" stroke="#534AB7" stroke-width="1.3" fill="none"/><path d="M4.5 4.5V3.5a2.5 2.5 0 015 0v1" stroke="#534AB7" stroke-width="1.3" fill="none"/></svg></div>
+          <div><div class="sf-title">Optimizacija M365 licenci</div><div class="sf-desc">Plaćate samo ono što koristite — uštedite i do 30% mesečno</div></div>
+        </div>
+        <div class="seg-feat">
+          <div class="sf-icon" style="background:#faece7"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="3" width="12" height="9" rx="1.5" stroke="#993C1D" stroke-width="1.3" fill="none"/><path d="M4.5 14H9.5M7 11v3" stroke="#993C1D" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+          <div><div class="sf-title">IT podrška bez IT zaposlenog</div><div class="sf-desc">8 administratora dostupnih vama — bez troška zapošljavanja in-house IT-a</div></div>
+        </div>
+        <div class="seg-feat">
+          <div class="sf-icon" style="background:#e6f1fb"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1C3.7 1 1 3.7 1 7c0 1.8.8 3.4 2 4.5L2.5 13h9l-.5-1.5C12.2 10.4 13 8.8 13 7c0-3.3-2.7-6-6-6z" fill="#185FA5"/></svg></div>
+          <div><div class="sf-title">Monitoring sistema</div><div class="sf-desc">Panda RMM — znamo pre vas ako nešto ne radi kako treba</div></div>
+        </div>
+      </div>
+      <div class="seg-upsell" style="border-color:#bbf7d0;background:#f0fdf4">
+        <span>Prelazite 100 zaposlenih? <strong>Vreme je za enterprise infrastrukturu</strong> — Azure, Intune, multi-site mreže, SLA ugovor.</span>
+        <button class="seg-upsell-btn" style="background:#16a34a" onclick="showSeg(2)">100+ zaposlenih →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 2: 100+ — uključuje sve od 10 i 50 -->
+  <div class="seg-panel" id="seg-2">
+    <div class="seg-banner" style="background:linear-gradient(135deg,#1a0533 0%,#2d0a5e 100%)">
+      <div class="seg-banner-grid"></div>
+      <div class="seg-banner-inner">
+        <div>
+          <div class="seg-banner-eyebrow" style="color:#c4b5fd">Za firme sa 100+ zaposlenih</div>
+          <h2 class="seg-banner-title">Kompleksna firma, <em style="color:#a78bfa">potrebna IT strategija</em></h2>
+          <p class="seg-banner-sub">Više lokacija, stotine uređaja, kritični sistemi. Trebate IT partner koji razume biznis — ne samo tehničara.</p>
+          <a href="#kontakt" class="seg-banner-btn" style="background:#7c3aed">Zakažite konsultaciju</a>
+        </div>
+        <div class="seg-banner-stat">
+          <div class="sbs-card"><div class="sbs-num">3–5</div><div class="sbs-lbl">enterprise klijenata</div></div>
+          <div class="sbs-card"><div class="sbs-num">9+</div><div class="sbs-lbl">zemalja podrška</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="seg-features-wrap">
+      <div class="seg-group-label" style="color:#6d28d9">Sve iz paketa do 10 i do 50 zaposlenih, plus:</div>
+      <div class="seg-features seg-inherited">
+        <div class="seg-feat inherited">
+          <div class="sf-icon" style="background:#e6f1fb"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="4.5" r="2.5" stroke="#185FA5" stroke-width="1.3" fill="none"/><path d="M1 13c0-3 2.7-5 6-5s6 2 6 5" stroke="#185FA5" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg></div>
+          <div><div class="sf-title">Onboarding / offboarding, M365, backup, antivirus</div><div class="sf-desc">Sve osnove iz manjeg paketa — standardizovano</div></div>
+        </div>
+        <div class="seg-feat inherited">
+          <div class="sf-icon" style="background:#e1f5ee"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="5" height="5" rx="1" fill="#185FA5"/><rect x="8" y="1" width="5" height="5" rx="1" fill="#185FA5"/><rect x="1" y="8" width="5" height="5" rx="1" fill="#185FA5"/><rect x="8" y="8" width="5" height="5" rx="1" fill="#185FA5"/></svg></div>
+          <div><div class="sf-title">Active Directory, VPN, server, optimizacija licenci</div><div class="sf-desc">Kompletna mid-market infrastruktura kao osnova</div></div>
+        </div>
+        <div class="seg-feat inherited">
+          <div class="sf-icon" style="background:#faeeda"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1C3.7 1 1 3.7 1 7c0 1.8.8 3.4 2 4.5L2.5 13h9l-.5-1.5C12.2 10.4 13 8.8 13 7c0-3.3-2.7-6-6-6z" fill="#854F0B"/></svg></div>
+          <div><div class="sf-title">IT podrška i monitoring</div><div class="sf-desc">Panda RMM, 8 administratora, pro-aktivan monitoring</div></div>
+        </div>
+      </div>
+      <div class="seg-group-label" style="margin-top:16px;color:#6d28d9">Dodatno za firme sa 100+ zaposlenih:</div>
+      <div class="seg-features">
+        <div class="seg-feat">
+          <div class="sf-icon" style="background:#ede9fe"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1.5C4 1.5 1.5 4 1.5 7c0 1.7.7 3.2 1.9 4.3L3 13h8l-.4-1.7C11.8 10.2 12.5 8.7 12.5 7 12.5 4 10 1.5 7 1.5z" fill="#7c3aed"/></svg></div>
+          <div><div class="sf-title">Azure cloud infrastruktura</div><div class="sf-desc">Skalabilna cloud arhitektura — raste s vama, plaćate ono što koristite</div></div>
+        </div>
+        <div class="seg-feat">
+          <div class="sf-icon" style="background:#e6f1fb"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="5" height="5" rx="1" fill="#185FA5"/><rect x="8" y="1" width="5" height="5" rx="1" fill="#185FA5"/><rect x="1" y="8" width="5" height="5" rx="1" fill="#185FA5"/><rect x="8" y="8" width="5" height="5" rx="1" fill="#185FA5"/></svg></div>
+          <div><div class="sf-title">Intune / MDM</div><div class="sf-desc">Centralno upravljanje svim uređajima — laptopi, telefoni, tableti</div></div>
+        </div>
+        <div class="seg-feat">
+          <div class="sf-icon" style="background:#faeeda"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="4.5" stroke="#854F0B" stroke-width="1.3" fill="none"/><circle cx="7" cy="7" r="1.8" fill="#854F0B"/></svg></div>
+          <div><div class="sf-title">Multi-site mreže</div><div class="sf-desc">Više kancelarija, jedinstven sistem — Cisco/MikroTik WAN arhitektura</div></div>
+        </div>
+        <div class="seg-feat">
+          <div class="sf-icon" style="background:#faece7"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="4" width="12" height="7" rx="1.5" stroke="#993C1D" stroke-width="1.3" fill="none"/><path d="M4.5 4V3a2.5 2.5 0 015 0v1" stroke="#993C1D" stroke-width="1.3" fill="none"/></svg></div>
+          <div><div class="sf-title">Napredna sigurnost — Sophos EDR</div><div class="sf-desc">Endpoint detection & response — zaštita od ransomware i ciljanih napada</div></div>
+        </div>
+        <div class="seg-feat">
+          <div class="sf-icon" style="background:#e1f5ee"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="2" stroke="#0F6E56" stroke-width="1.3" fill="none"/><path d="M4 7l2 2 4-4" stroke="#0F6E56" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg></div>
+          <div><div class="sf-title">SLA ugovor i Key Account inženjer</div><div class="sf-desc">Dedikovan inženjer koji poznaje vašu infrastrukturu, garantovano vreme odgovora</div></div>
+        </div>
+        <div class="seg-feat">
+          <div class="sf-icon" style="background:#ede9fe"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="9" width="2.5" height="4" rx="0.5" fill="#7c3aed"/><rect x="5.5" y="6" width="2.5" height="7" rx="0.5" fill="#7c3aed"/><rect x="10" y="3" width="2.5" height="10" rx="0.5" fill="#7c3aed"/></svg></div>
+          <div><div class="sf-title">IT strategija i godišnje planiranje</div><div class="sf-desc">Budžet, IT roadmap, revizija infrastrukture — partner koji gleda dugoročno</div></div>
+        </div>
+      </div>
+      <div class="seg-upsell" style="border-color:#ddd6fe;background:#f5f3ff">
+        <span>Imate međunarodne kancelarije ili compliance zahteve? <strong>ISO 27001 sertifikacija u toku</strong> — vaši podaci se tretiraju po međunarodnim standardima. <a href="combo_iso27001.html" style="color:#7c3aed;font-weight:500">Saznajte više →</a></span>
+        <button class="seg-upsell-btn" style="background:#7c3aed" onclick="document.querySelector('#kontakt').scrollIntoView({behavior:'smooth'})">Kontaktirajte nas →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- PARTNERI -->
+<div class="section border-t">
+  <div class="eyebrow">Partneri i proizvođači</div>
+  <div class="sec-title">Radimo sa vodećim brendovima</div>
+  <div class="partners-brands">
+
+    <div class="brand-card" onclick="openBrand('microsoft')">
+      <div class="brand-header" style="background:#f0f4ff;border-color:#d0dff8">
+        <div class="brand-logo">
+          <svg width="20" height="20" viewBox="0 0 21 21" fill="none"><rect x="1" y="1" width="9" height="9" fill="#f25022"/><rect x="11" y="1" width="9" height="9" fill="#7fba00"/><rect x="1" y="11" width="9" height="9" fill="#00a4ef"/><rect x="11" y="11" width="9" height="9" fill="#ffb900"/></svg>
+          <span style="color:#0078d4;font-weight:700">Microsoft</span>
+        </div>
+        <span class="brand-badge" style="color:#0c447c;background:#e6f1fb">CSP Partner</span>
+      </div>
+      <div class="brand-products">
+        <span class="brand-product">Microsoft 365</span>
+        <span class="brand-product">Exchange Online</span>
+        <span class="brand-product">SharePoint</span>
+        <span class="brand-product">Azure</span>
+        <span class="brand-product">Intune / MDM</span>
+      </div>
+      <div class="brand-more">Kliknite za detalje →</div>
+    </div>
+
+    <div class="brand-card" onclick="openBrand('sophos')">
+      <div class="brand-header" style="background:#fff5f5;border-color:#fecaca">
+        <div class="brand-logo">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2C5.6 2 2 5.6 2 10s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8z" fill="#cc0000"/><path d="M6 10l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+          <span style="color:#cc0000;font-weight:700">Sophos</span>
+        </div>
+        <span class="brand-badge" style="color:#7f1d1d;background:#fee2e2">Partner</span>
+      </div>
+      <div class="brand-products">
+        <span class="brand-product">Sophos Firewall</span>
+        <span class="brand-product">Intercept X EDR</span>
+        <span class="brand-product">Sophos AV</span>
+        <span class="brand-product">Sophos Central</span>
+      </div>
+      <div class="brand-more">Kliknite za detalje →</div>
+    </div>
+
+    <div class="brand-card" onclick="openBrand('panda')">
+      <div class="brand-header" style="background:#f0fdf4;border-color:#bbf7d0">
+        <div class="brand-logo">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" fill="#16a34a"/><path d="M6.5 10l2.5 3L14 7" stroke="white" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+          <span style="color:#16a34a;font-weight:700">Panda Security</span>
+        </div>
+        <span class="brand-badge" style="color:#085041;background:#e1f5ee">Partner</span>
+      </div>
+      <div class="brand-products">
+        <span class="brand-product">Panda RMM</span>
+        <span class="brand-product">Panda Antivirus</span>
+        <span class="brand-product">Aether Platform</span>
+      </div>
+      <div class="brand-more">Kliknite za detalje →</div>
+    </div>
+
+    <div class="brand-card" onclick="openBrand('hardware')">
+      <div class="brand-header" style="background:#f8f8f6;border-color:#e0e0de">
+        <div class="brand-logo">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="6" width="16" height="10" rx="1.5" stroke="#333" stroke-width="1.5" fill="none"/><circle cx="16" cy="11" r="1" fill="#333"/><path d="M4 11h8" stroke="#333" stroke-width="1.2" stroke-linecap="round"/></svg>
+          <span style="color:#1a1a1a;font-weight:700">HP · Dell · Lenovo</span>
+        </div>
+        <span class="brand-badge" style="color:#555;background:#f1efe8">Reseller</span>
+      </div>
+      <div class="brand-products">
+        <span class="brand-product">Laptopi</span>
+        <span class="brand-product">Desktop računari</span>
+        <span class="brand-product">HP/Dell Serveri</span>
+        <span class="brand-product">Periferije</span>
+      </div>
+      <div class="brand-more">Kliknite za detalje →</div>
+    </div>
+
+    <div class="brand-card" onclick="openBrand('networking')">
+      <div class="brand-header" style="background:#eff6ff;border-color:#bfdbfe">
+        <div class="brand-logo">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#1d4ed8" stroke-width="1.5" fill="none"/><circle cx="10" cy="10" r="3.5" fill="#1d4ed8"/></svg>
+          <span style="color:#1d4ed8;font-weight:700">MikroTik · Cisco</span>
+        </div>
+        <span class="brand-badge" style="color:#0c447c;background:#e6f1fb">MTCRE Certified</span>
+      </div>
+      <div class="brand-products">
+        <span class="brand-product">MikroTik Ruteri</span>
+        <span class="brand-product">MTCRE sertifikat</span>
+        <span class="brand-product">Cisco SMB Spec.</span>
+        <span class="brand-product">LAN / WAN</span>
+      </div>
+      <div class="brand-more">Kliknite za detalje →</div>
+    </div>
+
+    <div class="brand-card" onclick="openBrand('wifi')">
+      <div class="brand-header" style="background:#f5f3ff;border-color:#ddd6fe">
+        <div class="brand-logo">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 8c1.9-1.9 4.4-3 7-3s5.1 1.1 7 3" stroke="#6d28d9" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M5.5 10.5c1.2-1.2 2.8-2 4.5-2s3.3.8 4.5 2" stroke="#6d28d9" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="10" cy="14" r="1.5" fill="#6d28d9"/></svg>
+          <span style="color:#6d28d9;font-weight:700">Ubiquiti · Aruba</span>
+        </div>
+        <span class="brand-badge" style="color:#4c1d95;background:#ede9fe">Partner</span>
+      </div>
+      <div class="brand-products">
+        <span class="brand-product">UniFi Wi-Fi</span>
+        <span class="brand-product">Access pointi</span>
+        <span class="brand-product">Aruba switching</span>
+        <span class="brand-product">Wireless LAN</span>
+      </div>
+      <div class="brand-more">Kliknite za detalje →</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- BRAND MODALI -->
+<div id="brandOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:300;align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto" onclick="closeBrand(event)">
+  <div id="brandModal" style="background:#fff;border-radius:16px;max-width:680px;width:100%;position:relative;margin:auto;animation:modalIn .25s ease">
+    <button onclick="document.getElementById('brandOverlay').style.display='none';document.body.style.overflow=''" style="position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:50%;background:#fff;border:1px solid #eaeae8;cursor:pointer;font-size:14px;color:#666;display:flex;align-items:center;justify-content:center;z-index:10">✕</button>
+    <div id="brandContent"></div>
+    <div class="brand-card" style="border-color:#bbf7d0">
+      <div class="brand-header" style="background:#f0fdf4;border-color:#bbf7d0">
+        <div class="brand-logo" style="color:#10b981">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2L4 4.5v4c0 3.2 2.2 6.1 5 7 2.8-.9 5-3.8 5-7v-4L9 2z" stroke="#10b981" stroke-width="1.5" fill="none" stroke-linejoin="round"/><path d="M6.5 9l2 2 3.5-3.5" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+          ISO 27001
+        </div>
+        <a href="combo_iso27001.html" style="font-size:10px;font-weight:600;padding:3px 8px;border-radius:10px;color:#085041;background:#e1f5ee;text-decoration:none">U toku →</a>
+      </div>
+      <div class="brand-products">
+        <span class="brand-product" style="color:#085041;background:#e1f5ee;border-color:#bbf7d0">Kontrola pristupa</span>
+        <span class="brand-product" style="color:#085041;background:#e1f5ee;border-color:#bbf7d0">Incident response</span>
+        <span class="brand-product" style="color:#085041;background:#e1f5ee;border-color:#bbf7d0">Business continuity</span>
+        <span class="brand-product" style="color:#085041;background:#e1f5ee;border-color:#bbf7d0">GDPR usklađenost</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- KLIJENTI -->
+<div class="section bg">
+  <div class="eyebrow">Klijenti</div>
+  <div class="sec-title">Neki od naših klijenata</div>
+  <div style="margin-bottom:24px"></div>
+  <div class="clients-wrap">
+    <div class="clients-row-grid">
+      <div class="cl"><span class="cl-name">Cenoteka</span></div>
+      <div class="cl"><span class="cl-name">EyeSee</span></div>
+      <div class="cl"><span class="cl-name">Human Made</span></div>
+      <div class="cl"><span class="cl-name">Termovent</span></div>
+      <div class="cl"><span class="cl-name">Klima M</span></div>
+    </div>
+    <div class="clients-row-grid">
+      <div class="cl"><span class="cl-name">Enable3</span></div>
+      <div class="cl"><span class="cl-name">Red Communication</span></div>
+      <div class="cl"><span class="cl-name">Rhei Life</span></div>
+      <div class="cl"><span class="cl-name">Karbon State</span></div>
+      <div class="cl"><span class="cl-name">ACS</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- IZ PRAKSE: DUAL PANEL — CASE STUDIES + BLOG -->
+<div class="section border-t">
+  <div class="eyebrow">Iz prakse</div>
+  <div class="sec-title">Projekti i korisni tekstovi</div>
+  <div class="dual">
+
+    <!-- ══ CASE STUDIES PANEL ══ -->
+    <div class="dpanel dpanel-cs">
+      <div class="dp-head">
+        <div class="dp-head-title">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="0.5" y="0.5" width="5" height="5" rx="1" fill="white"/><rect x="7.5" y="0.5" width="5" height="5" rx="1" fill="rgba(255,255,255,0.4)"/><rect x="0.5" y="7.5" width="5" height="5" rx="1" fill="rgba(255,255,255,0.4)"/><rect x="7.5" y="7.5" width="5" height="5" rx="1" fill="white"/></svg>
+          Case studies
+        </div>
+        <a class="dp-head-link" href="combo_casestudies.html">Svi projekti →</a>
+      </div>
+      <div class="dp-slide-wrap">
+        <div class="dp-slide dp-slide-cs active">
+          <div><span class="dp-cat" style="color:#93c5fd;background:rgba(55,138,221,0.2)">Microsoft 365</span>
+          <div class="dp-title">Migracija 65 korisnika sa Exchange na M365 — bez ijednog sata downtime-a</div>
+          <div class="dp-kpis"><div class="dp-kpi"><div class="dp-kpi-num" style="color:#378ADD">0h</div><div class="dp-kpi-lbl">downtime</div></div><div class="dp-kpi"><div class="dp-kpi-num" style="color:#378ADD">65</div><div class="dp-kpi-lbl">korisnika</div></div><div class="dp-kpi"><div class="dp-kpi-num" style="color:#378ADD">2 dana</div><div class="dp-kpi-lbl">trajanje</div></div></div></div>
+          <div class="dp-footer-cs"><span class="dp-client">Manufacturing firma · 2024</span><a class="dp-btn-cs" href="combo_casestudies.html">Čitajte →</a></div>
+        </div>
+        <div class="dp-slide dp-slide-cs">
+          <div><span class="dp-cat" style="color:#c4b5fd;background:rgba(124,58,237,0.22)">Azure</span>
+          <div class="dp-title">Azure migracija — 38% niži troškovi infrastrukture posle cloud prelaska</div>
+          <div class="dp-kpis"><div class="dp-kpi"><div class="dp-kpi-num" style="color:#a78bfa">38%</div><div class="dp-kpi-lbl">ušteda</div></div><div class="dp-kpi"><div class="dp-kpi-num" style="color:#a78bfa">12 VM</div><div class="dp-kpi-lbl">migriranih</div></div><div class="dp-kpi"><div class="dp-kpi-num" style="color:#a78bfa">99.95%</div><div class="dp-kpi-lbl">uptime</div></div></div></div>
+          <div class="dp-footer-cs"><span class="dp-client">Tech kompanija · 2024</span><a class="dp-btn-cs" href="combo_casestudies.html">Čitajte →</a></div>
+        </div>
+        <div class="dp-slide dp-slide-cs">
+          <div><span class="dp-cat" style="color:#67e8f9;background:rgba(8,145,178,0.22)">Mreže</span>
+          <div class="dp-title">Redesign mreže za 3 kancelarije — 99.9% uptime u prvih 12 meseci</div>
+          <div class="dp-kpis"><div class="dp-kpi"><div class="dp-kpi-num" style="color:#67e8f9">99.9%</div><div class="dp-kpi-lbl">uptime</div></div><div class="dp-kpi"><div class="dp-kpi-num" style="color:#67e8f9">3</div><div class="dp-kpi-lbl">lokacije</div></div><div class="dp-kpi"><div class="dp-kpi-num" style="color:#67e8f9">120</div><div class="dp-kpi-lbl">korisnika</div></div></div></div>
+          <div class="dp-footer-cs"><span class="dp-client">Distributivna firma · 2023</span><a class="dp-btn-cs" href="combo_casestudies.html">Čitajte →</a></div>
+        </div>
+        <div class="dp-slide dp-slide-cs">
+          <div><span class="dp-cat" style="color:#fca5a5;background:rgba(220,38,38,0.22)">Security</span>
+          <div class="dp-title">Sophos EDR posle ransomware incidenta — 0 bezbednosnih incidenata od tada</div>
+          <div class="dp-kpis"><div class="dp-kpi"><div class="dp-kpi-num" style="color:#fca5a5">0</div><div class="dp-kpi-lbl">incidenata</div></div><div class="dp-kpi"><div class="dp-kpi-num" style="color:#fca5a5">45</div><div class="dp-kpi-lbl">uređaja</div></div><div class="dp-kpi"><div class="dp-kpi-num" style="color:#fca5a5">&lt;1h</div><div class="dp-kpi-lbl">response</div></div></div></div>
+          <div class="dp-footer-cs"><span class="dp-client">Farmaceutska firma · 2023</span><a class="dp-btn-cs" href="combo_casestudies.html">Čitajte →</a></div>
+        </div>
+        <div class="dp-slide dp-slide-cs">
+          <div><span class="dp-cat" style="color:#86efac;background:rgba(22,163,74,0.22)">Intune MDM</span>
+          <div class="dp-title">Intune MDM za 40 korisnika na hibridnom radu — 100% device compliance</div>
+          <div class="dp-kpis"><div class="dp-kpi"><div class="dp-kpi-num" style="color:#4ade80">40</div><div class="dp-kpi-lbl">uređaja</div></div><div class="dp-kpi"><div class="dp-kpi-num" style="color:#4ade80">100%</div><div class="dp-kpi-lbl">compliance</div></div><div class="dp-kpi"><div class="dp-kpi-num" style="color:#4ade80">0</div><div class="dp-kpi-lbl">incidenata</div></div></div></div>
+          <div class="dp-footer-cs"><span class="dp-client">Marketing agencija · 2024</span><a class="dp-btn-cs" href="combo_casestudies.html">Čitajte →</a></div>
+        </div>
+        <div class="dp-slide dp-slide-cs">
+          <div><span class="dp-cat" style="color:#fcd34d;background:rgba(217,119,6,0.22)">IT setup</span>
+          <div class="dp-title">Call centar od nule — 80 radnih stanica za tačno 3 nedelje</div>
+          <div class="dp-kpis"><div class="dp-kpi"><div class="dp-kpi-num" style="color:#fcd34d">80</div><div class="dp-kpi-lbl">stanica</div></div><div class="dp-kpi"><div class="dp-kpi-num" style="color:#fcd34d">3 ned.</div><div class="dp-kpi-lbl">trajanje</div></div><div class="dp-kpi"><div class="dp-kpi-num" style="color:#fcd34d">0</div><div class="dp-kpi-lbl">kašnjenja</div></div></div></div>
+          <div class="dp-footer-cs"><span class="dp-client">Call centar · 2023</span><a class="dp-btn-cs" href="combo_casestudies.html">Čitajte →</a></div>
+        </div>
+      </div>
+      <div class="dp-nav dp-nav-cs">
+        <div class="dp-dots" id="csDots2"></div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="dp-cnt dp-cnt-cs" id="csCnt2">1 / 6</span>
+          <div class="dp-arrows">
+            <button class="dp-arr dp-arr-cs" id="csPrev2">←</button>
+            <button class="dp-arr dp-arr-cs" id="csNext2">→</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ BLOG PANEL ══ -->
+    <div class="dpanel dpanel-blog">
+      <div class="dp-head" style="background:#111">
+        <div class="dp-head-title">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="0.5" y="2" width="12" height="1.5" rx="0.5" fill="white"/><rect x="0.5" y="5.5" width="9" height="1.5" rx="0.5" fill="rgba(255,255,255,0.5)"/><rect x="0.5" y="9" width="6.5" height="1.5" rx="0.5" fill="rgba(255,255,255,0.3)"/></svg>
+          Blog
+        </div>
+        <a class="dp-head-link" href="combo_blog.html">Svi članci →</a>
+      </div>
+      <div class="dp-slide-wrap">
+        <div class="dp-slide dp-slide-blog active">
+          <div><span class="dp-cat-blog" style="color:#0c447c;background:#e6f1fb">IT administracija</span>
+          <div class="dp-title-blog">Šta radi IT administrator u maloj firmi — i zašto svaka firma to treba?</div>
+          <div class="dp-excerpt">Sistem administrator nije samo "popravljanje kompjutera". Brine o celoj IT infrastrukturi — od backupa do onboardinga. Šta tačno dobijate.</div></div>
+          <div class="dp-footer-blog"><span class="dp-bmeta">15. april 2026. · 8 min</span><a class="dp-btn-blog" href="combo_blog.html">Čitajte →</a></div>
+        </div>
+        <div class="dp-slide dp-slide-blog">
+          <div><span class="dp-cat-blog" style="color:#085041;background:#e1f5ee">IT outsourcing</span>
+          <div class="dp-title-blog">IT outsourcing vs. zapošljavanje IT administratora — šta je isplativije?</div>
+          <div class="dp-excerpt">Realna kalkulacija troškova za oba modela za firme do 50 zaposlenih. Rezultati mogu da iznenade.</div></div>
+          <div class="dp-footer-blog"><span class="dp-bmeta">28. mart 2026. · 6 min</span><a class="dp-btn-blog" href="combo_blog.html">Čitajte →</a></div>
+        </div>
+        <div class="dp-slide dp-slide-blog">
+          <div><span class="dp-cat-blog" style="color:#4c1d95;background:#ede9fe">Onboarding</span>
+          <div class="dp-title-blog">Onboarding novog zaposlenog — kompletna IT checklista za firme</div>
+          <div class="dp-excerpt">Mail, laptop, Teams, pristup folderima — sve za 2 sata. Bez standardizovanog procesa, prve nedelje su haotične.</div></div>
+          <div class="dp-footer-blog"><span class="dp-bmeta">10. mart 2026. · 5 min</span><a class="dp-btn-blog" href="combo_blog.html">Čitajte →</a></div>
+        </div>
+        <div class="dp-slide dp-slide-blog">
+          <div><span class="dp-cat-blog" style="color:#164e63;background:#e0f2fe">Mreže</span>
+          <div class="dp-title-blog">Šta radi mrežni administrator i kada vaša firma zaista treba jednog?</div>
+          <div class="dp-excerpt">Wi-Fi pada, VPN ne radi — simptomi loše mrežne infrastrukture. Neophodnost čim firma pređe 10-15 zaposlenih.</div></div>
+          <div class="dp-footer-blog"><span class="dp-bmeta">20. feb 2026. · 7 min</span><a class="dp-btn-blog" href="combo_blog.html">Čitajte →</a></div>
+        </div>
+        <div class="dp-slide dp-slide-blog">
+          <div><span class="dp-cat-blog" style="color:#7f1d1d;background:#fee2e2">Security</span>
+          <div class="dp-title-blog">Sophos vs. Panda — šta smo naučili posle 3 godine korišćenja oba</div>
+          <div class="dp-excerpt">Iskreno poređenje iz prakse — bez marketinških floskula. Svako rešenje ima prednosti zavisno od veličine firme.</div></div>
+          <div class="dp-footer-blog"><span class="dp-bmeta">5. feb 2026. · 6 min</span><a class="dp-btn-blog" href="combo_blog.html">Čitajte →</a></div>
+        </div>
+        <div class="dp-slide dp-slide-blog">
+          <div><span class="dp-cat-blog" style="color:#78350f;background:#fef3c7">Microsoft 365</span>
+          <div class="dp-title-blog">Microsoft 365 za mala preduzeća — kompletan vodič za 2026.</div>
+          <div class="dp-excerpt">M365 je daleko više od maila i Worda. Za firme do 50 zaposlenih može zameniti 3-4 zasebne pretplate.</div></div>
+          <div class="dp-footer-blog"><span class="dp-bmeta">20. jan 2026. · 9 min</span><a class="dp-btn-blog" href="combo_blog.html">Čitajte →</a></div>
+        </div>
+      </div>
+      <div class="dp-nav dp-nav-blog">
+        <div class="dp-dots" id="blogDots2"></div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="dp-cnt dp-cnt-blog" id="blogCnt2">1 / 6</span>
+          <div class="dp-arrows">
+            <button class="dp-arr dp-arr-blog" id="blogPrev2">←</button>
+            <button class="dp-arr dp-arr-blog" id="blogNext2">→</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ TESTIMONIALS PANEL ══ -->
+    <div class="dpanel" style="background:#fff">
+      <div class="dp-head" style="background:#1a1a2e;border-bottom:1px solid rgba(255,255,255,0.08)">
+        <div class="dp-head-title">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1.5 5C1.5 3.3 2.9 2 4.5 2H5c.8 0 1.5.7 1.5 1.5S5.8 5 5 5h-.5C4.5 6.1 5.4 7 6.5 7v1C3.7 8 1.5 6.7 1.5 5z" fill="white"/><path d="M7.5 5C7.5 3.3 8.9 2 10.5 2H11c.8 0 1.5.7 1.5 1.5S11.8 5 11 5h-.5C10.5 6.1 11.4 7 12.5 7v1C9.7 8 7.5 6.7 7.5 5z" fill="rgba(255,255,255,0.45)"/></svg>
+          Rekli su o nama
+        </div>
+        <span style="font-size:12px;color:rgba(255,255,255,0.3)">Klijenti</span>
+      </div>
+      <div class="dp-slide-wrap">
+
+        <div class="dp-slide dp-slide-test active">
+          <div>
+            <div class="test-quote">"Combo IT tim je naš IT sektor već godinama. Kad nešto zatreba — oni su tu. Bez pardona, bez čekanja."</div>
+            <div class="test-stars">★★★★★</div>
+          </div>
+          <div class="test-author">
+            <div class="test-avatar" style="background:#e6f1fb;color:#185FA5">NM</div>
+            <div><div class="test-name">Novak Marinković</div><div class="test-role">Innovation Director · EyeSee</div></div>
+          </div>
+        </div>
+
+        <div class="dp-slide dp-slide-test">
+          <div>
+            <div class="test-quote">"Profesionalan tim koji razume šta znači kada IT ne radi. Brzi, precizni, pouzdani — preporučujem svima."</div>
+            <div class="test-stars">★★★★★</div>
+          </div>
+          <div class="test-author">
+            <div class="test-avatar" style="background:#e1f5ee;color:#0F6E56">IP</div>
+            <div><div class="test-name">Ivan Pribićević</div><div class="test-role">Vlasnik · Simplify</div></div>
+          </div>
+        </div>
+
+        <div class="dp-slide dp-slide-test">
+          <div>
+            <div class="test-quote">"Migracija na Microsoft 365 je prošla bez ijednog sata zastoja. Nismo ni primetili da se nešto desilo — a to je najveći kompliment."</div>
+            <div class="test-stars">★★★★★</div>
+          </div>
+          <div class="test-author">
+            <div class="test-avatar" style="background:#faeeda;color:#854F0B">TV</div>
+            <div><div class="test-name">Termovent</div><div class="test-role">Part of Midea Group</div></div>
+          </div>
+        </div>
+
+        <div class="dp-slide dp-slide-test">
+          <div>
+            <div class="test-quote">"Kao preduzetnik, ne mogu da gubim vreme na IT probleme. Combo IT to zna i ponaša se shodno tome."</div>
+            <div class="test-stars">★★★★★</div>
+          </div>
+          <div class="test-author">
+            <div class="test-avatar" style="background:#ede9fe;color:#6d28d9">MP</div>
+            <div><div class="test-name">Miloš Perović</div><div class="test-role">Entrepreneur</div></div>
+          </div>
+        </div>
+
+      </div>
+      <div class="dp-nav" style="border-top:1px solid #eaeae8">
+        <div class="dp-dots" id="testDots"></div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="dp-cnt" style="color:#bbb" id="testCnt">1 / 4</span>
+          <div class="dp-arrows">
+            <button class="dp-arr dp-arr-blog" id="testPrev">←</button>
+            <button class="dp-arr dp-arr-blog" id="testNext">→</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- KLIJENTSKI PORTAL -->
+<div class="section" style="background:#fff;border-top:1px solid #eaeae8">
+  <div class="eyebrow">Za postojeće klijente</div>
+  <div class="sec-title">Klijentski portal</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:800px">
+    <a href="https://comboit.freshdesk.com" target="_blank" style="text-decoration:none;display:flex;gap:16px;align-items:flex-start;background:#f7f7f5;border:1px solid #eaeae8;border-radius:12px;padding:22px;transition:all .2s" onmouseover="this.style.borderColor='#1a5fd4';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='#eaeae8';this.style.transform='none'">
+      <div style="width:44px;height:44px;border-radius:10px;background:#e6f1fb;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="13" rx="2" stroke="#185FA5" stroke-width="1.5" fill="none"/><path d="M6 9h4M6 12h8" stroke="#185FA5" stroke-width="1.3" stroke-linecap="round"/><circle cx="15" cy="5" r="3" fill="#dc2626"/></svg>
+      </div>
+      <div>
+        <div style="font-size:15px;font-weight:600;color:#1a1a1a;margin-bottom:5px">Prijavite problem</div>
+        <div style="font-size:13px;color:#666;line-height:1.55">Otvorite novi tiket — opisite problem i naš tim se javlja u roku od 2 sata.</div>
+        <div style="font-size:12px;color:#1a5fd4;margin-top:8px;font-weight:500">Otvorite tiket →</div>
+      </div>
+    </a>
+    <a href="https://comboit.freshdesk.com" target="_blank" style="text-decoration:none;display:flex;gap:16px;align-items:flex-start;background:#f7f7f5;border:1px solid #eaeae8;border-radius:12px;padding:22px;transition:all .2s" onmouseover="this.style.borderColor='#1a5fd4';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='#eaeae8';this.style.transform='none'">
+      <div style="width:44px;height:44px;border-radius:10px;background:#e1f5ee;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#0F6E56" stroke-width="1.5" fill="none"/><path d="M10 7v4l2.5 1.5" stroke="#0F6E56" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+      </div>
+      <div>
+        <div style="font-size:15px;font-weight:600;color:#1a1a1a;margin-bottom:5px">Status tiketa</div>
+        <div style="font-size:13px;color:#666;line-height:1.55">Pratite napredak otvorenih tiketa i pregledajte istorijat zahteva.</div>
+        <div style="font-size:12px;color:#1a5fd4;margin-top:8px;font-weight:500">Proverite status →</div>
+      </div>
+    </a>
+  </div>
+  <div style="margin-top:14px;font-size:13px;color:#aaa;display:flex;align-items:center;gap:8px">
+    <span style="width:7px;height:7px;border-radius:50%;background:#10b981;display:inline-block"></span>
+    Prosečno vreme prvog odgovora: <strong style="color:#555">&lt;2h</strong> · Urgentni problemi: <strong style="color:#555">odmah</strong> · Sistem radi na <strong style="color:#555">Freshdesk</strong> platformi
+  </div>
+</div>
+
+<!-- KLIJENTSKI PORTAL -->
+<div class="section" style="background:#0d1a2e;border-top:none">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center">
+    <div>
+      <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.7px;color:#85b7eb;margin-bottom:10px">Za postojeće klijente</div>
+      <div style="font-size:26px;font-weight:700;color:#fff;letter-spacing:-0.4px;margin-bottom:10px">Prijavite problem ili zahtev</div>
+      <div style="font-size:15px;color:rgba(255,255,255,0.55);line-height:1.65;margin-bottom:24px">Brzo prijavljivanje tiketa direktno našem timu. Prosečno vreme prvog odgovora ispod 2 sata — za urgentne situacije odmah.</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <a href="https://comboit.freshdesk.com" target="_blank" style="display:inline-flex;align-items:center;gap:10px;padding:14px 20px;background:#1a5fd4;border-radius:9px;text-decoration:none;transition:background .15s">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="3" stroke="white" stroke-width="1.5" fill="none"/><path d="M6 7h6M6 10h4" stroke="white" stroke-width="1.3" stroke-linecap="round"/></svg>
+          <div><div style="font-size:14px;font-weight:600;color:#fff">Otvorite novi tiket</div><div style="font-size:11px;color:rgba(255,255,255,0.55);margin-top:1px">Freshdesk klijentski portal</div></div>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="margin-left:auto"><path d="M3 7h8M7 3l4 4-4 4" stroke="white" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+        </a>
+        <a href="tel:+381114209242" style="display:inline-flex;align-items:center;gap:10px;padding:14px 20px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:9px;text-decoration:none">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 4a1 1 0 011-1h2.5l1 3-1.5 1.5a11 11 0 005.5 5.5L13 11.5l3 1V15a1 1 0 01-1 1C7 16 2 11 2 5a1 1 0 011-1z" stroke="white" stroke-width="1.5" fill="none" stroke-linejoin="round"/></svg>
+          <div><div style="font-size:14px;font-weight:600;color:#fff">+381 11 420 9242</div><div style="font-size:11px;color:rgba(255,255,255,0.55);margin-top:1px">Urgentna podrška · radnim danima</div></div>
+        </a>
+        <a href="mailto:support@combo.rs" style="display:inline-flex;align-items:center;gap:10px;padding:14px 20px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:9px;text-decoration:none">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="10" rx="2" stroke="white" stroke-width="1.5" fill="none"/><path d="M2 7l7 4.5L16 7" stroke="white" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+          <div><div style="font-size:14px;font-weight:600;color:#fff">support@combo.rs</div><div style="font-size:11px;color:rgba(255,255,255,0.55);margin-top:1px">Email podrška</div></div>
+        </a>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:14px">
+        <div style="width:36px;height:36px;border-radius:8px;background:rgba(55,138,221,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#378ADD" stroke-width="1.5" fill="none"/><path d="M8 5v3l2 1.5" stroke="#378ADD" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+        </div>
+        <div><div style="font-size:20px;font-weight:700;color:#fff;letter-spacing:-0.4px">&lt;2h</div><div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px">prosečno vreme prvog odgovora</div></div>
+      </div>
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:14px">
+        <div style="width:36px;height:36px;border-radius:8px;background:rgba(16,185,129,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#10b981" stroke-width="1.5" fill="none"/><path d="M5 8l2 2 4-4" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+        </div>
+        <div><div style="font-size:20px;font-weight:700;color:#fff;letter-spacing:-0.4px">94%</div><div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px">tiketa rešeno unutar SLA roka</div></div>
+      </div>
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:14px">
+        <div style="width:36px;height:36px;border-radius:8px;background:rgba(124,58,237,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5.5" r="2.5" stroke="#a78bfa" stroke-width="1.5" fill="none"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#a78bfa" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+        </div>
+        <div><div style="font-size:20px;font-weight:700;color:#fff;letter-spacing:-0.4px">8</div><div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px">IT administratora dostupnih vama</div></div>
+      </div>
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:14px">
+        <div style="width:36px;height:36px;border-radius:8px;background:rgba(251,191,36,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="9" width="3" height="5" rx="0.5" fill="#fbbf24"/><rect x="6.5" y="6" width="3" height="8" rx="0.5" fill="#fbbf24"/><rect x="11" y="3" width="3" height="11" rx="0.5" fill="#fbbf24"/></svg>
+        </div>
+        <div><div style="font-size:20px;font-weight:700;color:#fff;letter-spacing:-0.4px">87%</div><div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px">first-call resolution</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ISO 27001 -->
+<div style="background:#0a1628;padding:36px 56px;border-top:1px solid rgba(255,255,255,0.06)">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:32px">
+    <div style="display:flex;align-items:center;gap:24px">
+      <div style="background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);border-radius:12px;padding:16px 20px;text-align:center;flex-shrink:0">
+        <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:#6ee7b7">ISO/IEC</div>
+        <div style="font-size:28px;font-weight:800;color:#fff;letter-spacing:-1px;line-height:1">27001</div>
+        <div style="font-size:9px;color:rgba(255,255,255,0.35);margin-top:4px;letter-spacing:0.3px">IN PROGRESS</div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.7px;color:#6ee7b7;margin-bottom:6px">Bezbednost informacija</div>
+        <div style="font-size:18px;font-weight:600;color:#fff;letter-spacing:-0.3px;margin-bottom:8px">Combo IT je u procesu ISO 27001 sertifikacije</div>
+        <div style="font-size:14px;color:rgba(255,255,255,0.5);max-width:480px;line-height:1.6">Međunarodni standard koji garantuje da vaši podaci, sistemi i procesi upravljanja bezbednošću informacija zadovoljavaju najviše standarde.</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;flex-shrink:0">
+      <a href="combo_iso27001.html" style="padding:11px 22px;font-size:13px;font-weight:600;background:#10b981;color:#fff;border-radius:7px;text-decoration:none;white-space:nowrap;text-align:center">Šta to znači za vas →</a>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <span style="font-size:11px;padding:3px 9px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);border-radius:4px;color:#6ee7b7">Bezbednost podataka</span>
+        <span style="font-size:11px;padding:3px 9px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);border-radius:4px;color:#6ee7b7">GDPR compliance</span>
+        <span style="font-size:11px;padding:3px 9px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);border-radius:4px;color:#6ee7b7">Incident response</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- KLIJENTSKI PORTAL -->
+<div class="section" style="background:#0d1a2e;border-top:none">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center">
+    <div>
+      <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.7px;color:#85b7eb;margin-bottom:10px">Za postojeće klijente</div>
+      <div style="font-size:26px;font-weight:700;color:#fff;letter-spacing:-0.4px;margin-bottom:10px">Prijavite problem ili zahtev</div>
+      <div style="font-size:15px;color:rgba(255,255,255,0.55);line-height:1.65;margin-bottom:24px">Brzo prijavljivanje tiketa direktno našem timu. Prosečno vreme prvog odgovora ispod 2 sata — za urgentne situacije odmah.</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <a href="https://comboit.freshdesk.com" target="_blank" style="display:inline-flex;align-items:center;gap:10px;padding:14px 20px;background:#1a5fd4;border-radius:9px;text-decoration:none;transition:background .15s">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="3" stroke="white" stroke-width="1.5" fill="none"/><path d="M6 7h6M6 10h4" stroke="white" stroke-width="1.3" stroke-linecap="round"/></svg>
+          <div><div style="font-size:14px;font-weight:600;color:#fff">Otvorite novi tiket</div><div style="font-size:11px;color:rgba(255,255,255,0.55);margin-top:1px">Freshdesk klijentski portal</div></div>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="margin-left:auto"><path d="M3 7h8M7 3l4 4-4 4" stroke="white" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+        </a>
+        <a href="tel:+381114209242" style="display:inline-flex;align-items:center;gap:10px;padding:14px 20px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:9px;text-decoration:none">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 4a1 1 0 011-1h2.5l1 3-1.5 1.5a11 11 0 005.5 5.5L13 11.5l3 1V15a1 1 0 01-1 1C7 16 2 11 2 5a1 1 0 011-1z" stroke="white" stroke-width="1.5" fill="none" stroke-linejoin="round"/></svg>
+          <div><div style="font-size:14px;font-weight:600;color:#fff">+381 11 420 9242</div><div style="font-size:11px;color:rgba(255,255,255,0.55);margin-top:1px">Urgentna podrška · radnim danima</div></div>
+        </a>
+        <a href="mailto:support@combo.rs" style="display:inline-flex;align-items:center;gap:10px;padding:14px 20px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:9px;text-decoration:none">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="10" rx="2" stroke="white" stroke-width="1.5" fill="none"/><path d="M2 7l7 4.5L16 7" stroke="white" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+          <div><div style="font-size:14px;font-weight:600;color:#fff">support@combo.rs</div><div style="font-size:11px;color:rgba(255,255,255,0.55);margin-top:1px">Email podrška</div></div>
+        </a>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:14px">
+        <div style="width:36px;height:36px;border-radius:8px;background:rgba(55,138,221,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#378ADD" stroke-width="1.5" fill="none"/><path d="M8 5v3l2 1.5" stroke="#378ADD" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+        </div>
+        <div><div style="font-size:20px;font-weight:700;color:#fff;letter-spacing:-0.4px">&lt;2h</div><div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px">prosečno vreme prvog odgovora</div></div>
+      </div>
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:14px">
+        <div style="width:36px;height:36px;border-radius:8px;background:rgba(16,185,129,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#10b981" stroke-width="1.5" fill="none"/><path d="M5 8l2 2 4-4" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+        </div>
+        <div><div style="font-size:20px;font-weight:700;color:#fff;letter-spacing:-0.4px">94%</div><div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px">tiketa rešeno unutar SLA roka</div></div>
+      </div>
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:14px">
+        <div style="width:36px;height:36px;border-radius:8px;background:rgba(124,58,237,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5.5" r="2.5" stroke="#a78bfa" stroke-width="1.5" fill="none"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#a78bfa" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+        </div>
+        <div><div style="font-size:20px;font-weight:700;color:#fff;letter-spacing:-0.4px">8</div><div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px">IT administratora dostupnih vama</div></div>
+      </div>
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:14px">
+        <div style="width:36px;height:36px;border-radius:8px;background:rgba(251,191,36,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="9" width="3" height="5" rx="0.5" fill="#fbbf24"/><rect x="6.5" y="6" width="3" height="8" rx="0.5" fill="#fbbf24"/><rect x="11" y="3" width="3" height="11" rx="0.5" fill="#fbbf24"/></svg>
+        </div>
+        <div><div style="font-size:20px;font-weight:700;color:#fff;letter-spacing:-0.4px">87%</div><div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px">first-call resolution</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ISO 27001 -->
+<div class="section border-t" style="background:#f0fdf4;border-top:1px solid #bbf7d0;border-bottom:1px solid #bbf7d0">
+  <div style="display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center">
+    <div>
+      <div style="display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.7px;color:#10b981;margin-bottom:10px">
+        <span style="width:6px;height:6px;border-radius:50%;background:#10b981;animation:pulse 2s infinite;display:inline-block"></span>
+        Bezbednost informacija
+      </div>
+      <div style="font-size:24px;font-weight:700;color:#1a1a1a;letter-spacing:-0.3px;margin-bottom:10px">ISO 27001 — vaši podaci u sigurnim rukama</div>
+      <div style="font-size:15px;color:#166534;line-height:1.65;max-width:560px">Combo IT je u procesu dobijanja ISO 27001 sertifikata — međunarodnog standarda za upravljanje bezbednošću informacija. Svaki podatak koji nam poverite tretiramo po strogo definisanim procedurama: kontrola pristupa, incident response, business continuity, GDPR usklađenost.</div>
+      <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap">
+        <a href="combo_iso27001.html" style="display:inline-flex;align-items:center;gap:6px;padding:9px 20px;background:#10b981;color:#fff;border-radius:7px;font-size:13px;font-weight:600;text-decoration:none">Šta to znači za vaše podatke →</a>
+        <span style="display:inline-flex;align-items:center;gap:6px;padding:9px 16px;background:#e1f5ee;border:1px solid #bbf7d0;border-radius:7px;font-size:12px;color:#085041;font-weight:500">✓ Kontrola pristupa</span>
+        <span style="display:inline-flex;align-items:center;gap:6px;padding:9px 16px;background:#e1f5ee;border:1px solid #bbf7d0;border-radius:7px;font-size:12px;color:#085041;font-weight:500">✓ Incident response plan</span>
+        <span style="display:inline-flex;align-items:center;gap:6px;padding:9px 16px;background:#e1f5ee;border:1px solid #bbf7d0;border-radius:7px;font-size:12px;color:#085041;font-weight:500">✓ GDPR usklađenost</span>
+        <span style="display:inline-flex;align-items:center;gap:6px;padding:9px 16px;background:#e1f5ee;border:1px solid #bbf7d0;border-radius:7px;font-size:12px;color:#085041;font-weight:500">✓ Business continuity</span>
+      </div>
+    </div>
+    <div style="text-align:center;background:#fff;border:1px solid #bbf7d0;border-radius:14px;padding:28px 32px;flex-shrink:0">
+      <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:#10b981;margin-bottom:4px">ISO/IEC</div>
+      <div style="font-size:48px;font-weight:800;color:#1a1a1a;letter-spacing:-3px;line-height:1">27001</div>
+      <div style="font-size:10px;color:#888;margin-top:6px;letter-spacing:0.5px;line-height:1.4">INFORMATION SECURITY<br>MANAGEMENT</div>
+      <div style="display:inline-block;margin-top:12px;font-size:11px;font-weight:600;padding:4px 12px;background:#e1f5ee;color:#085041;border-radius:20px;border:1px solid #bbf7d0">Sertifikacija u toku</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <div>
+    <h2>Zakažite 30 minuta — besplatno.</h2>
+    <p>Razgovor ne košta ništa. Loša IT infrastruktura — košta mnogo. Procenimo zajedno gde ste i šta treba da se uradi.</p>
+  </div>
+  <div class="cta-btns">
+    <a class="btn-white" href="#">Zakažite poziv</a>
+    <a class="btn-outline" href="mailto:office@combo.rs">office@combo.rs</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <a class="logo" href="#">
+        <div class="logo-box" style="width:28px;height:28px"><svg viewBox="0 0 20 20" fill="none" width="16" height="16"><rect x="2" y="2" width="7" height="7" rx="2" fill="white"/><rect x="11" y="2" width="7" height="7" rx="2" fill="rgba(255,255,255,0.45)"/><rect x="2" y="11" width="7" height="7" rx="2" fill="rgba(255,255,255,0.45)"/><rect x="11" y="11" width="7" height="7" rx="2" fill="white"/></svg></div>
+        <span class="logo-text" style="font-size:15px">Combo<span>.</span></span>
+      </a>
+      <div class="ft-brand-desc">IT usluge za mala, srednja i velika preduzeća u Srbiji od 2016. godine.</div>
+      <div class="ft-contact">
+        <a href="mailto:office@combo.rs">office@combo.rs</a><br>
+        <a href="mailto:support@combo.rs">support@combo.rs</a><br>
+        +381 11 420 9242<br>
+        +381 63 681 403<br>
+        Beograd, Srbija
+      </div>
+    </div>
+    <div class="ft-col">
+      <h4>Usluge</h4>
+      <a href="#">IT administracija</a>
+      <a href="#">Cloud rešenja</a>
+      <a href="#">Mreže</a>
+      <a href="#">Licenciranje</a>
+      <a href="#">IT consulting</a>
+      <a href="#">Web izrada</a>
+    </div>
+    <div class="ft-col">
+      <h4>Kompanija</h4>
+      <a href="combo_tim.html">O nama</a>
+      <a href="#">Tim</a>
+      <a href="combo_casestudies.html">Case studies</a>
+      <a href="combo_blog.html">Blog</a>
+      <a href="#">Kontakt</a>
+    </div>
+    <div class="ft-col">
+      <h4>Microsoft</h4>
+      <a href="#">Microsoft 365</a>
+      <a href="#">Azure</a>
+      <a href="#">Teams</a>
+      <a href="#">Intune / MDM</a>
+      <a href="#">SharePoint</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="ft-copy">© 2026 Combo IT · PIB: 112211110 · MB: 21627917</span>
+    <div class="ft-certs">
+      <span class="ft-cert" style="color:#085041;background:#e1f5ee;border-color:#bbf7d0">ISO 27001</span><span class="ft-cert" style="color:#085041;background:#e1f5ee;border-color:#bbf7d0"><a href="combo_iso27001.html" style="color:inherit;text-decoration:none">ISO 27001 ↗</a></span><span class="ft-cert">MS Partner</span>
+      <span class="ft-cert">Sophos</span>
+      <span class="ft-cert">Panda</span>
+      <span class="ft-cert">MikroTik MTCRE</span>
+      <span class="ft-cert">Cisco SMB</span>
+      <span class="ft-cert">HP · Dell · Lenovo</span>
+      <span class="ft-cert">Ubiquiti</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+let cur = 0;
+const slides = document.querySelectorAll('.hero-slide');
+const dots = document.querySelectorAll('.dot');
+const counter = document.getElementById('counter');
+
+
+function showSeg(n) {
+  document.querySelectorAll('.seg-tab').forEach((t,i) => t.classList.toggle('active', i===n));
+  document.querySelectorAll('.seg-panel').forEach((p,i) => p.classList.toggle('active', i===n));
+}
+
+function goSlide(n) {
+  slides[cur].classList.remove('active');
+  dots[cur].classList.remove('active');
+  cur = n;
+  slides[cur].classList.add('active');
+  dots[cur].classList.add('active');
+  counter.textContent = (cur + 1) + ' / ' + slides.length;
+}
+
+// ── DUAL PANEL SLIDERS ──
+function makeDualSlider(cfg) {
+  const slides = document.querySelectorAll(cfg.sel);
+  const dotsEl = document.getElementById(cfg.dotsId);
+  const cntEl  = document.getElementById(cfg.cntId);
+  const prevEl = document.getElementById(cfg.prevId);
+  const nextEl = document.getElementById(cfg.nextId);
+  const n = slides.length;
+  let cur = 0;
+  const dots = [];
+  for (let i = 0; i < n; i++) {
+    const d = document.createElement('button');
+    d.className = 'dp-dot ' + cfg.dotClass + (i === 0 ? ' on' : '');
+    d.onclick = () => go(i);
+    dotsEl.appendChild(d);
+    dots.push(d);
+  }
+  function go(i) {
+    slides[cur].classList.remove('active');
+    dots[cur].classList.remove('on');
+    cur = (i + n) % n;
+    slides[cur].classList.add('active');
+    dots[cur].classList.add('on');
+    cntEl.textContent = (cur + 1) + ' / ' + n;
+  }
+  prevEl.onclick = () => go(cur - 1);
+  nextEl.onclick = () => go(cur + 1);
+  setInterval(() => go(cur + 1), cfg.ms);
+}
+makeDualSlider({ sel: '.dp-slide-cs',   dotsId: 'csDots2',   cntId: 'csCnt2',   prevId: 'csPrev2',   nextId: 'csNext2',   dotClass: 'dp-dot-cs',   ms: 5000 });
+makeDualSlider({ sel: '.dp-slide-blog', dotsId: 'blogDots2', cntId: 'blogCnt2', prevId: 'blogPrev2', nextId: 'blogNext2', dotClass: 'dp-dot-blog', ms: 4300 });
+makeDualSlider({ sel: '.dp-slide-test', dotsId: 'testDots', cntId: 'testCnt', prevId: 'testPrev', nextId: 'testNext', dotClass: 'dp-dot-blog', ms: 6000 });
+
+
+const brandData = {
+  microsoft: {
+    color: '#0078d4',
+    bg: '#f0f4ff',
+    logo: '<svg width="28" height="28" viewBox="0 0 21 21" fill="none"><rect x="1" y="1" width="9" height="9" fill="#f25022"/><rect x="11" y="1" width="9" height="9" fill="#7fba00"/><rect x="1" y="11" width="9" height="9" fill="#00a4ef"/><rect x="11" y="11" width="9" height="9" fill="#ffb900"/></svg>',
+    name: 'Microsoft', badge: 'CSP Partner',
+    badgeStyle: 'color:#0c447c;background:#e6f1fb',
+    intro: 'Combo IT je Microsoft CSP (Cloud Solution Provider) partner, što znači da možemo nabavljati i upravljati Microsoft licencama direktno, sa povoljnijim uslovima od direktne kupovine.',
+    products: [
+      { name: 'Microsoft 365', desc: 'Kompletno Office okruženje u cloudu — Exchange, Teams, Word, Excel, PowerPoint, OneDrive. Planovi: Business Basic, Standard, Premium.' },
+      { name: 'Exchange Online', desc: 'Poslovni email u Microsoft cloudu sa 50GB mailboxom, shared mailboxima, kalendarima i distribution listama.' },
+      { name: 'SharePoint Online', desc: 'Intranet i document management platforma — centralizovano mesto za sve interne dokumente i procese.' },
+      { name: 'Microsoft Azure', desc: 'Cloud infrastruktura — virtualne mašine, Azure SQL, Blob Storage, Azure Backup, monitoring i skalabilna arhitektura.' },
+      { name: 'Microsoft Intune', desc: 'MDM rešenje za upravljanje svim uređajima (Windows, macOS, iOS, Android) — compliance politike, remote wipe, Autopilot.' },
+    ]
+  },
+  sophos: {
+    color: '#cc0000',
+    bg: '#fff5f5',
+    logo: '<svg width="28" height="28" viewBox="0 0 20 20" fill="none"><path d="M10 2C5.6 2 2 5.6 2 10s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8z" fill="#cc0000"/><path d="M6 10l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>',
+    name: 'Sophos', badge: 'Partner',
+    badgeStyle: 'color:#7f1d1d;background:#fee2e2',
+    intro: 'Sophos je industrijski lider u oblasti endpoint bezbednosti i next-gen firewall rešenjima. Koristimo Sophos kod klijenata sa ozbiljnim bezbednosnim zahtevima — posebno posle bezbednosnih incidenata.',
+    products: [
+      { name: 'Sophos Firewall (XGS)', desc: 'Next-generation firewall sa deep packet inspection, IPS/IDS, web filteringom i VPN — za kancelarije i multi-site okruženja.' },
+      { name: 'Sophos Intercept X EDR', desc: 'Napredna endpoint zaštita sa AI detekcijom, CryptoGuard anti-ransomware zaštitom i kompletnim EDR forensics.' },
+      { name: 'Sophos Antivirus', desc: 'Standardna endpoint zaštita za workstations i servere — lagana, efikasna, centralno upravljana.' },
+      { name: 'Sophos Central', desc: 'Cloud konzola za centralno upravljanje svim Sophos proizvodima — svi uređaji, polise i alertovi na jednom mestu.' },
+    ]
+  },
+  panda: {
+    color: '#16a34a',
+    bg: '#f0fdf4',
+    logo: '<svg width="28" height="28" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" fill="#16a34a"/><path d="M6.5 10l2.5 3L14 7" stroke="white" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>',
+    name: 'Panda Security', badge: 'Partner',
+    badgeStyle: 'color:#085041;background:#e1f5ee',
+    intro: 'Panda Security je naš primarni RMM (Remote Monitoring & Management) alat. Kroz Panda platformu pratimo infrastrukturu svih klijenata u realnom vremenu — znamo pre vas kada nešto nije u redu.',
+    products: [
+      { name: 'Panda RMM (Aether)', desc: 'Remote Monitoring & Management platforma — real-time monitoring svih uređaja, remote pristup, patch management i automatizovani alertovi.' },
+      { name: 'Panda Antivirus', desc: 'Endpoint antivirusna zaštita sa centralnim upravljanjem — pokriva laptope, desktop računare i servere sa minimalnim uticajem na performanse.' },
+      { name: 'Aether Platform', desc: 'Unifikovana konzola za sve Panda proizvode — inventory, politike, izveštaji i remote upravljanje iz jedne tačke.' },
+    ]
+  },
+  hardware: {
+    color: '#333',
+    bg: '#f8f8f6',
+    logo: '<svg width="28" height="28" viewBox="0 0 20 20" fill="none"><rect x="2" y="6" width="16" height="10" rx="1.5" stroke="#333" stroke-width="1.5" fill="none"/><circle cx="16" cy="11" r="1" fill="#333"/></svg>',
+    name: 'HP · Dell · Lenovo', badge: 'Reseller',
+    badgeStyle: 'color:#555;background:#f1efe8',
+    intro: 'Kao ovlašćeni reseller HP, Dell i Lenovo opreme, nabavljamo i konfigurišemo kompletnu hardversku infrastrukturu — od laptopa za zaposlene do enterprise servera za server sobe.',
+    products: [
+      { name: 'Laptopi i desktop računari', desc: 'HP EliteBook, ProBook · Dell Latitude, Vostro · Lenovo ThinkPad, IdeaPad — nabavka, konfiguracija i deployment.' },
+      { name: 'HP ProLiant / Dell PowerEdge serveri', desc: 'Fizički serveri za on-premise infrastrukturu — tower, rack i blade serveri sa konfiguracijom po meri.' },
+      { name: 'NAS i storage rešenja', desc: 'Synology, QNAP i Dell storage rešenja za backup, file sharing i centralizovano čuvanje podataka.' },
+      { name: 'Periferije i oprema', desc: 'Monitoti, štampači, docking stanice, UPS uređaji i kompletna kancelarijska IT oprema.' },
+    ]
+  },
+  networking: {
+    color: '#1d4ed8',
+    bg: '#eff6ff',
+    logo: '<svg width="28" height="28" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#1d4ed8" stroke-width="1.5" fill="none"/><circle cx="10" cy="10" r="3.5" fill="#1d4ed8"/></svg>',
+    name: 'MikroTik · Cisco', badge: 'MTCRE Certified',
+    badgeStyle: 'color:#0c447c;background:#e6f1fb',
+    intro: 'Naš tim poseduje MikroTik MTCRE sertifikat i Cisco SMB Specialization — što nas kvalifikuje za projektovanje i implementaciju kompleksnih mrežnih infrastruktura.',
+    products: [
+      { name: 'MikroTik ruteri i svičevi', desc: 'CCR, RB i hEX serija — idealni za SMB i enterprise LAN/WAN okruženja. Konfiguracija BGP, OSPF, IPSec VPN, VLAN, QoS.' },
+      { name: 'Cisco SMB rešenja', desc: 'Cisco Catalyst svičevi, Meraki (cloud-managed) i Cisco RV ruteri za mala i srednja preduzeća.' },
+      { name: 'VPN i WAN rešenja', desc: 'Site-to-site VPN između lokacija, IPSec tuneli, failover internet konekcije i SD-WAN implementacije.' },
+      { name: 'Mrežni monitoring', desc: 'Cacti, The Dude i custom monitoring rešenja — real-time praćenje performansi mrežne infrastrukture.' },
+    ]
+  },
+  wifi: {
+    color: '#6d28d9',
+    bg: '#f5f3ff',
+    logo: '<svg width="28" height="28" viewBox="0 0 20 20" fill="none"><path d="M3 8c1.9-1.9 4.4-3 7-3s5.1 1.1 7 3" stroke="#6d28d9" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M5.5 10.5c1.2-1.2 2.8-2 4.5-2s3.3.8 4.5 2" stroke="#6d28d9" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="10" cy="14" r="1.5" fill="#6d28d9"/></svg>',
+    name: 'Ubiquiti · Aruba', badge: 'Partner',
+    badgeStyle: 'color:#4c1d95;background:#ede9fe',
+    intro: 'Za Wi-Fi infrastrukturu koristimo Ubiquiti UniFi i Aruba (HPE) — dva vodeća rešenja za enterprise wireless networking sa centralnim upravljanjem.',
+    products: [
+      { name: 'Ubiquiti UniFi Wi-Fi', desc: 'Access pointi, svičevi i gateway uređaji sa UniFi Network konzolom — centralno upravljanje celim wirelessom iz jednog interfejsa.' },
+      { name: 'Aruba (HPE) Wireless', desc: 'Enterprise-grade access pointi za zahtevna okruženja — visoka gustina korisnika, multi-floor pokrivenost, Aruba Central upravljanje.' },
+      { name: 'Wi-Fi site survey', desc: 'Pre implementacije radimo RF site survey — analiza pokrivenosti, interference i optimalno pozicioniranje access pointova.' },
+      { name: 'Guest network i segmentacija', desc: 'Odvojene gostujuće mreže, VLAN segmentacija, captive portal i bandwidth kontrola po korisničkoj grupi.' },
+    ]
+  }
+};
+
+function openBrand(key) {
+  const b = brandData[key];
+  if (!b) return;
+  const productsHtml = b.products.map(p => `
+    <div style="padding:14px 0;border-bottom:1px solid #f0f0ee">
+      <div style="font-size:14px;font-weight:600;color:#1a1a1a;margin-bottom:4px">${p.name}</div>
+      <div style="font-size:13px;color:#666;line-height:1.6">${p.desc}</div>
+    </div>`).join('');
+  document.getElementById('brandContent').innerHTML = `
+    <div style="padding:28px 32px;border-bottom:1px solid #eaeae8;background:${b.bg};border-radius:16px 16px 0 0">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+        ${b.logo}
+        <span style="font-size:20px;font-weight:700;color:${b.color}">${b.name}</span>
+        <span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;${b.badgeStyle}">${b.badge}</span>
+      </div>
+      <p style="font-size:14px;color:#444;line-height:1.65;max-width:520px">${b.intro}</p>
+    </div>
+    <div style="padding:24px 32px">
+      <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:#aaa;margin-bottom:4px">Proizvodi i rešenja</div>
+      ${productsHtml}
+    </div>
+    <div style="padding:16px 32px;border-top:1px solid #eaeae8;display:flex;justify-content:flex-end">
+      <a href="#" style="padding:9px 20px;font-size:13px;font-weight:500;background:#1a5fd4;color:#fff;border-radius:7px;text-decoration:none">Zakažite konsultaciju</a>
+    </div>`;
+  document.getElementById('brandOverlay').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeBrand(e) {
+  if (e.target === document.getElementById('brandOverlay')) {
+    document.getElementById('brandOverlay').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+}
+
+</script>
+</body>
+</html>
