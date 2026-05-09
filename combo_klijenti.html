@@ -6,9 +6,9 @@
 <title>Naši klijenti — Combo IT</title>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif; background: #f7f7f5; color: #1a1a1a; }
+body { max-width: 1000px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif; background: #f7f7f5; color: #1a1a1a; }
 
-.nav { display: flex; align-items: center; justify-content: space-between; padding: 0 56px; height: 68px; background: #fff; border-bottom: 1px solid #eaeae8; position: sticky; top: 0; z-index: 100; }
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 0 32px; height: 68px; background: #fff; border-bottom: 1px solid #eaeae8; position: sticky; top: 0; z-index: 100; }
 .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
 .logo-box { width: 34px; height: 34px; background: #1a5fd4; border-radius: 7px; display: flex; align-items: center; justify-content: center; }
 .logo-text { font-size: 17px; font-weight: 600; color: #1a1a1a; letter-spacing: -0.3px; }
@@ -25,17 +25,17 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-s
 .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(55,138,221,0.06) 1px,transparent 1px), linear-gradient(90deg,rgba(55,138,221,0.06) 1px,transparent 1px); background-size: 52px 52px; pointer-events: none; }
 .hero-glow { position: absolute; width: 600px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(26,95,212,0.15) 0%, transparent 70%); top: -100px; right: -100px; pointer-events: none; }
 .hero-inner { position: relative; z-index: 1; max-width: 620px; }
-.hero-eyebrow { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 600; letter-spacing: 0.7px; text-transform: uppercase; color: #85b7eb; background: rgba(55,138,221,0.13); padding: 5px 13px; border-radius: 20px; margin-bottom: 20px; border: 1px solid rgba(55,138,221,0.25); }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; letter-spacing: 0.7px; text-transform: uppercase; color: #85b7eb; background: rgba(55,138,221,0.13); padding: 5px 13px; border-radius: 20px; margin-bottom: 20px; border: 1px solid rgba(55,138,221,0.25); }
 .hero h1 { font-size: 40px; font-weight: 700; color: #fff; letter-spacing: -0.6px; line-height: 1.15; margin-bottom: 16px; }
 .hero h1 em { font-style: normal; color: #378ADD; }
 .hero-sub { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 500px; }
 .hero-stats { display: flex; gap: 32px; margin-top: 36px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.08); }
 .hero-stat-num { font-size: 28px; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
-.hero-stat-lbl { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 3px; }
+.hero-stat-lbl { font-size: 14px; color: rgba(255,255,255,0.4); margin-top: 3px; }
 
 /* LOGOS SECTION */
-.logos-section { background: #fff; padding: 72px 56px; border-bottom: 1px solid #eaeae8; }
-.logos-eyebrow { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.7px; color: #1a5fd4; margin-bottom: 8px; }
+.logos-section { background: #fff; padding: 72px 32px; border-bottom: 1px solid #eaeae8; }
+.logos-eyebrow { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.7px; color: #1a5fd4; margin-bottom: 8px; }
 .logos-title { font-size: 28px; font-weight: 700; letter-spacing: -0.4px; margin-bottom: 48px; }
 
 .logos-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: #eaeae8; border: 1px solid #eaeae8; border-radius: 14px; overflow: hidden; }
@@ -45,18 +45,18 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-s
 .logo-item:hover img { filter: grayscale(0%); opacity: 1; }
 
 /* INDUSTRIES */
-.industries-section { background: #f7f7f5; padding: 72px 56px; border-bottom: 1px solid #eaeae8; }
+.industries-section { background: #f7f7f5; padding: 72px 32px; border-bottom: 1px solid #eaeae8; }
 .ind-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 40px; }
 .ind-card { background: #fff; border: 1px solid #eaeae8; border-radius: 12px; padding: 22px; transition: transform .2s, border-color .2s; }
 .ind-card:hover { transform: translateY(-2px); border-color: #c5d8f5; }
 .ind-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
 .ind-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 5px; }
-.ind-card p { font-size: 12px; color: #888; line-height: 1.55; }
+.ind-card p { font-size: 14px; color: #888; line-height: 1.55; }
 
 /* GEO */
-.geo-section { background: #fff; padding: 72px 56px; border-bottom: 1px solid #eaeae8; }
+.geo-section { background: #fff; padding: 72px 32px; border-bottom: 1px solid #eaeae8; }
 .geo-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-.geo-text .eyebrow { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.7px; color: #1a5fd4; margin-bottom: 8px; }
+.geo-text .eyebrow { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.7px; color: #1a5fd4; margin-bottom: 8px; }
 .geo-text h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.4px; margin-bottom: 14px; }
 .geo-text p { font-size: 15px; color: #666; line-height: 1.7; margin-bottom: 20px; }
 .geo-chips { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -65,10 +65,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-s
 .geo-visual { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 .geo-stat { background: #f7f7f5; border-radius: 10px; padding: 18px; text-align: center; }
 .geo-stat-num { font-size: 26px; font-weight: 700; color: #1a1a1a; letter-spacing: -0.5px; }
-.geo-stat-lbl { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.35; }
+.geo-stat-lbl { font-size: 13px; color: #aaa; margin-top: 3px; line-height: 1.35; }
 
 /* CTA */
-.cta { background: #0d1a2e; padding: 72px 56px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+.cta { background: #0d1a2e; padding: 72px 32px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
 .cta h2 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 10px; letter-spacing: -0.4px; }
 .cta p { font-size: 15px; color: rgba(255,255,255,0.5); max-width: 440px; line-height: 1.65; }
 .cta-btns { display: flex; gap: 10px; flex-shrink: 0; }
