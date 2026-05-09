@@ -6,38 +6,38 @@
 <title>Combo IT — Homepage Mockup 2026</title>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif; background: #fff; color: #1a1a1a; font-size: 15px; }
+body { max-width: 1000px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif; background: #fff; color: #1a1a1a; font-size: 16px; }
 
 /* ── BANNER ── */
-.banner { background: #1a5fd4; color: #fff; text-align: center; padding: 10px 20px; font-size: 12px; letter-spacing: 0.2px; }
+.banner { background: #1a5fd4; color: #fff; text-align: center; padding: 10px 20px; font-size: 14px; letter-spacing: 0.2px; }
 .banner strong { font-weight: 600; }
 
 /* ── NAV ── */
-.nav { display: flex; align-items: center; justify-content: space-between; padding: 0 56px; height: 68px; background: #fff; border-bottom: 1px solid #eaeae8; position: sticky; top: 0; z-index: 100; }
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 0 32px; height: 68px; background: #fff; border-bottom: 1px solid #eaeae8; position: sticky; top: 0; z-index: 100; }
 .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
 .logo-box { width: 34px; height: 34px; background: #1a5fd4; border-radius: 7px; display: flex; align-items: center; justify-content: center; }
 .logo-text { font-size: 17px; font-weight: 600; color: #1a1a1a; letter-spacing: -0.3px; }
 .logo-text span { color: #1a5fd4; }
 .nav-menu { display: flex; gap: 36px; }
-.nav-menu a { font-size: 14px; color: #666; text-decoration: none; transition: color .15s; }
+.nav-menu a { font-size: 16px; color: #666; text-decoration: none; transition: color .15s; }
 .nav-menu a:hover { color: #1a1a1a; }
 .nav-right { display: flex; align-items: center; gap: 16px; }
-.nav-phone { font-size: 12px; color: #aaa; }
-.nav-btn { font-size: 13px; font-weight: 500; padding: 9px 20px; background: #1a5fd4; color: #fff; border-radius: 7px; text-decoration: none; }
+.nav-phone { font-size: 14px; color: #aaa; }
+.nav-btn { font-size: 14px; font-weight: 500; padding: 9px 20px; background: #1a5fd4; color: #fff; border-radius: 7px; text-decoration: none; }
 .nav-btn:hover { background: #1550b8; }
 
 /* ── HERO SLIDER ── */
 .hero { position: relative; background: #0d1a2e; min-height: 500px; display: flex; align-items: center; overflow: hidden; }
 .hero-grid { position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(55,138,221,0.06) 1px,transparent 1px), linear-gradient(90deg,rgba(55,138,221,0.06) 1px,transparent 1px); background-size: 56px 56px; }
 .hero-glow { position: absolute; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(26,95,212,0.15) 0%, transparent 70%); top: -150px; right: -100px; pointer-events: none; }
-.hero-slide { position: absolute; inset: 0; display: flex; align-items: center; padding: 0 56px; opacity: 0; transition: opacity .5s ease; }
+.hero-slide { position: absolute; inset: 0; display: flex; align-items: center; padding: 0 32px; opacity: 0; transition: opacity .5s ease; }
 .hero-slide.active { opacity: 1; }
 .hero-content { position: relative; z-index: 2; max-width: 580px; }
-.hero-tag { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 600; letter-spacing: 0.7px; text-transform: uppercase; color: #85b7eb; background: rgba(55,138,221,0.13); padding: 5px 13px; border-radius: 20px; margin-bottom: 22px; border: 1px solid rgba(55,138,221,0.25); }
+.hero-tag { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 600; letter-spacing: 0.7px; text-transform: uppercase; color: #85b7eb; background: rgba(55,138,221,0.13); padding: 5px 13px; border-radius: 20px; margin-bottom: 22px; border: 1px solid rgba(55,138,221,0.25); }
 .hero-dot { width: 6px; height: 6px; border-radius: 50%; background: #378ADD; }
 .hero-content h1 { font-size: 40px; font-weight: 600; line-height: 1.15; letter-spacing: -0.7px; color: #fff; margin-bottom: 18px; }
 .hero-content h1 em { font-style: normal; color: #378ADD; }
-.hero-sub { font-size: 15px; color: rgba(255,255,255,0.58); line-height: 1.7; margin-bottom: 30px; max-width: 480px; }
+.hero-sub { font-size: 16px; color: rgba(255,255,255,0.58); line-height: 1.7; margin-bottom: 30px; max-width: 480px; }
 .hero-btns { display: flex; gap: 12px; }
 .btn-primary { padding: 12px 26px; font-size: 14px; font-weight: 500; background: #1a5fd4; color: #fff; border-radius: 8px; text-decoration: none; }
 .btn-primary:hover { background: #1550b8; }
@@ -45,43 +45,43 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-s
 .slide-visual { position: absolute; right: 56px; top: 50%; transform: translateY(-50%); z-index: 2; display: flex; flex-direction: column; gap: 7px; }
 .svc { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 10px 16px; text-align: right; min-width: 190px; }
 .svc-num { font-size: 20px; font-weight: 600; color: #fff; letter-spacing: -0.5px; line-height: 1; }
-.svc-lbl { font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+.svc-lbl { font-size: 14px; color: rgba(255,255,255,0.4); margin-top: 2px; }
 .svc { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 16px 20px; text-align: right; min-width: 170px; }
 .svc-num { font-size: 26px; font-weight: 600; color: #fff; letter-spacing: -0.5px; }
-.svc-lbl { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 3px; }
+.svc-lbl { font-size: 14px; color: rgba(255,255,255,0.4); margin-top: 3px; }
 .slider-dots { position: absolute; bottom: 24px; left: 56px; display: flex; gap: 8px; z-index: 10; }
 .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; border: none; transition: all .25s; }
 .dot.active { background: #378ADD; width: 22px; border-radius: 4px; }
-.slider-num { position: absolute; bottom: 24px; right: 56px; font-size: 12px; color: rgba(255,255,255,0.3); z-index: 10; }
+.slider-num { position: absolute; bottom: 24px; right: 56px; font-size: 14px; color: rgba(255,255,255,0.3); z-index: 10; }
 
 /* ── SHARED SECTION ── */
-.section { padding: 64px 56px; }
+.section { padding: 64px 32px; }
 .section.bg { background: #f7f7f5; border-top: 1px solid #eaeae8; border-bottom: 1px solid #eaeae8; }
 .section.border-t { border-top: 1px solid #eaeae8; }
-.eyebrow { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.7px; color: #1a5fd4; margin-bottom: 7px; }
+.eyebrow { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.7px; color: #1a5fd4; margin-bottom: 7px; }
 .sec-title { font-size: 28px; font-weight: 600; letter-spacing: -0.4px; margin-bottom: 10px; }
-.sec-sub { font-size: 15px; color: #777; margin-bottom: 40px; max-width: 520px; line-height: 1.65; }
+.sec-sub { font-size: 16px; color: #777; margin-bottom: 40px; max-width: 520px; line-height: 1.65; }
 
 /* ── NUMBERS STRIP ── */
 .numbers-strip { display: grid; grid-template-columns: repeat(6, 1fr); border-top: 1px solid #eaeae8; border-bottom: 1px solid #eaeae8; background: #fff; }
 .num-item { padding: 28px 20px; border-right: 1px solid #eaeae8; text-align: center; }
 .num-item:last-child { border-right: none; }
 .num-big { font-size: 30px; font-weight: 700; color: #1a1a1a; letter-spacing: -0.8px; }
-.num-lbl { font-size: 12px; color: #aaa; margin-top: 4px; line-height: 1.4; }
+.num-lbl { font-size: 14px; color: #aaa; margin-top: 4px; line-height: 1.4; }
 
 /* ── PORTFOLIO ── */
 .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 20px; }
 .p-card { background: #fff; border: 1px solid #eaeae8; border-radius: 12px; padding: 24px; }
-.p-range { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #bbb; margin-bottom: 6px; }
+.p-range { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #bbb; margin-bottom: 6px; }
 .p-num { font-size: 38px; font-weight: 700; color: #1a1a1a; letter-spacing: -1px; line-height: 1; }
-.p-unit { font-size: 13px; color: #777; margin: 5px 0 18px; }
+.p-unit { font-size: 16px; color: #777; margin: 5px 0 18px; }
 .p-bar { height: 3px; background: #eee; border-radius: 2px; margin-bottom: 10px; overflow: hidden; }
 .p-fill { height: 100%; border-radius: 2px; background: #1a5fd4; }
-.p-note { font-size: 12px; color: #bbb; }
+.p-note { font-size: 14px; color: #bbb; }
 .mini-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .mini-card { background: #f7f7f5; border-radius: 10px; padding: 16px 18px; }
 .mini-num { font-size: 22px; font-weight: 600; color: #1a1a1a; letter-spacing: -0.4px; }
-.mini-lbl { font-size: 12px; color: #aaa; margin-top: 3px; }
+.mini-lbl { font-size: 14px; color: #aaa; margin-top: 3px; }
 
 /* ── SERVICES ── */
 .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -89,45 +89,45 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-s
 .srv:hover { border-color: #1a5fd4; transform: translateY(-2px); }
 .srv-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
 .srv h3 { font-size: 15px; font-weight: 600; margin-bottom: 7px; }
-.srv p { font-size: 13px; color: #777; line-height: 1.6; }
+.srv p { font-size: 16px; color: #777; line-height: 1.6; }
 .srv-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px; }
-.srv-tag { font-size: 10px; padding: 2px 7px; border: 1px solid #eaeae8; border-radius: 4px; color: #999; }
+.srv-tag { font-size: 14px; padding: 2px 7px; border: 1px solid #eaeae8; border-radius: 4px; color: #999; }
 
 /* ── INDUSTRIES ── */
 .ind-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
 .ind { background: #fff; border: 1px solid #eaeae8; border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 10px; transition: border-color .2s; }
 .ind:hover { border-color: #1a5fd4; }
 .ind-icon { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
-.ind h3 { font-size: 13px; font-weight: 600; }
-.ind p { font-size: 12px; color: #888; line-height: 1.5; }
+.ind h3 { font-size: 14px; font-weight: 600; }
+.ind p { font-size: 14px; color: #888; line-height: 1.5; }
 .geo-box { margin-top: 16px; background: #fff; border: 1px solid #eaeae8; border-radius: 12px; padding: 18px 20px; }
-.geo-title { font-size: 12px; font-weight: 600; color: #555; margin-bottom: 12px; }
+.geo-title { font-size: 14px; font-weight: 600; color: #555; margin-bottom: 12px; }
 .geo-chips { display: flex; flex-wrap: wrap; gap: 7px; }
-.geo-chip { font-size: 12px; padding: 4px 11px; border: 1px solid #e0e0de; border-radius: 20px; color: #666; }
+.geo-chip { font-size: 14px; padding: 4px 11px; border: 1px solid #e0e0de; border-radius: 20px; color: #666; }
 .geo-chip.hl { color: #0c447c; background: #e6f1fb; border-color: #85b7eb; }
 
 /* ── CASE STUDIES ── */
 .cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .case { background: #fff; border: 1px solid #eaeae8; border-radius: 12px; padding: 26px; }
-.case-cat { font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; display: inline-block; margin-bottom: 16px; }
+.case-cat { font-size: 14px; font-weight: 600; padding: 4px 10px; border-radius: 20px; display: inline-block; margin-bottom: 16px; }
 .m365 { color: #085041; background: #e1f5ee; }
 .azure { color: #0c447c; background: #e6f1fb; }
 .net { color: #412402; background: #faeeda; }
 .case h3 { font-size: 14px; font-weight: 500; line-height: 1.45; margin-bottom: 20px; }
 .case-metric { font-size: 38px; font-weight: 700; color: #1a5fd4; letter-spacing: -1px; line-height: 1; }
-.case-metric-lbl { font-size: 12px; color: #aaa; margin-top: 5px; }
+.case-metric-lbl { font-size: 14px; color: #aaa; margin-top: 5px; }
 .case-div { height: 1px; background: #f0f0ee; margin: 16px 0; }
-.case-client { font-size: 12px; color: #aaa; }
+.case-client { font-size: 14px; color: #aaa; }
 
 /* ── SLA / FRESHDESK ── */
 .fd-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 16px; }
 .fd { background: #f7f7f5; border-radius: 10px; padding: 20px; }
 .fd-num { font-size: 28px; font-weight: 700; color: #1a1a1a; letter-spacing: -0.5px; }
-.fd-lbl { font-size: 12px; color: #777; margin-top: 4px; line-height: 1.4; }
-.fd-badge { display: inline-block; font-size: 11px; font-weight: 500; padding: 3px 8px; border-radius: 10px; margin-top: 8px; }
+.fd-lbl { font-size: 16px; color: #777; margin-top: 4px; line-height: 1.4; }
+.fd-badge { display: inline-block; font-size: 14px; font-weight: 500; padding: 3px 8px; border-radius: 10px; margin-top: 8px; }
 .fd-good { color: #085041; background: #e1f5ee; }
 .fd-info { color: #0c447c; background: #e6f1fb; }
-.fd-source { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #bbb; }
+.fd-source { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #bbb; }
 .fd-dot { width: 7px; height: 7px; border-radius: 50%; background: #1D9E75; animation: pulse 2s infinite; flex-shrink: 0; }
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
 
@@ -136,20 +136,20 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-s
 .why { background: #fff; border: 1px solid #eaeae8; border-radius: 12px; padding: 20px; display: flex; gap: 14px; }
 .why-icon { width: 36px; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .why h3 { font-size: 14px; font-weight: 600; margin-bottom: 5px; }
-.why p { font-size: 13px; color: #777; line-height: 1.6; }
+.why p { font-size: 16px; color: #777; line-height: 1.6; }
 
 /* ── TEAM ── */
 .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
 .team-card { background: #fff; border: 1px solid #eaeae8; border-radius: 12px; padding: 22px; display: flex; gap: 16px; }
 .avatar { width: 48px; height: 48px; border-radius: 50%; background: #e6f1fb; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 600; color: #185fa5; flex-shrink: 0; }
 .team-name { font-size: 15px; font-weight: 600; }
-.team-role { font-size: 12px; color: #aaa; margin: 3px 0 10px; }
+.team-role { font-size: 14px; color: #aaa; margin: 3px 0 10px; }
 .team-certs { display: flex; flex-wrap: wrap; gap: 5px; }
-.cert { font-size: 10px; padding: 2px 8px; border: 1px solid #eaeae8; border-radius: 4px; color: #999; }
+.cert { font-size: 14px; padding: 2px 8px; border: 1px solid #eaeae8; border-radius: 4px; color: #999; }
 
 /* ── PARTNERS ── */
 .partners-row { display: flex; flex-wrap: wrap; gap: 9px; }
-.pchip { font-size: 13px; padding: 7px 16px; border: 1px solid #e0e0de; border-radius: 7px; color: #555; background: #fff; transition: border-color .15s; }
+.pchip { font-size: 14px; padding: 7px 16px; border: 1px solid #e0e0de; border-radius: 7px; color: #555; background: #fff; transition: border-color .15s; }
 .pchip:hover { border-color: #1a5fd4; }
 .pchip.ms { color: #0c447c; border-color: #85b7eb; background: #e6f1fb; }
 
@@ -159,13 +159,13 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-s
 .clients-row-grid + .clients-row-grid { border-top: 1px solid #eaeae8; }
 .cl { padding: 18px; border-right: 1px solid #eaeae8; display: flex; align-items: center; justify-content: center; }
 .cl:last-child { border-right: none; }
-.cl-name { font-size: 13px; color: #bbb; font-weight: 500; }
+.cl-name { font-size: 14px; color: #bbb; font-weight: 500; }
 
 /* ── SLIDE VISUAL GRID ── */
 .slide-visual-grid { display: grid !important; grid-template-columns: 1fr 1fr; gap: 7px; right: 40px; width: 360px; }
 .slide-visual-grid .svc { min-width: unset; text-align: left; padding: 9px 14px; }
 .slide-visual-grid .svc-num { font-size: 18px; }
-.slide-visual-grid .svc-lbl { font-size: 10px; }
+.slide-visual-grid .svc-lbl { font-size: 14px; }
 
 /* ── BRAND CARDS ── */
 .partners-brands { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
@@ -173,9 +173,9 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-s
 .brand-card:hover { transform: translateY(-2px); }
 .brand-header { padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #eaeae8; }
 .brand-logo { font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
-.brand-badge { font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 10px; }
+.brand-badge { font-size: 14px; font-weight: 600; padding: 3px 8px; border-radius: 10px; }
 .brand-products { padding: 14px 18px; display: flex; flex-wrap: wrap; gap: 7px; background: #fff; }
-.brand-product { font-size: 12px; padding: 4px 10px; border: 1px solid #eaeae8; border-radius: 6px; color: #555; background: #f7f7f5; }
+.brand-product { font-size: 14px; padding: 4px 10px; border: 1px solid #eaeae8; border-radius: 6px; color: #555; background: #f7f7f5; }
 
 /* ── DUAL PANEL ── */
 .dual { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
@@ -184,29 +184,29 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-s
 .dpanel-blog { background: #0d1a2e; }
 .dp-head { padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.08); }
 .dpanel-cs .dp-head { background: rgba(255,255,255,0.04); }
-.dp-head-title { font-size: 13px; font-weight: 600; color: #fff; display: flex; align-items: center; gap: 8px; }
-.dp-head-link { font-size: 12px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color .15s; }
+.dp-head-title { font-size: 14px; font-weight: 600; color: #fff; display: flex; align-items: center; gap: 8px; }
+.dp-head-link { font-size: 14px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color .15s; }
 .dp-head-link:hover { color: #fff; }
 .dp-slide-wrap { flex: 1; position: relative; min-height: 230px; }
 .dp-slide { position: absolute; inset: 0; padding: 20px; display: none; flex-direction: column; justify-content: space-between; }
 .dp-slide.active { display: flex; }
-.dp-cat { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; padding: 3px 9px; border-radius: 20px; display: inline-block; margin-bottom: 11px; }
+.dp-cat { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; padding: 3px 9px; border-radius: 20px; display: inline-block; margin-bottom: 11px; }
 .dp-title { font-size: 16px; font-weight: 500; color: #fff; line-height: 1.35; margin-bottom: 14px; letter-spacing: -0.2px; }
 .dp-kpis { display: flex; }
 .dp-kpi { flex: 1; border-right: 1px solid rgba(255,255,255,0.08); padding-right: 12px; margin-right: 12px; }
 .dp-kpi:last-child { border-right: none; padding-right: 0; margin-right: 0; }
 .dp-kpi-num { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; line-height: 1; }
-.dp-kpi-lbl { font-size: 10px; color: rgba(255,255,255,0.38); margin-top: 2px; }
+.dp-kpi-lbl { font-size: 14px; color: rgba(255,255,255,0.38); margin-top: 2px; }
 .dp-footer-cs { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 11px; display: flex; align-items: center; justify-content: space-between; }
-.dp-client { font-size: 11px; color: rgba(255,255,255,0.32); }
-.dp-btn-cs { font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.55); text-decoration: none; transition: color .15s; }
+.dp-client { font-size: 14px; color: rgba(255,255,255,0.32); }
+.dp-btn-cs { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.55); text-decoration: none; transition: color .15s; }
 .dp-btn-cs:hover { color: #fff; }
-.dp-cat-blog { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; padding: 3px 9px; border-radius: 20px; display: inline-block; margin-bottom: 11px; }
+.dp-cat-blog { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; padding: 3px 9px; border-radius: 20px; display: inline-block; margin-bottom: 11px; }
 .dp-title-blog { font-size: 16px; font-weight: 500; color: #fff; line-height: 1.35; margin-bottom: 10px; letter-spacing: -0.2px; }
-.dp-excerpt { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+.dp-excerpt { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.6; }
 .dp-footer-blog { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 11px; display: flex; align-items: center; justify-content: space-between; }
-.dp-bmeta { font-size: 11px; color: rgba(255,255,255,0.38); }
-.dp-btn-blog { font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.6); text-decoration: none; }
+.dp-bmeta { font-size: 14px; color: rgba(255,255,255,0.38); }
+.dp-btn-blog { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.6); text-decoration: none; }
 .dp-nav { padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; }
 .dp-nav-cs { background: rgba(255,255,255,0.03); border-top: 1px solid rgba(255,255,255,0.07); }
 .dp-nav-blog { border-top: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); }
@@ -216,11 +216,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-s
 .dp-dot-cs.on { background: #378ADD; width: 18px; border-radius: 3px; }
 .dp-dot-blog { background: rgba(255,255,255,0.18); }
 .dp-dot-blog.on { background: #1a5fd4; width: 18px; border-radius: 3px; }
-.dp-cnt { font-size: 11px; }
+.dp-cnt { font-size: 14px; }
 .dp-cnt-cs { color: rgba(255,255,255,0.28); }
 .dp-cnt-blog { color: rgba(255,255,255,0.28); }
 .dp-arrows { display: flex; gap: 4px; }
-.dp-arr { width: 26px; height: 26px; border-radius: 6px; border: 1px solid; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 11px; background: transparent; transition: all .15s; }
+.dp-arr { width: 26px; height: 26px; border-radius: 6px; border: 1px solid; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 14px; background: transparent; transition: all .15s; }
 .dp-arr-cs { border-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.4); }
 .dp-arr-cs:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
 .dp-arr-blog { border-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.4); }
@@ -228,24 +228,24 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-s
 
 /* ── TESTIMONIALS ── */
 .test-quote { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.75; font-style: italic; margin-bottom: 14px; }
-.test-stars { font-size: 13px; color: #f59e0b; letter-spacing: 1px; margin-bottom: 12px; }
+.test-stars { font-size: 14px; color: #f59e0b; letter-spacing: 1px; margin-bottom: 12px; }
 .test-author { display: flex; align-items: center; gap: 12px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 12px; }
-.test-avatar { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; flex-shrink: 0; }
-.test-name { font-size: 13px; font-weight: 600; color: #fff; }
-.test-role { font-size: 11px; color: #888; margin-top: 2px; }
+.test-avatar { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; flex-shrink: 0; }
+.test-name { font-size: 14px; font-weight: 600; color: #fff; }
+.test-role { font-size: 14px; color: #888; margin-top: 2px; }
 
 /* ── BLOG ── */
 .blog-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
 .blog { background: #fff; border: 1px solid #eaeae8; border-radius: 12px; overflow: hidden; transition: transform .2s; }
 .blog:hover { transform: translateY(-2px); }
 .blog-thumb { height: 100px; background: #f7f7f5; border-bottom: 1px solid #eaeae8; display: flex; align-items: center; justify-content: center; }
-.blog-body { padding: 18px; }
-.blog-tag { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #1a5fd4; margin-bottom: 7px; }
+.blog-body { max-width: 1000px; margin: 0 auto; padding: 18px; }
+.blog-tag { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #1a5fd4; margin-bottom: 7px; }
 .blog h3 { font-size: 14px; font-weight: 500; line-height: 1.45; margin-bottom: 7px; }
-.blog-meta { font-size: 12px; color: #aaa; }
+.blog-meta { font-size: 14px; color: #aaa; }
 
 /* ── CTA ── */
-.cta { background: #0d1a2e; padding: 64px 56px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+.cta { background: #0d1a2e; padding: 64px 32px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
 .cta h2 { font-size: 28px; font-weight: 600; color: #fff; margin-bottom: 10px; letter-spacing: -0.4px; }
 .cta p { font-size: 15px; color: rgba(255,255,255,0.5); max-width: 440px; line-height: 1.65; }
 .cta-btns { display: flex; gap: 12px; flex-shrink: 0; }
@@ -256,24 +256,24 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-s
 /* ── FOOTER ── */
 footer { background: #fff; border-top: 1px solid #eaeae8; padding: 52px 56px 28px; }
 .footer-top { display: grid; grid-template-columns: 220px 1fr 1fr 1fr; gap: 40px; margin-bottom: 36px; }
-.ft-brand-desc { font-size: 13px; color: #aaa; margin-top: 12px; line-height: 1.7; }
-.ft-contact { font-size: 13px; color: #aaa; margin-top: 10px; line-height: 1.9; }
+.ft-brand-desc { font-size: 14px; color: #aaa; margin-top: 12px; line-height: 1.7; }
+.ft-contact { font-size: 14px; color: #aaa; margin-top: 10px; line-height: 1.9; }
 .ft-contact a { color: #1a5fd4; text-decoration: none; }
-.ft-col h4 { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 14px; }
-.ft-col a { display: block; font-size: 13px; color: #aaa; text-decoration: none; margin-bottom: 8px; transition: color .15s; }
+.ft-col h4 { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 14px; }
+.ft-col a { display: block; font-size: 14px; color: #aaa; text-decoration: none; margin-bottom: 8px; transition: color .15s; }
 .ft-col a:hover { color: #1a1a1a; }
 .footer-bottom { border-top: 1px solid #eaeae8; padding-top: 22px; display: flex; justify-content: space-between; align-items: center; }
-.ft-copy { font-size: 12px; color: #ccc; }
+.ft-copy { font-size: 14px; color: #ccc; }
 .ft-certs { display: flex; gap: 7px; flex-wrap: wrap; }
-.ft-cert { font-size: 11px; padding: 3px 9px; border: 1px solid #eaeae8; border-radius: 5px; color: #bbb; }
+.ft-cert { font-size: 14px; padding: 3px 9px; border: 1px solid #eaeae8; border-radius: 5px; color: #bbb; }
 
   /* ── SEGMENT TABS ── */
   .seg-tabs { display: flex; gap: 0; border: 1px solid #eaeae8; border-radius: 10px; overflow: hidden; margin-bottom: 24px; max-width: 420px; }
-  .seg-tab { flex: 1; padding: 14px 8px; background: #fff; border: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 2px; border-right: 1px solid #eaeae8; transition: background .15s; }
+  .seg-tab { flex: 1; padding: 12px 8px; background: #fff; border: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 2px; border-right: 1px solid #eaeae8; transition: background .15s; }
   .seg-tab:last-child { border-right: none; }
   .seg-tab.active { background: #1a5fd4; }
-  .seg-tab-num { font-size: 18px; font-weight: 700; color: #aaa; letter-spacing: -0.5px; transition: color .15s; }
-  .seg-tab-lbl { font-size: 11px; color: #bbb; transition: color .15s; }
+  .seg-tab-num { font-size: 16px; font-weight: 700; color: #aaa; letter-spacing: -0.5px; transition: color .15s; }
+  .seg-tab-lbl { font-size: 14px; color: #bbb; transition: color .15s; }
   .seg-tab.active .seg-tab-num, .seg-tab.active .seg-tab-lbl { color: #fff; }
   .seg-tab:hover:not(.active) { background: #f7f7f5; }
   .seg-panel { display: none; border: 1px solid #eaeae8; border-radius: 12px; overflow: hidden; }
@@ -281,30 +281,31 @@ footer { background: #fff; border-top: 1px solid #eaeae8; padding: 52px 56px 28p
   .seg-banner { position: relative; padding: 36px 40px; overflow: hidden; }
   .seg-banner-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.05) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,0.05) 1px,transparent 1px); background-size: 48px 48px; pointer-events: none; }
   .seg-banner-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; }
-  .seg-banner-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.7px; text-transform: uppercase; margin-bottom: 10px; }
+  .seg-banner-eyebrow { font-size: 14px; font-weight: 600; letter-spacing: 0.7px; text-transform: uppercase; margin-bottom: 10px; }
   .seg-banner-title { font-size: 26px; font-weight: 600; color: #fff; line-height: 1.2; letter-spacing: -0.4px; margin-bottom: 10px; }
   .seg-banner-title em { font-style: normal; }
   .seg-banner-sub { font-size: 14px; color: rgba(255,255,255,0.58); line-height: 1.65; max-width: 460px; margin-bottom: 18px; }
-  .seg-banner-btn { display: inline-block; padding: 11px 24px; font-size: 13px; font-weight: 500; color: #fff; border-radius: 7px; text-decoration: none; }
+  .seg-banner-btn { display: inline-block; padding: 11px 24px; font-size: 14px; font-weight: 500; color: #fff; border-radius: 7px; text-decoration: none; }
   .seg-banner-stat { display: flex; flex-direction: column; gap: 10px; flex-shrink: 0; }
   .sbs-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 9px; padding: 14px 18px; text-align: right; min-width: 140px; }
   .sbs-num { font-size: 22px; font-weight: 600; color: #fff; letter-spacing: -0.5px; }
-  .sbs-lbl { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+  .sbs-lbl { font-size: 14px; color: rgba(255,255,255,0.4); margin-top: 2px; }
   .seg-features-wrap { padding: 28px 32px; background: #fff; }
-  .seg-group-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; color: #1a5fd4; margin-bottom: 14px; }
+  .seg-group-label { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; color: #1a5fd4; margin-bottom: 14px; }
   .seg-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
   .seg-features.seg-inherited { grid-template-columns: repeat(3, 1fr); }
   .seg-feat { display: flex; gap: 11px; align-items: flex-start; padding: 14px; border: 1px solid #eaeae8; border-radius: 10px; background: #fff; }
   .seg-feat.inherited { background: #f7f7f5; border-style: dashed; }
   .sf-icon { width: 30px; height: 30px; border-radius: 7px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .sf-title { font-size: 13px; font-weight: 500; margin-bottom: 3px; }
-  .sf-desc { font-size: 12px; color: #888; line-height: 1.5; }
+  .sf-title { font-size: 14px; font-weight: 500; margin-bottom: 3px; }
+  .sf-desc { font-size: 14px; color: #888; line-height: 1.5; }
   .seg-upsell { margin-top: 4px; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 9px; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-  .seg-upsell span { font-size: 13px; color: #555; line-height: 1.5; }
+  .seg-upsell span { font-size: 16px; color: #555; line-height: 1.5; }
   .seg-upsell strong { color: #1a1a1a; font-weight: 500; }
-  .seg-upsell-btn { font-size: 12px; font-weight: 500; padding: 7px 14px; background: #1a5fd4; color: #fff; border: none; border-radius: 6px; cursor: pointer; white-space: nowrap; flex-shrink: 0; }
+  .seg-upsell-btn { font-size: 14px; font-weight: 500; padding: 7px 14px; background: #1a5fd4; color: #fff; border: none; border-radius: 6px; cursor: pointer; white-space: nowrap; flex-shrink: 0; }
 
 </style>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 
@@ -477,14 +478,17 @@ footer { background: #fff; border-top: 1px solid #eaeae8; padding: 52px 56px 28p
   <!-- PANEL 0: do 10 -->
   <div class="seg-tabs">
     <button class="seg-tab active" onclick="showSeg(0)">
-      <span class="seg-tab-num">≤10</span>
+      <span class="material-icons" style="font-size:22px;margin-bottom:2px">person</span>
+      <span class="seg-tab-num">10</span>
       <span class="seg-tab-lbl">zaposlenih</span>
     </button>
     <button class="seg-tab" onclick="showSeg(1)">
-      <span class="seg-tab-num">≤50</span>
+      <span class="material-icons" style="font-size:22px;margin-bottom:2px">group</span>
+      <span class="seg-tab-num">50+</span>
       <span class="seg-tab-lbl">zaposlenih</span>
     </button>
     <button class="seg-tab" onclick="showSeg(2)">
+      <span class="material-icons" style="font-size:22px;margin-bottom:2px">corporate_fare</span>
       <span class="seg-tab-num">100+</span>
       <span class="seg-tab-lbl">zaposlenih</span>
     </button>
@@ -785,7 +789,7 @@ footer { background: #fff; border-top: 1px solid #eaeae8; padding: 52px 56px 28p
 <!-- BRAND MODALI -->
 <div id="brandOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:300;align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto" onclick="closeBrand(event)">
   <div id="brandModal" style="background:#fff;border-radius:16px;max-width:680px;width:100%;position:relative;margin:auto;animation:modalIn .25s ease">
-    <button onclick="document.getElementById('brandOverlay').style.display='none';document.body.style.overflow=''" style="position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:50%;background:#fff;border:1px solid #eaeae8;cursor:pointer;font-size:14px;color:#666;display:flex;align-items:center;justify-content:center;z-index:10">✕</button>
+    <button onclick="document.getElementById('brandOverlay').style.display='none';document.body.style.overflow=''" style="position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:50%;background:#fff;border:1px solid #eaeae8;cursor:pointer;font-size: 16px; color: #666;display:flex;align-items:center;justify-content:center;z-index:10">✕</button>
     <div id="brandContent"></div>
     <div class="brand-card" style="border-color:#bbf7d0">
       <div class="brand-header" style="background:#f0fdf4;border-color:#bbf7d0">
@@ -793,7 +797,7 @@ footer { background: #fff; border-top: 1px solid #eaeae8; padding: 52px 56px 28p
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2L4 4.5v4c0 3.2 2.2 6.1 5 7 2.8-.9 5-3.8 5-7v-4L9 2z" stroke="#10b981" stroke-width="1.5" fill="none" stroke-linejoin="round"/><path d="M6.5 9l2 2 3.5-3.5" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
           ISO 27001
         </div>
-        <a href="combo_iso27001.html" style="font-size:10px;font-weight:600;padding:3px 8px;border-radius:10px;color:#085041;background:#e1f5ee;text-decoration:none">U toku →</a>
+        <a href="combo_iso27001.html" style="font-size: 14px;font-weight:600;padding:3px 8px;border-radius:10px;color:#085041;background:#e1f5ee;text-decoration:none">U toku →</a>
       </div>
       <div class="brand-products">
         <span class="brand-product" style="color:#085041;background:#e1f5ee;border-color:#bbf7d0">Kontrola pristupa</span>
@@ -937,7 +941,7 @@ footer { background: #fff; border-top: 1px solid #eaeae8; padding: 52px 56px 28p
           <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1.5 5C1.5 3.3 2.9 2 4.5 2H5c.8 0 1.5.7 1.5 1.5S5.8 5 5 5h-.5C4.5 6.1 5.4 7 6.5 7v1C3.7 8 1.5 6.7 1.5 5z" fill="white"/><path d="M7.5 5C7.5 3.3 8.9 2 10.5 2H11c.8 0 1.5.7 1.5 1.5S11.8 5 11 5h-.5C10.5 6.1 11.4 7 12.5 7v1C9.7 8 7.5 6.7 7.5 5z" fill="rgba(255,255,255,0.45)"/></svg>
           Rekli su o nama
         </div>
-        <span style="font-size:12px;color:rgba(255,255,255,0.3)">Klijenti</span>
+        <span style="font-size: 14px;color:rgba(255,255,255,0.3)">Klijenti</span>
       </div>
       <div class="dp-slide-wrap">
 
@@ -1005,25 +1009,25 @@ footer { background: #fff; border-top: 1px solid #eaeae8; padding: 52px 56px 28p
 <div class="section border-t" style="background:#f0fdf4;border-top:1px solid #bbf7d0;border-bottom:1px solid #bbf7d0">
   <div style="display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center">
     <div>
-      <div style="display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.7px;color:#10b981;margin-bottom:10px">
+      <div style="display:inline-flex;align-items:center;gap:7px;font-size: 14px;font-weight:600;text-transform:uppercase;letter-spacing:0.7px;color:#10b981;margin-bottom:10px">
         <span style="width:6px;height:6px;border-radius:50%;background:#10b981;animation:pulse 2s infinite;display:inline-block"></span>
         Bezbednost informacija
       </div>
       <div style="font-size:24px;font-weight:700;color:#1a1a1a;letter-spacing:-0.3px;margin-bottom:10px">ISO 27001 — vaši podaci u sigurnim rukama</div>
       <div style="font-size:15px;color:#166534;line-height:1.65;max-width:560px">Combo IT je u procesu dobijanja ISO 27001 sertifikata — međunarodnog standarda za upravljanje bezbednošću informacija. Svaki podatak koji nam poverite tretiramo po strogo definisanim procedurama: kontrola pristupa, incident response, business continuity, GDPR usklađenost.</div>
       <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap">
-        <a href="combo_iso27001.html" style="display:inline-flex;align-items:center;gap:6px;padding:9px 20px;background:#10b981;color:#fff;border-radius:7px;font-size:13px;font-weight:600;text-decoration:none">Šta to znači za vaše podatke →</a>
-        <span style="display:inline-flex;align-items:center;gap:6px;padding:9px 16px;background:#e1f5ee;border:1px solid #bbf7d0;border-radius:7px;font-size:12px;color:#085041;font-weight:500">✓ Kontrola pristupa</span>
-        <span style="display:inline-flex;align-items:center;gap:6px;padding:9px 16px;background:#e1f5ee;border:1px solid #bbf7d0;border-radius:7px;font-size:12px;color:#085041;font-weight:500">✓ Incident response plan</span>
-        <span style="display:inline-flex;align-items:center;gap:6px;padding:9px 16px;background:#e1f5ee;border:1px solid #bbf7d0;border-radius:7px;font-size:12px;color:#085041;font-weight:500">✓ GDPR usklađenost</span>
-        <span style="display:inline-flex;align-items:center;gap:6px;padding:9px 16px;background:#e1f5ee;border:1px solid #bbf7d0;border-radius:7px;font-size:12px;color:#085041;font-weight:500">✓ Business continuity</span>
+        <a href="combo_iso27001.html" style="display:inline-flex;align-items:center;gap:6px;padding:9px 20px;background:#10b981;color:#fff;border-radius:7px;font-size: 14px;font-weight:600;text-decoration:none">Šta to znači za vaše podatke →</a>
+        <span style="display:inline-flex;align-items:center;gap:6px;padding:9px 16px;background:#e1f5ee;border:1px solid #bbf7d0;border-radius:7px;font-size: 14px;color:#085041;font-weight:500">✓ Kontrola pristupa</span>
+        <span style="display:inline-flex;align-items:center;gap:6px;padding:9px 16px;background:#e1f5ee;border:1px solid #bbf7d0;border-radius:7px;font-size: 14px;color:#085041;font-weight:500">✓ Incident response plan</span>
+        <span style="display:inline-flex;align-items:center;gap:6px;padding:9px 16px;background:#e1f5ee;border:1px solid #bbf7d0;border-radius:7px;font-size: 14px;color:#085041;font-weight:500">✓ GDPR usklađenost</span>
+        <span style="display:inline-flex;align-items:center;gap:6px;padding:9px 16px;background:#e1f5ee;border:1px solid #bbf7d0;border-radius:7px;font-size: 14px;color:#085041;font-weight:500">✓ Business continuity</span>
       </div>
     </div>
     <div style="text-align:center;background:#fff;border:1px solid #bbf7d0;border-radius:14px;padding:28px 32px;flex-shrink:0">
-      <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:#10b981;margin-bottom:4px">ISO/IEC</div>
+      <div style="font-size: 14px;font-weight:700;letter-spacing:2px;color:#10b981;margin-bottom:4px">ISO/IEC</div>
       <div style="font-size:48px;font-weight:800;color:#1a1a1a;letter-spacing:-3px;line-height:1">27001</div>
-      <div style="font-size:10px;color:#888;margin-top:6px;letter-spacing:0.5px;line-height:1.4">INFORMATION SECURITY<br>MANAGEMENT</div>
-      <div style="display:inline-block;margin-top:12px;font-size:11px;font-weight:600;padding:4px 12px;background:#e1f5ee;color:#085041;border-radius:20px;border:1px solid #bbf7d0">Sertifikacija u toku</div>
+      <div style="font-size: 14px;color:#888;margin-top:6px;letter-spacing:0.5px;line-height:1.4">INFORMATION SECURITY<br>MANAGEMENT</div>
+      <div style="display:inline-block;margin-top:12px;font-size: 14px;font-weight:600;padding:4px 12px;background:#e1f5ee;color:#085041;border-radius:20px;border:1px solid #bbf7d0">Sertifikacija u toku</div>
     </div>
   </div>
 </div>
@@ -1245,23 +1249,23 @@ function openBrand(key) {
   const productsHtml = b.products.map(p => `
     <div style="padding:14px 0;border-bottom:1px solid #f0f0ee">
       <div style="font-size:14px;font-weight:600;color:#1a1a1a;margin-bottom:4px">${p.name}</div>
-      <div style="font-size:13px;color:#666;line-height:1.6">${p.desc}</div>
+      <div style="font-size: 16px; color: #666;line-height:1.6">${p.desc}</div>
     </div>`).join('');
   document.getElementById('brandContent').innerHTML = `
     <div style="padding:28px 32px;border-bottom:1px solid #eaeae8;background:${b.bg};border-radius:16px 16px 0 0">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
         ${b.logo}
         <span style="font-size:20px;font-weight:700;color:${b.color}">${b.name}</span>
-        <span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;${b.badgeStyle}">${b.badge}</span>
+        <span style="font-size: 14px;font-weight:600;padding:3px 9px;border-radius:20px;${b.badgeStyle}">${b.badge}</span>
       </div>
-      <p style="font-size:14px;color:#444;line-height:1.65;max-width:520px">${b.intro}</p>
+      <p style="font-size: 16px; color: #444;line-height:1.65;max-width:520px">${b.intro}</p>
     </div>
     <div style="padding:24px 32px">
-      <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:#aaa;margin-bottom:4px">Proizvodi i rešenja</div>
+      <div style="font-size: 14px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:#aaa;margin-bottom:4px">Proizvodi i rešenja</div>
       ${productsHtml}
     </div>
     <div style="padding:16px 32px;border-top:1px solid #eaeae8;display:flex;justify-content:flex-end">
-      <a href="#" style="padding:9px 20px;font-size:13px;font-weight:500;background:#1a5fd4;color:#fff;border-radius:7px;text-decoration:none">Zakažite konsultaciju</a>
+      <a href="#" style="padding:9px 20px;font-size: 14px;font-weight:500;background:#1a5fd4;color:#fff;border-radius:7px;text-decoration:none">Zakažite konsultaciju</a>
     </div>`;
   document.getElementById('brandOverlay').style.display = 'flex';
   document.body.style.overflow = 'hidden';
